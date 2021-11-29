@@ -1,7 +1,6 @@
 package com.example.zuwaapp;
 
 public class Constant {
-    阿瓦达多无
     public static final String USER_URL ="http://192.168.137.1:8080/zuwa/user/";
     public static final String PRODUCT_URL ="http://192.168.137.1:8080/zuwa/product/";
     public static final String COLLECT_URL ="http://192.168.137.1:8080/user/collect/";
