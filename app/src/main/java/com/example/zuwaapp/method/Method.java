@@ -343,19 +343,32 @@ public class Method {
                 .post(formBody)
                 .build();
         Call call = okHttpClient.newCall(request);
-        enqueue(call,Constant.FIND_COLLECT,handler);
+        enqueue(call,Constant.FIND_COLLECT_BY_PHONENUMBER,handler);
     }
 
-    public void findCollectColorByPhoneNumber(String phoneNumber,Handler handler){
+    public void findCollectByProductIdAndPhoneNumber(String phoneNumber,String productId,Handler handler){
         FormBody formBody = new FormBody.Builder()
+                .add("productId",productId)
                 .add("phoneNumber",phoneNumber)
                 .build();
         Request request = new Request.Builder()
-                .url(COLLECT_URL+"findCollectByPhoneNumber")
+                .url(COLLECT_URL+"findCollect")
                 .post(formBody)
                 .build();
         Call call = okHttpClient.newCall(request);
-        enqueue(call,Constant.FIND_COLLECT_COLOR,handler);
+        enqueue(call,Constant.FIND_COLLECT,handler);
+    }
+    public void findCollectToSetColor(String phoneNumber,String productId,Handler handler){
+        FormBody formBody = new FormBody.Builder()
+                .add("productId",productId)
+                .add("phoneNumber",phoneNumber)
+                .build();
+        Request request = new Request.Builder()
+                .url(COLLECT_URL+"findCollect")
+                .post(formBody)
+                .build();
+        Call call = okHttpClient.newCall(request);
+        enqueue(call,Constant.SET_COLOR,handler);
     }
 
     public void enqueue(Call call,int constant,Handler handler){
