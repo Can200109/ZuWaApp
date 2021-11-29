@@ -76,7 +76,13 @@ public class FiveFragment extends Fragment {
                         //Toast.makeText(getApplicationContext(),"查找成功",Toast.LENGTH_LONG).show();
                         userId.setText(user.getPhoneNumber());
                         userName.setText(user.getUserName());
-                        Glide.with(getContext()).load(Constant.USER_PHOTO+user.getPhoneNumber()+"/"+user.getUserPhoto());
+                        List<String> userPhoto = gson.fromJson(user.getUserPhoto(),new TypeToken<List<String>>(){}.getType());
+                        if (userPhoto!=null){
+                            String url = Constant.USER_PHOTO+user.getPhoneNumber()+"/"+userPhoto.get(0);
+                            Log.e("tupianjiazai : ", url);
+                            Glide.with(getActivity()).load(url).into(ivHead);
+                        }
+
                         Log.e("id",findUserByPhoneNumberResult.getData().getPhoneNumber());
                         Log.e("昵称",findUserByPhoneNumberResult.getData().getUserName());
                     }
@@ -100,6 +106,7 @@ public class FiveFragment extends Fragment {
         View view = inflater.inflate(R.layout.wode,
                 container,
                 false);
+        uriList.clear();
         userName = view.findViewById(R.id.userName);
         userId = view.findViewById(R.id.userId);
         ivHead = view.findViewById(R.id.iv_head);
@@ -107,7 +114,7 @@ public class FiveFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 pickImage();
-                uploadImage(uriList,"12345678910");
+
             }
         });
         //“我的发布”点击进入一个页面
@@ -182,6 +189,7 @@ public class FiveFragment extends Fragment {
             Uri uri = data.getData();
             uriList.add(uri);
             Glide.with(getActivity()).load(uri).into(ivHead);
+            uploadImage(uriList,"12345678910");
 
         }
     }
