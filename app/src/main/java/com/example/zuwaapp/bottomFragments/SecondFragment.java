@@ -1,5 +1,6 @@
 package com.example.zuwaapp.bottomFragments;
 
+
 import static com.example.zuwaapp.Constant.FIND_ALL;
 import static com.example.zuwaapp.Constant.FIND_COLLECT;
 import static com.example.zuwaapp.Constant.FIND_PRODUCT_BY_ID;
@@ -69,9 +70,9 @@ public class SecondFragment extends Fragment {
                 case FIND_PRODUCT_BY_ID:
                     Result<Product> findProductById = gson.fromJson(msg.obj.toString(),new TypeToken<Result<Product>>(){}.getType());
                     if(findProductById.getCode() == 200) {
-                       Product product = findProductById.getData();
-                       RentProduce.add(product);
-                       rentAdapter.notifyDataSetChanged();
+                        Product product = findProductById.getData();
+                        RentProduce.add(product);
+                        rentAdapter.notifyDataSetChanged();
                     }
                     break;
             }
@@ -90,32 +91,34 @@ public class SecondFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-       View view = inflater.inflate(R.layout.shoucang,
-               container,
-               false);
+        View view = inflater.inflate(R.layout.shoucang,
+                container,
+                false);
 
-       RentProduce.clear();
+        RentProduce.clear();
 //       (new Method()).findAllProduct(handler);
         (new Method()).findCollectByPhoneNumber("12345678910",handler);
         //调用方法查找数据（传入phone）
         //按电话号码查找所有productName，然后通过product返回商品list
 
-       ListView RentProductList = view.findViewById(R.id.RentProductList);
-       rentAdapter = new RentAdapter(RentProduce,R.layout.rent_product_layout,getContext());
-       RentProductList.setAdapter(rentAdapter);
-       RentProductList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-           @Override
-           public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-               Intent intent = new Intent();
-               intent.setClass(getContext(), GlaceActivity.class);
-               Bundle bundle = new Bundle();
-               bundle.putString("phone",RentProduce.get(position).getPhoneNumber());
-               bundle.putString("id",RentProduce.get(position).getProductId());
-               intent.putExtra("bundle",bundle);
-               startActivity(intent);
-           }
-       });
-       return view;
+        ListView RentProductList = view.findViewById(R.id.RentProductList);
+        rentAdapter = new RentAdapter(RentProduce,R.layout.rent_product_layout,getContext());
+        RentProductList.setAdapter(rentAdapter);
+        RentProductList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                Intent intent = new Intent();
+                intent.setClass(getContext(), GlaceActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("phone",RentProduce.get(position).getPhoneNumber());
+                bundle.putString("id",RentProduce.get(position).getProductId());
+                intent.putExtra("bundle",bundle);
+                startActivity(intent);
+            }
+        });
+        return view;
     }
 
 }
+
+

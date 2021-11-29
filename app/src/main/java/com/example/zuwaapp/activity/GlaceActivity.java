@@ -2,10 +2,11 @@ package com.example.zuwaapp.activity;
 
 import static com.example.zuwaapp.Constant.DELETE_COLLECT;
 import static com.example.zuwaapp.Constant.FIND_COLLECT;
-import static com.example.zuwaapp.Constant.FIND_COLLECT_COLOR;
+import static com.example.zuwaapp.Constant.FIND_COLLECT_BY_PHONENUMBER;
 import static com.example.zuwaapp.Constant.FIND_PRODUCT_BY_ID;
 import static com.example.zuwaapp.Constant.FIND_USER_BY_PHONENUMBER;
 import static com.example.zuwaapp.Constant.PRODUCT_PHOTO;
+import static com.example.zuwaapp.Constant.SET_COLOR;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -63,55 +64,34 @@ public class GlaceActivity extends AppCompatActivity {
         @Override
         public void handleMessage(@NonNull Message msg) {
             switch (msg.what) {
+                case SET_COLOR:
+                    Result<Collect> data0 = gson.fromJson(msg.obj.toString(),new TypeToken<Result<Collect>>(){}.getType());
+                    Collect collect0 = data0.getData();
+                    if(collect0==null){
+                        Log.e( "handleMessage: ", "没有数据");
+                        shouCan.setImageResource(R.drawable.shoucang);
+
+                    }else {
+                        Log.e("collect.getId",collect0.getCollectId());
+                        shouCan.setImageResource(R.drawable.shoucang3);
+                    }
+                    break;
+
                 case FIND_COLLECT:
-                    Result<List<Collect>> findCollect = gson.fromJson(msg.obj.toString(),new TypeToken<Result<List<Collect>>>(){}.getType());
-                    if(findCollect.getCode() == 200){
-                        //根据手机号查找出来了collect
-                        List<Collect> data = findCollect.getData();
-                        if(data.isEmpty()){
-                            shouCan.setImageResource(R.drawable.shoucang3);
-                            (new Method()).addCollect("12345678910",ID,handler);
-                        }else {
-                            for(Collect collect:data){
-                                //看看手机号对应的productId是否有该页面的productID
-
-                                //如果存在
-                                if(ID.equals(collect.getProductId())){
-                                    Log.e("ID",ID);
-                                    Log.e("collect.getId",collect.getCollectId());
-                                    //删除这条记录，并且将图标设为透明
-                                    (new Method()).deleteCollect("12345678910",ID,handler);
-                                    shouCan.setImageResource(R.drawable.shoucang);
-
-                                }else {
-                                    //增加进去这条记录，并且将图标设为黑色
-                                    (new Method()).addCollect("12345678910",ID,handler);
-                                    shouCan.setImageResource(R.drawable.shoucang3);
-                                }
-                            }
-                        }
+                    Result<Collect> data = gson.fromJson(msg.obj.toString(),new TypeToken<Result<Collect>>(){}.getType());
+                    Collect collect = data.getData();
+                    if(collect==null){
+                        Log.e( "handleMessage: ", "没有数据");
+                        //增加进去这条记录，并且将图标设为黑色
+                        (new Method()).addCollect("12345678910",ID,handler);
+                        shouCan.setImageResource(R.drawable.shoucang3);
+                    }else {
+                        Log.e("collect.getId",collect.getCollectId());
+                        //删除这条记录，并且将图标设为透明
+                        (new Method()).deleteCollect("12345678910",ID,handler);
+                        shouCan.setImageResource(R.drawable.shoucang);
                     }
                     break;
-                case FIND_COLLECT_COLOR:
-                    Result<List<Collect>> findCollectColor = gson.fromJson(msg.obj.toString(),new TypeToken<Result<List<Collect>>>(){}.getType());
-                    if(findCollectColor.getCode() == 200){
-                        //根据手机号查找出来了collect
-                        List<Collect> data = findCollectColor.getData();
-                        for(Collect collect:data){
-                            //看看手机号对应的productId是否有该页面的productID
-                            //如果存在
-                            if(ID.equals(collect.getProductId())){
-                                //图标为黑色
-                                shouCan.setImageResource(R.drawable.shoucang3);
-                            }else {
-                                //图标为透明
-                                shouCan.setImageResource(R.drawable.shoucang);
-                            }
-                        }
-                    }
-                    break;
-
-
                 case FIND_USER_BY_PHONENUMBER:
                     Result<User> findUserByPhoneNumberResult = gson.fromJson(msg.obj.toString(),new TypeToken<Result<User>>(){}.getType());
                     if (findUserByPhoneNumberResult.getCode()==200){
@@ -190,17 +170,16 @@ public class GlaceActivity extends AppCompatActivity {
         price = findViewById(R.id.tv_price);
         RVprice = findViewById(R.id.tv_RVprice);
         count = findViewById(R.id.tv_count);
-
-        
+        ID = bundle.getString("id");
+        new Method().findCollectToSetColor("12345678910",ID,handler);
 
         (new Method()).findUserByPhoneNumber(bundle.getString("phone"),handler);
         Log.e("id",bundle.getString("id"));
         (new Method()).findProductById(bundle.getString("id"),handler);
 
-        ID = bundle.getString("id");
+
 
         //弹进这个页面，先判断收藏的颜色
-        (new Method()).findCollectColorByPhoneNumber("12345678910",handler);
 
         shouCan.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -209,8 +188,8 @@ public class GlaceActivity extends AppCompatActivity {
                 //判断，如果数据没在数据库里面，图标设置成黑色，并且将数据存入
                 //如果在里面，图标变为白色，然后将数据清除
                 //如何判断有没有在收藏表里面
-
-                (new Method()).findCollectByPhoneNumber("12345678910",handler);
+                new Method().findCollectByProductIdAndPhoneNumber("12345678910",ID,handler);
+          //      (new Method()).findCollectByPhoneNumber("12345678910",handler);
 //                if (){
 //                    shouCan.setImageResource(R.drawable.shoucang);
 //                    isIconChange=false;
