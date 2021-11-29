@@ -16,10 +16,13 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.example.zuwaapp.Constant;
 import com.example.zuwaapp.R;
 import com.example.zuwaapp.adapter.RentAdapter;
 import com.example.zuwaapp.entity.Product;
@@ -34,6 +37,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OwnUserHome extends AppCompatActivity {
+    private ImageView ownHead;
     private ImageButton ownBack;
     private TextView ownUser;
     private RentAdapter MePushAdapter;
@@ -49,9 +53,19 @@ public class OwnUserHome extends AppCompatActivity {
                     Result<User> findUserByPhoneNumberResult = gson.fromJson(msg.obj.toString(),new TypeToken<Result<User>>(){}.getType());
                     if (findUserByPhoneNumberResult.getCode()==200){
                         //Toast.makeText(getApplicationContext(),"查找成功",Toast.LENGTH_LONG).show();
-
+                        User user = findUserByPhoneNumberResult.getData();
                         ownUser.setText(findUserByPhoneNumberResult.getData().getUserName());
-
+                        List<String> userPhoto = gson.fromJson(user.getUserPhoto(),new TypeToken<List<String>>(){}.getType());
+                        if (userPhoto!=null){
+                            String url = Constant.USER_PHOTO+user.getPhoneNumber()+"/"+userPhoto.get(0);
+                            Log.e("tupianjiazai : ", url);
+                            Glide.with(getApplicationContext())
+                                    .load(url)
+                                    .placeholder(R.drawable.loading)
+                                    .circleCrop()
+                                    .dontAnimate()
+                                    .into(ownHead);
+                        }
                     }
                     break;
                 case FIND_PRODUCT_BY_PHONENUMBER:
@@ -77,7 +91,7 @@ public class OwnUserHome extends AppCompatActivity {
         setContentView(R.layout.activity_own_user_home);
         ownBack = findViewById(R.id.own_back);
         ownUser = findViewById(R.id.owntv_user);
-
+        ownHead = findViewById(R.id.owniv_headPhoto);
 
         Intent intent = getIntent();
         //这里获取用户名(根据电话号)

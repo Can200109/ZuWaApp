@@ -80,7 +80,12 @@ public class FiveFragment extends Fragment {
                         if (userPhoto!=null){
                             String url = Constant.USER_PHOTO+user.getPhoneNumber()+"/"+userPhoto.get(0);
                             Log.e("tupianjiazai : ", url);
-                            Glide.with(getActivity()).load(url).into(ivHead);
+                            Glide.with(getActivity())
+                                    .load(url)
+                                    .placeholder(R.drawable.loading)
+                                    .centerCrop()
+                                    .dontAnimate()
+                                    .into(ivHead);
                         }
 
                         Log.e("id",findUserByPhoneNumberResult.getData().getPhoneNumber());

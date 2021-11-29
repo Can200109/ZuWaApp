@@ -7,14 +7,28 @@ import static com.example.zuwaapp.Constant.FIND_PRODUCT_BY_ID;
 import static com.example.zuwaapp.Constant.FIND_USER_BY_PHONENUMBER;
 import static com.example.zuwaapp.Constant.PRODUCT_PHOTO;
 import static com.example.zuwaapp.Constant.SET_COLOR;
+import static com.example.zuwaapp.Constant.USER_URL;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 import android.app.Activity;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Rect;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -46,16 +60,20 @@ import com.previewlibrary.ZoomMediaLoader;
 import com.previewlibrary.enitity.ThumbViewInfo;
 import com.yds.library.MultiImageView;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class GlaceActivity extends AppCompatActivity {
+    private List<Uri> uriList = new ArrayList<>();
+    private OkHttpClient okHttpClient = new OkHttpClient();
     private ImageView headPhoto;
     private ArrayList<ThumbViewInfo> mThumbViewInfoList;
     private ImageButton shouCan,glaceBack;
     private MultiImageView multiImageView;
     private Button shop;
-    private TextView user, name, describe, price, RVprice,count;
+    private TextView tvUser, name, describe, price, RVprice,count;
     private String ID;
     private Gson gson = new GsonBuilder()
             .serializeNulls()
@@ -94,8 +112,21 @@ public class GlaceActivity extends AppCompatActivity {
                     break;
                 case FIND_USER_BY_PHONENUMBER:
                     Result<User> findUserByPhoneNumberResult = gson.fromJson(msg.obj.toString(),new TypeToken<Result<User>>(){}.getType());
+
                     if (findUserByPhoneNumberResult.getCode()==200){
-                        user.setText(findUserByPhoneNumberResult.getData().getUserName());
+                        User user = findUserByPhoneNumberResult.getData();
+                        tvUser.setText(findUserByPhoneNumberResult.getData().getUserName());
+                        List<String> userPhoto = gson.fromJson(user.getUserPhoto(),new TypeToken<List<String>>(){}.getType());
+                        if (userPhoto!=null){
+                            String url = Constant.USER_PHOTO+user.getPhoneNumber()+"/"+userPhoto.get(0);
+                            Log.e("tupianjiazai : ", url);
+                            Glide.with(getApplicationContext())
+                                    .load(url)
+                                    .placeholder(R.drawable.loading)
+                                    .circleCrop()
+                                    .dontAnimate()
+                                    .into(headPhoto);
+                        }
 
                     }
                     break;
@@ -163,7 +194,7 @@ public class GlaceActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         Bundle bundle = intent.getBundleExtra("bundle");
-        user = findViewById(R.id.tv_user);
+        tvUser = findViewById(R.id.tv_user);
         multiImageView = findViewById(R.id.detail_multi);
         name = findViewById(R.id.tv_name);
         describe = findViewById(R.id.tv_describe);
@@ -177,7 +208,7 @@ public class GlaceActivity extends AppCompatActivity {
         Log.e("id",bundle.getString("id"));
         (new Method()).findProductById(bundle.getString("id"),handler);
 
-
+        headPhoto = findViewById(R.id.iv_headPhoto);
 
         //弹进这个页面，先判断收藏的颜色
 
@@ -189,21 +220,6 @@ public class GlaceActivity extends AppCompatActivity {
                 //如果在里面，图标变为白色，然后将数据清除
                 //如何判断有没有在收藏表里面
                 new Method().findCollectByProductIdAndPhoneNumber("12345678910",ID,handler);
-          //      (new Method()).findCollectByPhoneNumber("12345678910",handler);
-//                if (){
-//                    shouCan.setImageResource(R.drawable.shoucang);
-//                    isIconChange=false;
-//
-//                }else{
-//                    //图标变为黑色
-//                    shouCan.setImageResource(R.drawable.shoucang3);
-//                    //将数据存入
-//
-//                    //调用方法
-//
-//
-//                }
-
             }
         });
 
@@ -233,7 +249,7 @@ public class GlaceActivity extends AppCompatActivity {
             }
         });
 
-        user.setOnClickListener(new View.OnClickListener() {
+        tvUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //弹到用户信息页面

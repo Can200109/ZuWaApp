@@ -59,9 +59,20 @@ public class Glace2Activity extends AppCompatActivity {
                 case FIND_USER_BY_PHONENUMBER:
                     Result<User> findUserByPhoneNumberResult = gson.fromJson(msg.obj.toString(),new TypeToken<Result<User>>(){}.getType());
                     if (findUserByPhoneNumberResult.getCode()==200){
+                        User user0 = findUserByPhoneNumberResult.getData();
                         //Toast.makeText(getApplicationContext(),"查找成功",Toast.LENGTH_LONG).show();
-
                         user.setText(findUserByPhoneNumberResult.getData().getUserName());
+                        List<String> userPhoto = gson.fromJson(user0.getUserPhoto(),new TypeToken<List<String>>(){}.getType());
+                        if (userPhoto!=null){
+                            String url = Constant.USER_PHOTO+user0.getPhoneNumber()+"/"+userPhoto.get(0);
+                            Log.e("tupianjiazai : ", url);
+                            Glide.with(getApplicationContext())
+                                    .load(url)
+                                    .placeholder(R.drawable.loading)
+                                    .circleCrop()
+                                    .dontAnimate()
+                                    .into(headPhoto);
+                        }
 
                     }
                     break;
