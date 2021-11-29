@@ -37,7 +37,7 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="550dp"
+        android:layout_height="500dp"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="15dp"
         android:layout_marginRight="15dp">
@@ -106,6 +106,14 @@
             </TextView>
         </LinearLayout>
     </ScrollView>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/smssdk_text_green"
+        android:id="@+id/return_product"
+        android:text="我要还物">
+    </Button>
 
 
 </LinearLayout>

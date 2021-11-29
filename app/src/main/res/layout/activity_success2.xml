@@ -5,7 +5,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="已添加至您的租借"
+        android:text="还物成功"
         android:textSize="38dp"
         android:paddingTop="20dp"
         android:gravity="center"
@@ -19,6 +19,6 @@
         android:layout_height="60dip"
         android:text="返回"
         android:background="@drawable/shape"
-        android:id="@+id/success"/>
+        android:id="@+id/success2"/>
 
 </FrameLayout>

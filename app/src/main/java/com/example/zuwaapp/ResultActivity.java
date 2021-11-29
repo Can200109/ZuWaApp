@@ -23,6 +23,10 @@ public class ResultActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
+
+
+
+        changeFragment(new FirstFragment().getShouYeFragment());
         radioGroup = findViewById(R.id.rg_main);
         //底部菜单
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -38,7 +42,7 @@ public class ResultActivity extends AppCompatActivity {
                 }
             }
         });
-        changeFragment(new FirstFragment().getShouYeFragment());
+
     }
     private void changeFragment(Fragment fragment){
         //开启事务

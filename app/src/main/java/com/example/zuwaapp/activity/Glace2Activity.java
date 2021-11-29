@@ -1,5 +1,6 @@
 package com.example.zuwaapp.activity;
 
+import static com.example.zuwaapp.Constant.ADD_BY_PHONENUMBER;
 import static com.example.zuwaapp.Constant.FIND_PRODUCT_BY_ID;
 import static com.example.zuwaapp.Constant.FIND_USER_BY_PHONENUMBER;
 import static com.example.zuwaapp.Constant.PRODUCT_PHOTO;
@@ -22,6 +23,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.zuwaapp.Constant;
@@ -48,6 +50,8 @@ public class Glace2Activity extends AppCompatActivity {
     private ArrayList<ThumbViewInfo> mThumbViewInfoList;
     private ImageButton shouCan,glaceBack;
     private MultiImageView multiImageView;
+    private Button returnButton;
+    private Product product;
     private TextView user, name, describe, price, RVprice,count;
     private Gson gson = new GsonBuilder()
             .serializeNulls()
@@ -56,19 +60,33 @@ public class Glace2Activity extends AppCompatActivity {
         @Override
         public void handleMessage(@NonNull Message msg) {
             switch (msg.what) {
+                case ADD_BY_PHONENUMBER:
+                    Result<Product> addPhone = gson.fromJson(msg.obj.toString(), new TypeToken<Result<Product>>(){}.getType());
+                    break;
                 case FIND_USER_BY_PHONENUMBER:
                     Result<User> findUserByPhoneNumberResult = gson.fromJson(msg.obj.toString(),new TypeToken<Result<User>>(){}.getType());
                     if (findUserByPhoneNumberResult.getCode()==200){
+                        User user0 = findUserByPhoneNumberResult.getData();
                         //Toast.makeText(getApplicationContext(),"查找成功",Toast.LENGTH_LONG).show();
-
                         user.setText(findUserByPhoneNumberResult.getData().getUserName());
+                        List<String> userPhoto = gson.fromJson(user0.getUserPhoto(),new TypeToken<List<String>>(){}.getType());
+                        if (userPhoto!=null){
+                            String url = Constant.USER_PHOTO+user0.getPhoneNumber()+"/"+userPhoto.get(0);
+                            Log.e("tupianjiazai : ", url);
+                            Glide.with(getApplicationContext())
+                                    .load(url)
+                                    .placeholder(R.drawable.loading)
+                                    .circleCrop()
+                                    .dontAnimate()
+                                    .into(headPhoto);
+                        }
 
                     }
                     break;
                 case FIND_PRODUCT_BY_ID:
                     Result<Product> findProductById = gson.fromJson(msg.obj.toString(),new TypeToken<Result<Product>>(){}.getType());
                     if(findProductById.getCode() == 200){
-                        Product product = findProductById.getData();
+                        product = findProductById.getData();
                         List<String> photoName = gson.fromJson(product.getProductPhoto(),new TypeToken<List<String>>(){}.getType());
                         List<String> photoUrl = new ArrayList<>();
                         for (String photo:photoName){
@@ -131,6 +149,7 @@ public class Glace2Activity extends AppCompatActivity {
         price = findViewById(R.id.tv_price);
         RVprice = findViewById(R.id.tv_RVprice);
         count = findViewById(R.id.tv_count);
+        returnButton = findViewById(R.id.return_product);
 
 
 
@@ -148,6 +167,19 @@ public class Glace2Activity extends AppCompatActivity {
                 bundle.putString("phone",bundle.getString("phone"));
                 intent.putExtra("bundle",bundle);
                 startActivity(intent);
+            }
+        });
+
+
+        returnButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //调用方法，将collect设为0
+                (new Method()).ReturnProduct(bundle.getString("phone"),product,handler);
+
+                //谈到还物成功页面
+                Intent intent1 = new Intent(Glace2Activity.this,Success2Activity.class);
+                startActivity(intent1);
             }
         });
 
