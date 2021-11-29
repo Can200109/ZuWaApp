@@ -1,0 +1,51 @@
+ext {
+    junitVersion = '4.+'
+}// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+        maven {
+            url "https://mvn.mob.com/android"
+        }
+
+    }
+    dependencies {
+       // classpath "com.android.tools.build:gradle:7.0.2"
+        classpath 'com.android.tools.build:gradle:7.0.3'
+        classpath "com.mob.sdk:MobSDK:2018.0319.1724"
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+String mavenUrl = "http://mvn.mob.com/android"
+//String mavenUrl = "https://jitpack.io"
+if (hasProperty("mavenUrl")) {
+    mavenUrl = getProperty("mavenUrl")
+}
+println "mavenUrl: ${mavenUrl}, ${hasProperty("mavenUrl")}"
+
+allprojects {
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+        jcenter()
+        google()
+        maven {
+            url mavenUrl
+        }
+        maven {
+            url 'https://jitpack.io'
+        }
+    }
+    configurations.all {
+        resolutionStrategy.cacheDynamicVersionsFor 0, 'seconds'
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

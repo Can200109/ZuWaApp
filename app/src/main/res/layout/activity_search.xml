@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:padding="10dp">
+        <ImageButton
+            android:layout_width="20dp"
+            android:layout_height="27dp"
+            android:id="@+id/search_back"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/smssdk_nav_back">
+        </ImageButton>
+
+
+        <EditText
+            android:layout_marginLeft="15dp"
+            android:id="@+id/glace_edt_search"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="10dp"
+            android:layout_weight="3"
+            android:background="@drawable/edittext_border"
+            android:hint="请输入内容"
+            android:imeOptions="actionSearch"
+            android:singleLine="true"
+            android:textSize="16dp" />
+
+        <ImageButton
+            android:id="@+id/glace_btn_search"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:textSize="18dp"
+            android:textAllCaps="false"
+            android:src="@drawable/search"
+            android:background="#00000000"
+            />
+    </LinearLayout>
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/search_result">
+    </ListView>
+</LinearLayout>

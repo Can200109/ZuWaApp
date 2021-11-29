@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+    <FrameLayout
+        android:id="@+id/fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="70dp">
+
+    </FrameLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_above="@+id/main_radio"
+        />
+
+    <LinearLayout
+        android:id="@+id/main_radio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:paddingTop="5dp">
+        <RadioGroup
+            android:id="@+id/rg_main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rb_main"
+                style="@style/rb_style"
+                android:checked="true"
+                android:drawableTop="@drawable/shouye2"
+                android:text="首页" />
+
+            <RadioButton
+                android:id="@+id/rb_shoucang"
+                style="@style/rb_style"
+                android:drawableTop="@drawable/shoucang2"
+                android:text="收藏"/>
+            <RadioButton
+                android:id="@+id/rb_plus"
+                style="@style/rb_style"
+                android:drawableTop="@drawable/plus"/>
+
+            <RadioButton
+                android:id="@+id/rb_message"
+                style="@style/rb_style"
+                android:drawableTop="@drawable/xiaoxi2"
+                android:text="租借"/>
+            <RadioButton
+                android:id="@+id/rb_wode"
+                style="@style/rb_style"
+                android:drawableTop="@drawable/wode2"
+                android:text="我的"/>
+
+        </RadioGroup>
+    </LinearLayout>
+</RelativeLayout>

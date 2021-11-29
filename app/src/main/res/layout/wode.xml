@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/LightGrey">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+       >
+        <com.example.zuwaapp.RoundImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/hanl"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:id="@+id/userName"
+                android:textSize="20sp"
+                android:textColor="#000000"/>
+            <TextView
+                android:layout_marginTop="40dp"
+                android:layout_marginLeft="-210dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+
+                android:id="@+id/userId"
+                android:textSize="12sp"
+                android:textColor="#000000"/>
+            <TextView
+                android:layout_marginTop="75dp"
+                android:layout_marginLeft="-210dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="今天不学习，明天变垃圾。你皮任你皮，我学我的习"
+                android:textSize="10sp"
+                android:textColor="#000000"/>
+        </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="50dp">
+        <Button
+            android:id="@+id/btn_button1"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:drawableLeft="@drawable/fabu1"
+            android:backgroundTint="@color/white"
+            android:text="我的发布                  >"
+            android:textSize="20sp"
+            android:textColor="#000000"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/btn_button2"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:drawableLeft="@drawable/zujie2"
+            android:backgroundTint="@color/white"
+            android:text="我的租借                  >"
+            android:textSize="20sp"
+            android:textColor="#000000"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/btn_button3"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:drawableLeft="@drawable/shezhi1"
+            android:backgroundTint="@color/white"
+            android:text="设置                      >"
+            android:textSize="20sp"
+            android:textColor="#000000"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/btn_button4"
+            android:drawableLeft="@drawable/bangzhu1"
+            android:backgroundTint="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:text="帮助与反馈               "
+            android:textSize="20sp"
+            android:textColor="#000000"/>
+    </LinearLayout>
+
+</LinearLayout>
+<!--id和短文在界面上为 android:layout_marginLeft="-220dp"-->

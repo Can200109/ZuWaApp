@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="smssdk_text_green">#099A9F</color>
+    <color name="smssdk_green">#08979C</color>
+    <color name="smssdk_white_line">#14ffffff</color>
+    <color name="smssdk_hint_textcolor">#7fffffff</color>
+    <color name="LightGrey">#D3D3D3</color>
+
+    <color name="shenLanHua">#9932CD</color>
+    <color name="LawnGreen">#7CFC00</color>
+    <color name="GhostWhite">#F8F8FF</color>
+
+    <color name="red">#FF0000</color>
+    <color name="seaBlue">#70DB93</color>
+    <color name="shenTongLv"> #4A766E</color>
+</resources>
