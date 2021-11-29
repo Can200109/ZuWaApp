@@ -219,8 +219,36 @@ public class Method {
         Call call = okHttpClient.newCall(request);
         enqueue(call,FIND_PRODUCT_BY_PHONENUMBER,handler);
     }
+
+
     public void addRentPhone(String phoneNumber,Product product,Handler handler){
         product.setProductRent(1);
+//        product.setRentPhoneNumber(Constant.PHONENUMBER);
+        product.setRentPhoneNumber("12345678910");
+        FormBody formBody = new FormBody.Builder()
+                .add("productId",product.getProductId())
+                .add("productRent",product.getProductRent()+"")
+                .add("rentPhoneNumber",product.getRentPhoneNumber())
+                .add("productPhoto",product.getProductPhoto())
+                .add("phoneNumber",phoneNumber)
+                .add("productName",product.getProductName())
+                .add("productDescribe", product.getProductDescribe())
+                .add("productType", product.getProductType())
+                .add("productPrice",product.getProductPrice()+"")
+                .add("productDeposit",product.getProductDeposit()+"")
+                .add("productCount",product.getProductCount()+"")
+                .build();
+        Request request = new Request.Builder()
+                .url(PRODUCT_URL+"addProduct")
+                .post(formBody)
+                .build();
+        Call call = okHttpClient.newCall(request);
+        enqueue(call,ADD_BY_PHONENUMBER,handler);
+    }
+
+
+    public void ReturnProduct(String phoneNumber,Product product,Handler handler){
+        product.setProductRent(0);
 //        product.setRentPhoneNumber(Constant.PHONENUMBER);
         product.setRentPhoneNumber("12345678910");
         FormBody formBody = new FormBody.Builder()

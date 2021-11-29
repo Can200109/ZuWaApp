@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="还物成功"
+        android:textSize="38dp"
+        android:paddingTop="20dp"
+        android:gravity="center"
+        android:layout_marginTop="50dp"/>
+
+    <Button
+        android:layout_marginTop="350dp"
+        android:layout_marginLeft="50dp"
+        android:shape="oval"
+        android:layout_width="300dip"
+        android:layout_height="60dip"
+        android:text="返回"
+        android:background="@drawable/shape"
+        android:id="@+id/success2"/>
+
+</FrameLayout>

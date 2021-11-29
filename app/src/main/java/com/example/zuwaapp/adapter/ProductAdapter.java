@@ -56,7 +56,6 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         Product product = productList.get(position);
         Gson gson = new GsonBuilder().create();
         List<String> photos = gson.fromJson(product.getProductPhoto(),new TypeToken<List<String>>(){}.getType());
-        Log.e("onBindViewHolder: ", photos.get(0));
         Glide.with(viewHolder.itemView).load(Constant.PRODUCT_PHOTO+product.getPhoneNumber()+"/"+product.getProductId()+"/" +photos.get(0)).into(viewHolder.productImage);
         viewHolder.productTitle.setText(product.getProductName());
         viewHolder.productPrice.setText("￥"+product.getProductPrice()+"");
