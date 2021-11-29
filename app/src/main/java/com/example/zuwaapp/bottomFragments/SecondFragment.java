@@ -2,6 +2,7 @@ package com.example.zuwaapp.bottomFragments;
 
 import static com.example.zuwaapp.Constant.FIND_ALL;
 import static com.example.zuwaapp.Constant.FIND_COLLECT;
+import static com.example.zuwaapp.Constant.FIND_COLLECT_BY_PHONENUMBER;
 import static com.example.zuwaapp.Constant.FIND_PRODUCT_BY_ID;
 import static com.example.zuwaapp.Constant.PRODUCT_PHOTO;
 
@@ -50,7 +51,7 @@ import java.util.List;
 public class SecondFragment extends Fragment {
     private List<Product> RentProduce = new ArrayList<>();
     private RentAdapter rentAdapter;
-    private String temp;
+    private Product product;
     private Gson gson = new GsonBuilder()
             .serializeNulls()
             .create();
@@ -58,18 +59,19 @@ public class SecondFragment extends Fragment {
         @Override
         public void handleMessage(@NonNull Message msg) {
             switch (msg.what) {
-                case FIND_COLLECT:
+                case FIND_COLLECT_BY_PHONENUMBER:
                     Result<List<Collect>> findCollect = gson.fromJson(msg.obj.toString(),new TypeToken<Result<List<Collect>>>(){}.getType());
                     List<Collect> data = findCollect.getData();
+                    Log.e("数据",""+data);
                     for(Collect collect:data){
-                        temp = collect.getProductId();
-                        (new Method()).findProductById(temp,handler);
+                        (new Method()).findProductById(collect.getProductId(),handler);
+                        Log.e("prouctID",collect.getCollectId());
                     }
                     break;
                 case FIND_PRODUCT_BY_ID:
                     Result<Product> findProductById = gson.fromJson(msg.obj.toString(),new TypeToken<Result<Product>>(){}.getType());
                     if(findProductById.getCode() == 200) {
-                       Product product = findProductById.getData();
+                       product = findProductById.getData();
                        RentProduce.add(product);
                        rentAdapter.notifyDataSetChanged();
                     }
