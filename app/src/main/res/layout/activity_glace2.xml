@@ -108,9 +108,9 @@
     </ScrollView>
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="150dp"
+        android:background="@color/smssdk_text_green"
         android:id="@+id/return_product"
         android:text="我要还物">
     </Button>
