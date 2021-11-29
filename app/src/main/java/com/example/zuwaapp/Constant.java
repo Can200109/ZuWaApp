@@ -3,7 +3,7 @@ package com.example.zuwaapp;
 public class Constant {
     public static final String USER_URL ="http://192.168.137.1:8080/zuwa/user/";
     public static final String PRODUCT_URL ="http://192.168.137.1:8080/zuwa/product/";
-    public static final String COLLECT_URL ="http://192.168.137.1:8080/user/collect/";
+    public static final String COLLECT_URL ="http://192.168.137.1:8080/zuwa/collect/";
     public static final String PRODUCT_PHOTO = "http://192.168.137.1:8080/zuwa/productPhoto/";
     public static final int REQUEST_IMAGE = 200;
     public static final int LOGIN = 1;
@@ -21,6 +21,7 @@ public class Constant {
     public static final int ADD_COLLECT = 13;
     public static final int DELETE_COLLECT = 14;
     public static final int FIND_COLLECT = 15;
+    public static final int FIND_COLLECT_COLOR = 16;
 
     public static String PHONENUMBER;
 
