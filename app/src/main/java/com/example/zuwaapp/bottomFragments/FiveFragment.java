@@ -80,9 +80,9 @@ public class FiveFragment extends Fragment {
 
         //点开时显示自己的信息
 //        userId.setText(Constant.PHONENUMBER);
-        (new Method()).findUserByPhoneNumber(Constant.PHONENUMBER,handler);
+//        (new Method()).findUserByPhoneNumber(Constant.PHONENUMBER,handler);
 
-//        (new Method()).findUserByPhoneNumber("12345678910",handler);
+        (new Method()).findUserByPhoneNumber("12345678910",handler);
 
         btnbutton1.setOnClickListener(new View.OnClickListener() {
             @Override

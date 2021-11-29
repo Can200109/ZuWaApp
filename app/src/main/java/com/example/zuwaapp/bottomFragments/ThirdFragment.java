@@ -139,7 +139,8 @@ public class ThirdFragment extends Fragment {
                 Double RVprice2 = Double.parseDouble(RVprice1);
 
 
-                Product product = new Product(title1,describe1,price2,RVprice2,type, PHONENUMBER);
+                Product product = new Product(title1,describe1,price2,RVprice2,type, "12345678910");
+//                Product product = new Product(title1,describe1,price2,RVprice2,type, PHONENUMBER);
                 (new Method()).addProduct(product,handler);
 
 
