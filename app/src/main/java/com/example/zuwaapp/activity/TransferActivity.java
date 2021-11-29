@@ -66,8 +66,8 @@ public class TransferActivity extends AppCompatActivity {
         init();
 
         //数据
-//        userId.setText("12345678910");
-        userId.setText(Constant.PHONENUMBER);
+        userId.setText("12345678910");
+//        userId.setText(Constant.PHONENUMBER);
 
        button.setOnClickListener(new View.OnClickListener() {
            @Override
@@ -76,8 +76,8 @@ public class TransferActivity extends AppCompatActivity {
                //完善信息
                String user_name = userName.getText().toString();
                String user_password = userPassword.getText().toString();
-               User user = new User(user_name,user_password,Constant.PHONENUMBER);
-//               User user = new User(user_name,user_password,"12345678910");
+//               User user = new User(user_name,user_password,Constant.PHONENUMBER);
+               User user = new User(user_name,user_password,"12345678910");
                Log.e("昵称",user_name);
                Log.e("密码",user_password);
                (new Method()).editUser(user,handler);

@@ -69,7 +69,7 @@
                 <TextView
                     android:layout_gravity="center"
                     android:layout_width="wrap_content"
-                    android:layout_height="25dp"
+                    android:layout_height="50dp"
                     android:layout_marginLeft="10dp"
                     android:text="石家庄市裕华区南二环东路20号河北师范大学"
                     android:id="@+id/ownRenttv_location"
@@ -89,7 +89,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="200dp">
+        android:layout_marginTop="175dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

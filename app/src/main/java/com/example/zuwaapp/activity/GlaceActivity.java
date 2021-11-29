@@ -62,6 +62,7 @@ public class GlaceActivity extends AppCompatActivity {
                     Result<User> findUserByPhoneNumberResult = gson.fromJson(msg.obj.toString(),new TypeToken<Result<User>>(){}.getType());
                     if (findUserByPhoneNumberResult.getCode()==200){
                         user.setText(findUserByPhoneNumberResult.getData().getUserName());
+
                     }
                     break;
                 case FIND_PRODUCT_BY_ID:
@@ -108,6 +109,11 @@ public class GlaceActivity extends AppCompatActivity {
                         price.setText("金额:"+product.getProductPrice()+"/天");
                         RVprice.setText("押金"+product.getProductDeposit());
                         count.setText("次数:"+product.getProductCount());
+                        if(product.getProductRent()==1){
+                            shop.setText("预约");
+                        }else {
+                            shop.setText("我想要");
+                        }
                 
                     }
                     break;
@@ -162,11 +168,12 @@ public class GlaceActivity extends AppCompatActivity {
         });
 
 
+
         shop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(Constant.PHONENUMBER.equals(bundle.getString("phone"))){
-//                if("12345678911".equals(bundle.getString("phone"))){
+//                if(Constant.PHONENUMBER.equals(bundle.getString("phone"))){
+                if("12345678911".equals(bundle.getString("phone"))){
                     Toast.makeText(GlaceActivity.this, "不能租自己发布的东西哦", Toast.LENGTH_SHORT).show();
                 }else {
                     //弹出支付页面
@@ -180,6 +187,7 @@ public class GlaceActivity extends AppCompatActivity {
                     //我的信息根据电话号写
                     intent1.putExtra("bundle",bundle);
                     startActivity(intent1);
+
                 }
 
             }

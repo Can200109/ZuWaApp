@@ -82,8 +82,8 @@ public class FourthFragment extends Fragment {
 
         //先查出全部列表，然后根据条件添加
         productList.clear();
-//        new Method().findRents("12345678910",1,handler);
-        new Method().findRents(Constant.PHONENUMBER,1,handler);
+        new Method().findRents("12345678910",1,handler);
+//        new Method().findRents(Constant.PHONENUMBER,1,handler);
 
         ListView listView = view.findViewById(R.id.WoZuJieList);
         MePushAdapter = new RentAdapter(productList,R.layout.me_push_layout,getContext());
