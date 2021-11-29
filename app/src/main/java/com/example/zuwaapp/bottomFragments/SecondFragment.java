@@ -1,28 +1,43 @@
 package com.example.zuwaapp.bottomFragments;
 
 import static com.example.zuwaapp.Constant.FIND_ALL;
+import static com.example.zuwaapp.Constant.FIND_COLLECT;
+import static com.example.zuwaapp.Constant.FIND_PRODUCT_BY_ID;
+import static com.example.zuwaapp.Constant.PRODUCT_PHOTO;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.zuwaapp.R;
 import com.example.zuwaapp.activity.GlaceActivity;
+import com.example.zuwaapp.activity.ImageLookActivity;
+import com.example.zuwaapp.activity.SearchActivity;
 import com.example.zuwaapp.adapter.RentAdapter;
+import com.example.zuwaapp.entity.Collect;
 import com.example.zuwaapp.entity.Product;
 import com.example.zuwaapp.entity.Result;
 import com.example.zuwaapp.method.Method;
+import com.example.zuwaapp.util.GlideLoadImage;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import com.previewlibrary.GPreviewBuilder;
+import com.previewlibrary.enitity.ThumbViewInfo;
+import com.yds.library.MultiImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -35,6 +50,7 @@ import java.util.List;
 public class SecondFragment extends Fragment {
     private List<Product> RentProduce = new ArrayList<>();
     private RentAdapter rentAdapter;
+    private String temp;
     private Gson gson = new GsonBuilder()
             .serializeNulls()
             .create();
@@ -42,19 +58,20 @@ public class SecondFragment extends Fragment {
         @Override
         public void handleMessage(@NonNull Message msg) {
             switch (msg.what) {
-                case FIND_ALL:
-                    Result<List<Product>> findResult = gson.fromJson(msg.obj.toString(), new TypeToken<Result<List<Product>>>(){}.getType());
-                    if (findResult.getCode() == 200) {
-                        List<Product> data = findResult.getData();
-//                        Toast.makeText(getContext(),"收藏页查找成功",Toast.LENGTH_LONG).show();
-                        for(Product product:data){
-                            if("1".equals(product.getProductRent())){
-                                RentProduce.add(product);
-                            }
-                        }
-                        rentAdapter.notifyDataSetChanged();
-                    } else {
-                        Toast.makeText(getContext(),"收藏页查找失败",Toast.LENGTH_LONG).show();
+                case FIND_COLLECT:
+                    Result<List<Collect>> findCollect = gson.fromJson(msg.obj.toString(),new TypeToken<Result<List<Collect>>>(){}.getType());
+                    List<Collect> data = findCollect.getData();
+                    for(Collect collect:data){
+                        temp = collect.getProductId();
+                        (new Method()).findProductById(temp,handler);
+                    }
+                    break;
+                case FIND_PRODUCT_BY_ID:
+                    Result<Product> findProductById = gson.fromJson(msg.obj.toString(),new TypeToken<Result<Product>>(){}.getType());
+                    if(findProductById.getCode() == 200) {
+                       Product product = findProductById.getData();
+                       RentProduce.add(product);
+                       rentAdapter.notifyDataSetChanged();
                     }
                     break;
             }
@@ -79,6 +96,7 @@ public class SecondFragment extends Fragment {
 
        RentProduce.clear();
 //       (new Method()).findAllProduct(handler);
+        (new Method()).findCollectByPhoneNumber("12345678910",handler);
         //调用方法查找数据（传入phone）
         //按电话号码查找所有productName，然后通过product返回商品list
 

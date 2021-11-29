@@ -346,6 +346,18 @@ public class Method {
         enqueue(call,Constant.FIND_COLLECT,handler);
     }
 
+    public void findCollectColorByPhoneNumber(String phoneNumber,Handler handler){
+        FormBody formBody = new FormBody.Builder()
+                .add("phoneNumber",phoneNumber)
+                .build();
+        Request request = new Request.Builder()
+                .url(COLLECT_URL+"findCollectByPhoneNumber")
+                .post(formBody)
+                .build();
+        Call call = okHttpClient.newCall(request);
+        enqueue(call,Constant.FIND_COLLECT_COLOR,handler);
+    }
+
     public void enqueue(Call call,int constant,Handler handler){
         call.enqueue(new Callback() {
             @Override
