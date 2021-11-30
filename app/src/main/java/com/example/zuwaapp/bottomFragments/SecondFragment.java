@@ -19,6 +19,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -51,6 +53,7 @@ import java.util.List;
 public class SecondFragment extends Fragment {
     private List<Product> RentProduce = new ArrayList<>();
     private RentAdapter rentAdapter;
+    private ImageButton button;
     private Product product;
     private Gson gson = new GsonBuilder()
             .serializeNulls()
@@ -95,6 +98,19 @@ public class SecondFragment extends Fragment {
        View view = inflater.inflate(R.layout.shoucang,
                container,
                false);
+       button = view.findViewById(R.id.btn_search_shoucang);
+       button.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               String context = "";
+               Intent intent = new Intent(getActivity(), SearchActivity.class);
+               Bundle bundle = new Bundle();
+               bundle.putString("context",context);
+               Log.e("内容",context);
+               intent.putExtra("bundle",bundle);
+               startActivity(intent);
+           }
+       });
 
        RentProduce.clear();
 //       (new Method()).findAllProduct(handler);

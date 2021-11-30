@@ -59,7 +59,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         Glide.with(viewHolder.itemView).load(Constant.PRODUCT_PHOTO+product.getPhoneNumber()+"/"+product.getProductId()+"/" +photos.get(0)).into(viewHolder.productImage);
         viewHolder.productTitle.setText(product.getProductName());
         viewHolder.productPrice.setText("￥"+product.getProductPrice()+"");
-        viewHolder.productCount.setText("已租次数"+product.getProductCount());
+        viewHolder.productCount.setText("30天起租");
 
         viewHolder.itemView.setTag(position);
     }

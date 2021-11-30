@@ -32,20 +32,23 @@
         android:id="@+id/productPrice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="30dp"
+        android:textSize="25dp"
         android:gravity="left"
         android:textColor="@color/red"
         android:text="TextView"
         app:layout_constraintTop_toBottomOf="@+id/productTitle" />
+
     <TextView
         android:id="@+id/productCount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="150dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="12dp"
         android:text="TextView"
-        app:layout_constraintTop_toBottomOf="@+id/productTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/productTitle"
+        tools:layout_editor_absoluteX="107dp" />
 
-<!--    <TextView-->
+    <!--    <TextView-->
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="10dp"-->
 <!--        tools:ignore="MissingConstraints"-->

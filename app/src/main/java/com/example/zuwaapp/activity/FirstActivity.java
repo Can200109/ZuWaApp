@@ -88,7 +88,7 @@ public class FirstActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 Log.e("FirstA","点了事件"+position);
                 Intent intent = new Intent();
-                intent.setClass(FirstActivity.this, GlaceActivity.class);
+                intent.setClass(FirstActivity.this, Glace3Activity.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("phone",productList.get(position).getPhoneNumber());
                 bundle.putString("id",productList.get(position).getProductId());
