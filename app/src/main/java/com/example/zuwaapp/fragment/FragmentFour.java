@@ -68,7 +68,7 @@ public class FragmentFour extends Fragment {
         View view = inflater.inflate(R.layout.fragment_four, container, false);
 
         productList.clear();
-        new Method().findProductByProductType("数码",handler);
+        new Method().findProductByProductType("低碳办公",handler);
         RecyclerView Rview = view.findViewById(R.id.list4);
         StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         Rview.setLayoutManager(layoutManager);

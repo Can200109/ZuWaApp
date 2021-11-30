@@ -111,7 +111,7 @@ public class RentGlaceActivity extends AppCompatActivity {
                             gson.fromJson(msg.obj.toString(),new TypeToken<Result<Product>>(){}.getType());
                     if(findProductById.getCode() == 200){
                         product = findProductById.getData();
-                        price.setText("合计："+(product.getProductPrice()+product.getProductDeposit()));
+                        price.setText("合计："+(product.getProductPrice()*30+product.getProductDeposit()));
                         productList.add(product);
                         RentGlaceAdapter.notifyDataSetChanged();
 

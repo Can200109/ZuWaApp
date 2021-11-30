@@ -298,16 +298,16 @@ public class FirstFragment extends Fragment {
                 case 0:
                     return "猜你喜欢";
                 case 1:
-                    return "影音";
+                    return "电脑";
                 case 2:
-                    return "游乐设备";
+                    return "旅游户外";
                 case 3:
-                    return "数码";
+                    return "低碳办公";
                 case 4:
-                    return "机车";
+                    return "摄影航拍";
                 case 5:
                 default:
-                    return "cosplay";
+                    return "穿戴饰品";
             }
         }
     }
