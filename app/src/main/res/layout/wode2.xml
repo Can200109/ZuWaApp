@@ -2,14 +2,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
+    android:padding="15dp"
+    android:background="@drawable/jianbian"
     android:layout_height="match_parent">
     <Button
         android:id="@+id/btn_wode2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:drawableLeft="@drawable/fanhui"
-        android:backgroundTint="@color/white"
-        android:textColor="@color/black"
+        android:drawableLeft="@drawable/smssdk_while_left_arrow"
+        android:background="#CDFFC0"
+        android:textColor="@color/white"
         android:textSize="20dp"/>
     <TextView
         android:layout_width="match_parent"

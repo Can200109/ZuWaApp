@@ -1,11 +1,12 @@
 package com.example.zuwaapp;
 
 public class Constant {
-    public static final String USER_URL ="http://192.168.137.1:8080/zuwa/user/";
-    public static final String PRODUCT_URL ="http://192.168.137.1:8080/zuwa/product/";
-    public static final String COLLECT_URL ="http://192.168.137.1:8080/zuwa/collect/";
-    public static final String PRODUCT_PHOTO = "http://192.168.137.1:8080/zuwa/productPhoto/";
-    public static final String USER_PHOTO = "http://192.168.137.1:8080/zuwa/userAvatar/";
+    public static final String IP = "192.168.3.13";
+    public static final String USER_URL ="http://"+IP+":8080/zuwa/user/";
+    public static final String PRODUCT_URL ="http://"+IP+":8080/zuwa/product/";
+    public static final String COLLECT_URL ="http://"+IP+":8080/zuwa/collect/";
+    public static final String PRODUCT_PHOTO = "http://"+IP+":8080/zuwa/productPhoto/";
+    public static final String USER_PHOTO = "http://"+IP+":8080/zuwa/userAvatar/";
     public static final int REQUEST_IMAGE = 200;
     public static final int LOGIN = 1;
     public static final int MODIFY = 2;
