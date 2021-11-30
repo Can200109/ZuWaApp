@@ -155,7 +155,10 @@ public class GlaceActivity extends AppCompatActivity {
                             @Override
                             public void onItemImageClick(Context context, ImageView imageView, int index, List list) {
                                 Log.e("onItemImageClick: ","点击了第"+index+"个图片" );
-
+                                /**
+                                 * 图片查看控件
+                                 * 点击图片放大，且可以左右滑动浏览
+                                 * */
                                 GPreviewBuilder.from((Activity) context)
                                         //是否使用自定义预览界面，当然8.0之后因为配置问题，必须要使用
                                         .to(ImageLookActivity.class)
