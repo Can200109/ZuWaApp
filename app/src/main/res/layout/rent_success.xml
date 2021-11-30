@@ -14,8 +14,7 @@
         android:layout_marginTop="50dp"/>
 
     <Button
-        android:layout_marginTop="350dp"
-        android:layout_marginLeft="50dp"
+        android:layout_gravity="center"
         android:shape="oval"
         android:layout_width="300dip"
         android:layout_height="60dip"
