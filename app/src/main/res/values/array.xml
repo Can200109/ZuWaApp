@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="spingarr">
-        <item>影音</item>
-        <item>数码</item>
-        <item>机车</item>
-        <item>cosplay</item>
-        <item>游乐设备</item>
+        <item>电脑</item>
+        <item>摄影航拍</item>
+        <item>旅游户外</item>
+        <item>低碳办公</item>
+        <item>穿戴饰品</item>
 </string-array>
 </resources>
