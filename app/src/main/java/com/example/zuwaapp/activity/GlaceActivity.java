@@ -101,12 +101,14 @@ public class GlaceActivity extends AppCompatActivity {
                     if(collect==null){
                         Log.e( "handleMessage: ", "没有数据");
                         //增加进去这条记录，并且将图标设为黑色
-                        (new Method()).addCollect("12345678910",ID,handler);
+//                        (new Method()).addCollect("12345678910",ID,handler);
+                        (new Method()).addCollect(Constant.PHONENUMBER,ID,handler);
                         shouCan.setImageResource(R.drawable.shoucang3);
                     }else {
                         Log.e("collect.getId",collect.getCollectId());
                         //删除这条记录，并且将图标设为透明
-                        (new Method()).deleteCollect("12345678910",ID,handler);
+//                        (new Method()).deleteCollect("12345678910",ID,handler);
+                        (new Method()).addCollect(Constant.PHONENUMBER,ID,handler);
                         shouCan.setImageResource(R.drawable.shoucang);
                     }
                     break;
@@ -205,7 +207,8 @@ public class GlaceActivity extends AppCompatActivity {
         RVprice = findViewById(R.id.tv_RVprice);
         count = findViewById(R.id.tv_count);
         ID = bundle.getString("id");
-        new Method().findCollectToSetColor("12345678910",ID,handler);
+//        new Method().findCollectToSetColor("12345678910",ID,handler);
+        new Method().findCollectToSetColor(Constant.PHONENUMBER,ID,handler);
 
         (new Method()).findUserByPhoneNumber(bundle.getString("phone"),handler);
         Log.e("id",bundle.getString("id"));
@@ -222,7 +225,8 @@ public class GlaceActivity extends AppCompatActivity {
                 //判断，如果数据没在数据库里面，图标设置成黑色，并且将数据存入
                 //如果在里面，图标变为白色，然后将数据清除
                 //如何判断有没有在收藏表里面
-                new Method().findCollectByProductIdAndPhoneNumber("12345678910",ID,handler);
+//                new Method().findCollectByProductIdAndPhoneNumber("12345678910",ID,handler);
+                new Method().findCollectByProductIdAndPhoneNumber(Constant.PHONENUMBER,ID,handler);
             }
         });
 
@@ -231,8 +235,8 @@ public class GlaceActivity extends AppCompatActivity {
         shop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                if(Constant.PHONENUMBER.equals(bundle.getString("phone"))){
-                if("12345678911".equals(bundle.getString("phone"))){
+                if(Constant.PHONENUMBER.equals(bundle.getString("phone"))){
+//                if("12345678911".equals(bundle.getString("phone"))){
                     Toast.makeText(GlaceActivity.this, "不能租自己发布的东西哦", Toast.LENGTH_SHORT).show();
                 }else {
                     //弹出支付页面

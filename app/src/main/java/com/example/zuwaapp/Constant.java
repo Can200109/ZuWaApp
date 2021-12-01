@@ -1,7 +1,7 @@
 package com.example.zuwaapp;
 
 public class Constant {
-    public static final String IP = "192.168.3.13";
+    public static final String IP = "192.168.137.1";
     public static final String USER_URL ="http://"+IP+":8080/zuwa/user/";
     public static final String PRODUCT_URL ="http://"+IP+":8080/zuwa/product/";
     public static final String COLLECT_URL ="http://"+IP+":8080/zuwa/collect/";

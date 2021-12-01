@@ -158,8 +158,8 @@ public class RentGlaceActivity extends AppCompatActivity {
 
         //获取到当前用户的userName，phone，地点的话先传默认的
         //这里先默认一个用户
-//          (new Method()).findUserByPhoneNumber(Constant.PHONENUMBER,handler);
-        (new Method()).findUserByPhoneNumber("12345678910",handler);
+          (new Method()).findUserByPhoneNumber(Constant.PHONENUMBER,handler);
+//        (new Method()).findUserByPhoneNumber("12345678910",handler);
 
 
         //获取到商品列表(这里的电话号是商品发布者的电话号)

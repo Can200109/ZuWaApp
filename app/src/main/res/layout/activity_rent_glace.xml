@@ -10,10 +10,12 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="8dp"
+            android:layout_height="12dp"
             android:id="@+id/rentown_back"
-            android:background="@drawable/smssdk_nav_back">
+            android:background="@drawable/smssdk_while_left_arrow"
+            android:textColor="@color/white"
+            android:textSize="20dp">
         </ImageButton>
         <TextView
             android:layout_width="wrap_content"

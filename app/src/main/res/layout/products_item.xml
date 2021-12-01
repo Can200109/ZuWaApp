@@ -9,7 +9,7 @@
     android:minWidth="400dp"
     >
 
-    <ImageView
+    <com.example.zuwaapp.RoundImageView
         android:id="@+id/productPic"
         android:layout_width="171dp"
         android:layout_height="114dp"

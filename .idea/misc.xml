@@ -3,48 +3,30 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/qq/243733039/FileRecv/ZuWaApp/app/src/main/res/drawable/jianbian.xml" value="0.1453125" />
-        <entry key="..\:/qq/243733039/FileRecv/ZuWaApp/app/src/main/res/drawable/jianbian2.xml" value="0.1" />
-        <entry key="..\:/qq/243733039/FileRecv/ZuWaApp/app/src/main/res/drawable/shape.xml" value="0.1453125" />
+        <entry key="..\:/ZuWaApp/ZuWaApp/app/src/main/res/layout/activity_glace.xml" value="0.225" />
+        <entry key="..\:/ZuWaApp/ZuWaApp/app/src/main/res/layout/activity_glace2.xml" value="0.10898082744702321" />
+        <entry key="..\:/ZuWaApp/ZuWaApp/app/src/main/res/layout/activity_glace3.xml" value="0.225" />
+        <entry key="..\:/ZuWaApp/ZuWaApp/app/src/main/res/layout/activity_home.xml" value="0.225" />
+        <entry key="..\:/ZuWaApp/ZuWaApp/app/src/main/res/layout/activity_own_user_home.xml" value="0.225" />
+        <entry key="..\:/ZuWaApp/ZuWaApp/app/src/main/res/layout/activity_rent_glace.xml" value="0.21072319201995013" />
+        <entry key="..\:/ZuWaApp/ZuWaApp/app/src/main/res/layout/activity_search.xml" value="0.225" />
+        <entry key="..\:/ZuWaApp/ZuWaApp/app/src/main/res/layout/activity_success3.xml" value="0.225" />
+        <entry key="..\:/ZuWaApp/ZuWaApp/app/src/main/res/layout/activity_transfer.xml" value="0.225" />
+        <entry key="..\:/ZuWaApp/ZuWaApp/app/src/main/res/layout/error_toast_layout.xml" value="0.225" />
+        <entry key="..\:/ZuWaApp/ZuWaApp/app/src/main/res/layout/fragment_five.xml" value="0.225" />
+        <entry key="..\:/ZuWaApp/ZuWaApp/app/src/main/res/layout/glace_result_layout.xml" value="0.10898082744702321" />
+        <entry key="..\:/ZuWaApp/ZuWaApp/app/src/main/res/layout/jiahao.xml" value="0.10898082744702321" />
+        <entry key="..\:/ZuWaApp/ZuWaApp/app/src/main/res/layout/products_item.xml" value="0.16875" />
+        <entry key="..\:/ZuWaApp/ZuWaApp/app/src/main/res/layout/rent_product_layout.xml" value="0.225" />
+        <entry key="..\:/ZuWaApp/ZuWaApp/app/src/main/res/layout/shoucang.xml" value="0.225" />
+        <entry key="..\:/ZuWaApp/ZuWaApp/app/src/main/res/layout/shouye.xml" value="0.10898082744702321" />
+        <entry key="..\:/ZuWaApp/ZuWaApp/app/src/main/res/layout/wode.xml" value="0.10898082744702321" />
+        <entry key="..\:/ZuWaApp/ZuWaApp/app/src/main/res/layout/wode1.xml" value="0.16875" />
+        <entry key="..\:/ZuWaApp/ZuWaApp/app/src/main/res/layout/xiaoxi.xml" value="0.225" />
         <entry key="..\:/qq/243733039/FileRecv/ZuWaApp/app/src/main/res/layout/activity_glace.xml" value="0.1" />
-        <entry key="..\:/qq/243733039/FileRecv/ZuWaApp/app/src/main/res/layout/activity_glace2.xml" value="0.1" />
-        <entry key="..\:/qq/243733039/FileRecv/ZuWaApp/app/src/main/res/layout/activity_glace3.xml" value="0.253125" />
-        <entry key="..\:/qq/243733039/FileRecv/ZuWaApp/app/src/main/res/layout/activity_home.xml" value="0.12916666666666668" />
-        <entry key="..\:/qq/243733039/FileRecv/ZuWaApp/app/src/main/res/layout/activity_image_look.xml" value="0.12916666666666668" />
-        <entry key="..\:/qq/243733039/FileRecv/ZuWaApp/app/src/main/res/layout/activity_main.xml" value="0.12916666666666668" />
         <entry key="..\:/qq/243733039/FileRecv/ZuWaApp/app/src/main/res/layout/activity_own_user_home.xml" value="0.1" />
-        <entry key="..\:/qq/243733039/FileRecv/ZuWaApp/app/src/main/res/layout/activity_rent_glace.xml" value="0.253125" />
-        <entry key="..\:/qq/243733039/FileRecv/ZuWaApp/app/src/main/res/layout/activity_result.xml" value="0.253125" />
-        <entry key="..\:/qq/243733039/FileRecv/ZuWaApp/app/src/main/res/layout/activity_result2.xml" value="0.253125" />
-        <entry key="..\:/qq/243733039/FileRecv/ZuWaApp/app/src/main/res/layout/activity_search.xml" value="0.253125" />
-        <entry key="..\:/qq/243733039/FileRecv/ZuWaApp/app/src/main/res/layout/activity_success2.xml" value="0.253125" />
-        <entry key="..\:/qq/243733039/FileRecv/ZuWaApp/app/src/main/res/layout/activity_success3.xml" value="0.253125" />
         <entry key="..\:/qq/243733039/FileRecv/ZuWaApp/app/src/main/res/layout/activity_transfer.xml" value="0.1" />
-        <entry key="..\:/qq/243733039/FileRecv/ZuWaApp/app/src/main/res/layout/activity_verify.xml" value="0.253125" />
-        <entry key="..\:/qq/243733039/FileRecv/ZuWaApp/app/src/main/res/layout/activity_zhifu.xml" value="0.253125" />
-        <entry key="..\:/qq/243733039/FileRecv/ZuWaApp/app/src/main/res/layout/error_toast_layout.xml" value="0.253125" />
-        <entry key="..\:/qq/243733039/FileRecv/ZuWaApp/app/src/main/res/layout/fragment_five.xml" value="0.12310030395136778" />
-        <entry key="..\:/qq/243733039/FileRecv/ZuWaApp/app/src/main/res/layout/fragment_four.xml" value="0.12310030395136778" />
-        <entry key="..\:/qq/243733039/FileRecv/ZuWaApp/app/src/main/res/layout/fragment_one.xml" value="0.1" />
-        <entry key="..\:/qq/243733039/FileRecv/ZuWaApp/app/src/main/res/layout/fragment_six.xml" value="0.253125" />
-        <entry key="..\:/qq/243733039/FileRecv/ZuWaApp/app/src/main/res/layout/fragment_three.xml" value="0.253125" />
-        <entry key="..\:/qq/243733039/FileRecv/ZuWaApp/app/src/main/res/layout/fragment_two.xml" value="0.12310030395136778" />
-        <entry key="..\:/qq/243733039/FileRecv/ZuWaApp/app/src/main/res/layout/glace_result_layout.xml" value="0.253125" />
-        <entry key="..\:/qq/243733039/FileRecv/ZuWaApp/app/src/main/res/layout/jiahao.xml" value="0.34615384615384615" />
-        <entry key="..\:/qq/243733039/FileRecv/ZuWaApp/app/src/main/res/layout/me_push_layout.xml" value="0.253125" />
-        <entry key="..\:/qq/243733039/FileRecv/ZuWaApp/app/src/main/res/layout/products_item.xml" value="0.253125" />
-        <entry key="..\:/qq/243733039/FileRecv/ZuWaApp/app/src/main/res/layout/rent_product_layout.xml" value="0.253125" />
-        <entry key="..\:/qq/243733039/FileRecv/ZuWaApp/app/src/main/res/layout/rent_success.xml" value="0.136" />
-        <entry key="..\:/qq/243733039/FileRecv/ZuWaApp/app/src/main/res/layout/shoucang.xml" value="0.2323049001814882" />
-        <entry key="..\:/qq/243733039/FileRecv/ZuWaApp/app/src/main/res/layout/shouye.xml" value="0.264" />
-        <entry key="..\:/qq/243733039/FileRecv/ZuWaApp/app/src/main/res/layout/smssdk_error_toast_layout.xml" value="0.253125" />
-        <entry key="..\:/qq/243733039/FileRecv/ZuWaApp/app/src/main/res/layout/tab_layout.xml" value="0.253125" />
-        <entry key="..\:/qq/243733039/FileRecv/ZuWaApp/app/src/main/res/layout/wode.xml" value="0.2840531561461794" />
-        <entry key="..\:/qq/243733039/FileRecv/ZuWaApp/app/src/main/res/layout/wode1.xml" value="0.253125" />
-        <entry key="..\:/qq/243733039/FileRecv/ZuWaApp/app/src/main/res/layout/wode2.xml" value="0.253125" />
-        <entry key="..\:/qq/243733039/FileRecv/ZuWaApp/app/src/main/res/layout/wode3.xml" value="0.12310030395136778" />
-        <entry key="..\:/qq/243733039/FileRecv/ZuWaApp/app/src/main/res/layout/wode4.xml" value="0.253125" />
-        <entry key="..\:/qq/243733039/FileRecv/ZuWaApp/app/src/main/res/layout/xiaoxi.xml" value="0.253125" />
+        <entry key="..\:/qq/243733039/FileRecv/ZuWaApp/app/src/main/res/layout/wode.xml" value="0.12310030395136778" />
       </map>
     </option>
   </component>

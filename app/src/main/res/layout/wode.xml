@@ -10,11 +10,12 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
        >
+
         <com.example.zuwaapp.RoundImageView
             android:id="@+id/iv_head"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:src="@drawable/add_photo"/>
+            android:src="@drawable/add_photo" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

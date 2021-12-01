@@ -25,6 +25,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.zuwaapp.Constant;
 import com.example.zuwaapp.R;
 import com.example.zuwaapp.activity.GlaceActivity;
 import com.example.zuwaapp.activity.ImageLookActivity;
@@ -114,7 +115,8 @@ public class SecondFragment extends Fragment {
 
        RentProduce.clear();
 //       (new Method()).findAllProduct(handler);
-        (new Method()).findCollectByPhoneNumber("12345678910",handler);
+//        (new Method()).findCollectByPhoneNumber("12345678910",handler);
+        (new Method()).findCollectByPhoneNumber(Constant.PHONENUMBER,handler);
         //调用方法查找数据（传入phone）
         //按电话号码查找所有productName，然后通过product返回商品list
 

@@ -177,7 +177,7 @@ public class Glace3Activity extends AppCompatActivity {
                 (new Method()).deleteProduct(product,handler);
 
                 //谈到还物成功页面
-                Intent intent1 = new Intent(Glace3Activity.this,Success2Activity.class);
+                Intent intent1 = new Intent(Glace3Activity.this,Success3Activity.class);
                 startActivity(intent1);
             }
         });

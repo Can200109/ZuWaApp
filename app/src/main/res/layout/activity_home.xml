@@ -11,7 +11,14 @@
         android:textSize="30dp"
         android:gravity="center_horizontal"
         android:text="一键登录"
-        android:textColor="@color/white"
         android:layout_marginTop="300dp">
+    </TextView>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:gravity="center_horizontal"
+        android:text="登录即代表同意用户协议哦"
+        android:layout_marginTop="150dp">
     </TextView>
 </LinearLayout>
