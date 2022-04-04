@@ -31,6 +31,12 @@
         android:usesCleartextTraffic="true"
         tools:replace="android:label">
         <activity
+            android:name=".activity.Success3Activity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.Glace3Activity"
+            android:exported="true" />
+        <activity
             android:name=".activity.Success2Activity"
             android:exported="true" />
         <activity
@@ -56,12 +62,8 @@
             android:exported="true" />
         <activity
             android:name=".activity.TransferActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:exported="true" >
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".activity.GlaceActivity"
@@ -72,7 +74,12 @@
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".PreloadActivity"
-            android:exported="true"></activity>
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".VerifyActivity"
             android:configChanges="keyboardHidden|orientation|screenSize|locale|layoutDirection"

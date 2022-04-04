@@ -3,6 +3,26 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/ZuWaApp/ZuWaApp/app/src/main/res/layout/activity_glace.xml" value="0.225" />
+        <entry key="..\:/ZuWaApp/ZuWaApp/app/src/main/res/layout/activity_glace2.xml" value="0.10898082744702321" />
+        <entry key="..\:/ZuWaApp/ZuWaApp/app/src/main/res/layout/activity_glace3.xml" value="0.225" />
+        <entry key="..\:/ZuWaApp/ZuWaApp/app/src/main/res/layout/activity_home.xml" value="0.225" />
+        <entry key="..\:/ZuWaApp/ZuWaApp/app/src/main/res/layout/activity_own_user_home.xml" value="0.225" />
+        <entry key="..\:/ZuWaApp/ZuWaApp/app/src/main/res/layout/activity_rent_glace.xml" value="0.21072319201995013" />
+        <entry key="..\:/ZuWaApp/ZuWaApp/app/src/main/res/layout/activity_search.xml" value="0.225" />
+        <entry key="..\:/ZuWaApp/ZuWaApp/app/src/main/res/layout/activity_success3.xml" value="0.225" />
+        <entry key="..\:/ZuWaApp/ZuWaApp/app/src/main/res/layout/activity_transfer.xml" value="0.225" />
+        <entry key="..\:/ZuWaApp/ZuWaApp/app/src/main/res/layout/error_toast_layout.xml" value="0.225" />
+        <entry key="..\:/ZuWaApp/ZuWaApp/app/src/main/res/layout/fragment_five.xml" value="0.225" />
+        <entry key="..\:/ZuWaApp/ZuWaApp/app/src/main/res/layout/glace_result_layout.xml" value="0.10898082744702321" />
+        <entry key="..\:/ZuWaApp/ZuWaApp/app/src/main/res/layout/jiahao.xml" value="0.10898082744702321" />
+        <entry key="..\:/ZuWaApp/ZuWaApp/app/src/main/res/layout/products_item.xml" value="0.16875" />
+        <entry key="..\:/ZuWaApp/ZuWaApp/app/src/main/res/layout/rent_product_layout.xml" value="0.225" />
+        <entry key="..\:/ZuWaApp/ZuWaApp/app/src/main/res/layout/shoucang.xml" value="0.225" />
+        <entry key="..\:/ZuWaApp/ZuWaApp/app/src/main/res/layout/shouye.xml" value="0.10898082744702321" />
+        <entry key="..\:/ZuWaApp/ZuWaApp/app/src/main/res/layout/wode.xml" value="0.10898082744702321" />
+        <entry key="..\:/ZuWaApp/ZuWaApp/app/src/main/res/layout/wode1.xml" value="0.16875" />
+        <entry key="..\:/ZuWaApp/ZuWaApp/app/src/main/res/layout/xiaoxi.xml" value="0.225" />
         <entry key="..\:/qq/243733039/FileRecv/ZuWaApp/app/src/main/res/layout/activity_glace.xml" value="0.1" />
         <entry key="..\:/qq/243733039/FileRecv/ZuWaApp/app/src/main/res/layout/activity_own_user_home.xml" value="0.1" />
         <entry key="..\:/qq/243733039/FileRecv/ZuWaApp/app/src/main/res/layout/activity_transfer.xml" value="0.1" />

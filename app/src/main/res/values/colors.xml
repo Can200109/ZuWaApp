@@ -23,4 +23,7 @@
     <color name="red">#FF0000</color>
     <color name="seaBlue">#70DB93</color>
     <color name="shenTongLv"> #4A766E</color>
+    <color name="juhuang">#E47833</color>
+    <color name="qianhui">#545454</color>
+    <color name="huise">#C0C0C0</color>
 </resources>

@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -20,6 +21,7 @@ import com.example.zuwaapp.Constant;
 import com.example.zuwaapp.R;
 import com.example.zuwaapp.activity.Glace2Activity;
 import com.example.zuwaapp.activity.GlaceActivity;
+import com.example.zuwaapp.activity.SearchActivity;
 import com.example.zuwaapp.activity.SecondActivity;
 import com.example.zuwaapp.adapter.RentAdapter;
 import com.example.zuwaapp.entity.Product;
@@ -41,6 +43,7 @@ public class FourthFragment extends Fragment {
 
     private RentAdapter MePushAdapter;
     private List<Product> productList = new ArrayList<>();
+    private ImageButton button;
     private Gson gson = new GsonBuilder()
             .serializeNulls()
             .create();
@@ -79,11 +82,25 @@ public class FourthFragment extends Fragment {
         View view = inflater.inflate(R.layout.xiaoxi,
                 container,
                 false);
+        button = view.findViewById(R.id.btn_search_zujie);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String context = "";
+                Intent intent = new Intent(getActivity(), SearchActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("context",context);
+                Log.e("内容",context);
+                intent.putExtra("bundle",bundle);
+                startActivity(intent);
+            }
+        });
 
         //先查出全部列表，然后根据条件添加
         productList.clear();
-        new Method().findRents("12345678910",1,handler);
-//        new Method().findRents(Constant.PHONENUMBER,1,handler);
+//        new Method().findRents("12345678910",1,handler);
+        new Method().findRents(Constant.PHONENUMBER,1,handler);
 
         ListView listView = view.findViewById(R.id.WoZuJieList);
         MePushAdapter = new RentAdapter(productList,R.layout.me_push_layout,getContext());

@@ -88,8 +88,6 @@ public class FiveFragment extends Fragment {
                                     .into(ivHead);
                         }
 
-                        Log.e("id",findUserByPhoneNumberResult.getData().getPhoneNumber());
-                        Log.e("昵称",findUserByPhoneNumberResult.getData().getUserName());
                     }
                     break;
             }
@@ -125,7 +123,8 @@ public class FiveFragment extends Fragment {
         //“我的发布”点击进入一个页面
         Button btnbutton1 = view.findViewById(R.id.btn_button1);
 
-        (new Method()).findUserByPhoneNumber("12345678910",handler);
+//        (new Method()).findUserByPhoneNumber("12345678910",handler);
+        (new Method()).findUserByPhoneNumber(Constant.PHONENUMBER,handler);
 
         btnbutton1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -194,7 +193,8 @@ public class FiveFragment extends Fragment {
             Uri uri = data.getData();
             uriList.add(uri);
             Glide.with(getActivity()).load(uri).into(ivHead);
-            uploadImage(uriList,"12345678910");
+//            uploadImage(uriList,"12345678910");
+            uploadImage(uriList,Constant.PHONENUMBER);
 
         }
     }

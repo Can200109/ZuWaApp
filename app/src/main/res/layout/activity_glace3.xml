@@ -110,8 +110,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/smssdk_text_green"
-        android:id="@+id/return_product"
-        android:text="我要还物">
+        android:id="@+id/delete_product"
+        android:text="删除该租品">
     </Button>
 
 

@@ -68,7 +68,7 @@ public class FragmentTwo extends Fragment {
         View view = inflater.inflate(R.layout.fragment_two, container, false);
 
         productList.clear();
-        new Method().findProductByProductType("影音",handler);
+        new Method().findProductByProductType("电脑",handler);
         RecyclerView Rview = view.findViewById(R.id.list2);
         StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         Rview.setLayoutManager(layoutManager);

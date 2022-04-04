@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/jianbian"
     tools:context=".MainActivity">
     <FrameLayout
         android:id="@+id/fragment"
@@ -28,6 +29,7 @@
             android:id="@+id/rg_main"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/white"
             android:orientation="horizontal">
 
             <RadioButton

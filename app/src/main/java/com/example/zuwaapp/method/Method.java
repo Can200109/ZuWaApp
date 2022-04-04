@@ -223,8 +223,8 @@ public class Method {
 
     public void addRentPhone(String phoneNumber,Product product,Handler handler){
         product.setProductRent(1);
-//        product.setRentPhoneNumber(Constant.PHONENUMBER);
-        product.setRentPhoneNumber("12345678910");
+        product.setRentPhoneNumber(Constant.PHONENUMBER);
+//        product.setRentPhoneNumber("12345678910");
         FormBody formBody = new FormBody.Builder()
                 .add("productId",product.getProductId())
                 .add("productRent",product.getProductRent()+"")
@@ -249,8 +249,8 @@ public class Method {
 
     public void ReturnProduct(String phoneNumber,Product product,Handler handler){
         product.setProductRent(0);
-//        product.setRentPhoneNumber(Constant.PHONENUMBER);
-        product.setRentPhoneNumber("12345678910");
+        product.setRentPhoneNumber(Constant.PHONENUMBER);
+//        product.setRentPhoneNumber("12345678910");
         FormBody formBody = new FormBody.Builder()
                 .add("productId",product.getProductId())
                 .add("productRent",product.getProductRent()+"")

@@ -78,8 +78,8 @@ public class FirstActivity extends AppCompatActivity {
 
         //根据电话号找到我的发布并显示出来
         productList.clear();
-//        (new Method()).findProductByPhoneNumber(Constant.PHONENUMBER,handler);
-        (new Method()).findProductByPhoneNumber("12345678910",handler);
+        (new Method()).findProductByPhoneNumber(Constant.PHONENUMBER,handler);
+//        (new Method()).findProductByPhoneNumber("12345678910",handler);
         ListView listView = findViewById(R.id.Me_push_list);
         MePushAdapter = new RentAdapter(productList,R.layout.me_push_layout,FirstActivity.this);
         listView.setAdapter(MePushAdapter);
@@ -88,7 +88,7 @@ public class FirstActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 Log.e("FirstA","点了事件"+position);
                 Intent intent = new Intent();
-                intent.setClass(FirstActivity.this, GlaceActivity.class);
+                intent.setClass(FirstActivity.this, Glace3Activity.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("phone",productList.get(position).getPhoneNumber());
                 bundle.putString("id",productList.get(position).getProductId());
