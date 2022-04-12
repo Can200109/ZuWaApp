@@ -59,30 +59,30 @@ public class SecondFragment extends Fragment {
     private Gson gson = new GsonBuilder()
             .serializeNulls()
             .create();
-    private Handler handler = new Handler(Looper.myLooper()) {
-        @Override
-        public void handleMessage(@NonNull Message msg) {
-            switch (msg.what) {
-                case FIND_COLLECT_BY_PHONENUMBER:
-                    Result<List<Collect>> findCollect = gson.fromJson(msg.obj.toString(),new TypeToken<Result<List<Collect>>>(){}.getType());
-                    List<Collect> data = findCollect.getData();
-                    Log.e("数据",""+data);
-                    for(Collect collect:data){
-                        (new Method()).findProductById(collect.getProductId(),handler);
-                        Log.e("prouctID",collect.getCollectId());
-                    }
-                    break;
-                case FIND_PRODUCT_BY_ID:
-                    Result<Product> findProductById = gson.fromJson(msg.obj.toString(),new TypeToken<Result<Product>>(){}.getType());
-                    if(findProductById.getCode() == 200) {
-                       product = findProductById.getData();
-                       RentProduce.add(product);
-                       rentAdapter.notifyDataSetChanged();
-                    }
-                    break;
-            }
-        }
-    };
+//    private Handler handler = new Handler(Looper.myLooper()) {
+//        @Override
+//        public void handleMessage(@NonNull Message msg) {
+//            switch (msg.what) {
+//                case FIND_COLLECT_BY_PHONENUMBER:
+//                    Result<List<Collect>> findCollect = gson.fromJson(msg.obj.toString(),new TypeToken<Result<List<Collect>>>(){}.getType());
+//                    List<Collect> data = findCollect.getData();
+//                    Log.e("数据",""+data);
+//                    for(Collect collect:data){
+//                        (new Method()).findProductById(collect.getProductId(),handler);
+//                        Log.e("prouctID",collect.getCollectId());
+//                    }
+//                    break;
+//                case FIND_PRODUCT_BY_ID:
+//                    Result<Product> findProductById = gson.fromJson(msg.obj.toString(),new TypeToken<Result<Product>>(){}.getType());
+//                    if(findProductById.getCode() == 200) {
+//                       product = findProductById.getData();
+//                       RentProduce.add(product);
+//                       rentAdapter.notifyDataSetChanged();
+//                    }
+//                    break;
+//            }
+//        }
+//    };
 
     private static SecondFragment scf;
     public static SecondFragment getShouCangFragment(){
@@ -99,43 +99,45 @@ public class SecondFragment extends Fragment {
        View view = inflater.inflate(R.layout.shoucang,
                container,
                false);
-       button = view.findViewById(R.id.btn_search_shoucang);
-       button.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View view) {
-               String context = "";
-               Intent intent = new Intent(getActivity(), SearchActivity.class);
-               Bundle bundle = new Bundle();
-               bundle.putString("context",context);
-               Log.e("内容",context);
-               intent.putExtra("bundle",bundle);
-               startActivity(intent);
-           }
-       });
-
-       RentProduce.clear();
-//       (new Method()).findAllProduct(handler);
-//        (new Method()).findCollectByPhoneNumber("12345678910",handler);
-        (new Method()).findCollectByPhoneNumber(Constant.PHONENUMBER,handler);
-        //调用方法查找数据（传入phone）
-        //按电话号码查找所有productName，然后通过product返回商品list
-
-       ListView RentProductList = view.findViewById(R.id.RentProductList);
-       rentAdapter = new RentAdapter(RentProduce,R.layout.rent_product_layout,getContext());
-       RentProductList.setAdapter(rentAdapter);
-       RentProductList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-           @Override
-           public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-               Intent intent = new Intent();
-               intent.setClass(getContext(), GlaceActivity.class);
-               Bundle bundle = new Bundle();
-               bundle.putString("phone",RentProduce.get(position).getPhoneNumber());
-               bundle.putString("id",RentProduce.get(position).getProductId());
-               intent.putExtra("bundle",bundle);
-               startActivity(intent);
-           }
-       });
+//       button = view.findViewById(R.id.btn_search_shoucang);
+//       button.setOnClickListener(new View.OnClickListener() {
+//           @Override
+//           public void onClick(View view) {
+//               String context = "";
+//               Intent intent = new Intent(getActivity(), SearchActivity.class);
+//               Bundle bundle = new Bundle();
+//               bundle.putString("context",context);
+//               Log.e("内容",context);
+//               intent.putExtra("bundle",bundle);
+//               startActivity(intent);
+//           }
+//       });
+//
+//       RentProduce.clear();
+////       (new Method()).findAllProduct(handler);
+////        (new Method()).findCollectByPhoneNumber("12345678910",handler);
+//        (new Method()).findCollectByPhoneNumber(Constant.PHONENUMBER,handler);
+//        //调用方法查找数据（传入phone）
+//        //按电话号码查找所有productName，然后通过product返回商品list
+//
+//       ListView RentProductList = view.findViewById(R.id.RentProductList);
+//       rentAdapter = new RentAdapter(RentProduce,R.layout.rent_product_layout,getContext());
+//       RentProductList.setAdapter(rentAdapter);
+//       RentProductList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//           @Override
+//           public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+//               Intent intent = new Intent();
+//               intent.setClass(getContext(), GlaceActivity.class);
+//               Bundle bundle = new Bundle();
+//               bundle.putString("phone",RentProduce.get(position).getPhoneNumber());
+//               bundle.putString("id",RentProduce.get(position).getProductId());
+//               intent.putExtra("bundle",bundle);
+//               startActivity(intent);
+//           }
+//       });
        return view;
     }
+
+
 
 }

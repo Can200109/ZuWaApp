@@ -82,44 +82,44 @@ public class FourthFragment extends Fragment {
         View view = inflater.inflate(R.layout.xiaoxi,
                 container,
                 false);
-        button = view.findViewById(R.id.btn_search_zujie);
-
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String context = "";
-                Intent intent = new Intent(getActivity(), SearchActivity.class);
-                Bundle bundle = new Bundle();
-                bundle.putString("context",context);
-                Log.e("内容",context);
-                intent.putExtra("bundle",bundle);
-                startActivity(intent);
-            }
-        });
-
-        //先查出全部列表，然后根据条件添加
-        productList.clear();
-//        new Method().findRents("12345678910",1,handler);
-        new Method().findRents(Constant.PHONENUMBER,1,handler);
-
-        ListView listView = view.findViewById(R.id.WoZuJieList);
-        MePushAdapter = new RentAdapter(productList,R.layout.me_push_layout,getContext());
-        listView.setAdapter(MePushAdapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                Log.e("FirstA","点了事件"+position);
-                Intent intent = new Intent();
-                intent.setClass(getContext(), Glace2Activity.class);
-                Bundle bundle = new Bundle();
-                bundle.putString("phone",productList.get(position).getPhoneNumber());
-                bundle.putString("id",productList.get(position).getProductId());
-                intent.putExtra("bundle",bundle);
-                startActivity(intent);
-            }
-        });
-
-
+//        button = view.findViewById(R.id.btn_search_zujie);
+//
+//        button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                String context = "";
+//                Intent intent = new Intent(getActivity(), SearchActivity.class);
+//                Bundle bundle = new Bundle();
+//                bundle.putString("context",context);
+//                Log.e("内容",context);
+//                intent.putExtra("bundle",bundle);
+//                startActivity(intent);
+//            }
+//        });
+//
+//        //先查出全部列表，然后根据条件添加
+//        productList.clear();
+////        new Method().findRents("12345678910",1,handler);
+//        new Method().findRents(Constant.PHONENUMBER,1,handler);
+//
+//        ListView listView = view.findViewById(R.id.WoZuJieList);
+//        MePushAdapter = new RentAdapter(productList,R.layout.me_push_layout,getContext());
+//        listView.setAdapter(MePushAdapter);
+//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+//                Log.e("FirstA","点了事件"+position);
+//                Intent intent = new Intent();
+//                intent.setClass(getContext(), Glace2Activity.class);
+//                Bundle bundle = new Bundle();
+//                bundle.putString("phone",productList.get(position).getPhoneNumber());
+//                bundle.putString("id",productList.get(position).getProductId());
+//                intent.putExtra("bundle",bundle);
+//                startActivity(intent);
+//            }
+//        });
+//
+//
 
         return view;
     }

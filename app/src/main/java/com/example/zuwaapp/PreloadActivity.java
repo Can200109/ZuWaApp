@@ -40,7 +40,7 @@ public class PreloadActivity extends Activity implements View.OnTouchListener{
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(PreloadActivity.this,HomeActivity.class));
+                startActivity(new Intent(PreloadActivity.this,VerifyActivity.class));
                 finish();
             }
         }, DELAY);

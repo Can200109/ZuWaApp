@@ -66,11 +66,9 @@ public class FragmentOne extends Fragment {
                                  Bundle savedInstanceState) {
             productList.clear();
             View view = inflater.inflate(R.layout.fragment_one, container, false);
-            View view1 = inflater.inflate(R.layout.products_item,container,false);
-            imageView = view1.findViewById(R.id.productPic);
             new Method().findAllProduct(handler);
             RecyclerView Rview = view.findViewById(R.id.list1);
-            StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+            StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(4, StaggeredGridLayoutManager.VERTICAL);
             Rview.setLayoutManager(layoutManager);
             productAdapter = new ProductAdapter(productList);
             Rview.setAdapter(productAdapter);

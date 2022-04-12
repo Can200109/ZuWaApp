@@ -5,8 +5,8 @@ public class Constant {
     public static final String USER_URL ="http://"+IP+":8080/zuwa/user/";
     public static final String PRODUCT_URL ="http://"+IP+":8080/zuwa/product/";
     public static final String COLLECT_URL ="http://"+IP+":8080/zuwa/collect/";
-    public static final String PRODUCT_PHOTO = "http://"+IP+":8080/zuwa/productPhoto/";
-    public static final String USER_PHOTO = "http://"+IP+":8080/zuwa/userAvatar/";
+    public static final String PRODUCT_PHOTO = "http://"+IP+":8080/zuwa/zuwaPhoto/";
+    public static final String USER_PHOTO = "http://"+IP+":8080/zuwa/zuwaPhoto/";
     public static final int REQUEST_IMAGE = 200;
     public static final int LOGIN = 1;
     public static final int MODIFY = 2;
@@ -27,7 +27,7 @@ public class Constant {
     public static final int SET_COLOR = 17;
 
 
-    public static String PHONENUMBER;
+    public static String PHONENUMBER = "15128895429";
 
 
     public static void setPHONENUMBER(String PHONENUMBER) {

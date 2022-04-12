@@ -86,31 +86,31 @@ public class FirstFragment extends Fragment {
 
         initviews(view);
         ZXingLibrary.initDisplayOpinion(this.getContext());
-        //搜索框的点击事件
-        btnSearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String context = edtSearch.getText().toString();
-                Intent intent = new Intent(getActivity(), SearchActivity.class);
-                Bundle bundle = new Bundle();
-                bundle.putString("context",context);
-                Log.e("内容",context);
-                intent.putExtra("bundle",bundle);
-                startActivity(intent);
-
-            }
-        });
-        //二维码的点击事件
-        btnCode.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.e("信息","我是这个按钮");
-                Intent intent = new Intent(getActivity(), CaptureActivity.class);
-                startActivityForResult(intent, REQUEST_CODE);
-
-
-            }
-        });
+//        //搜索框的点击事件
+//        btnSearch.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                String context = edtSearch.getText().toString();
+//                Intent intent = new Intent(getActivity(), SearchActivity.class);
+//                Bundle bundle = new Bundle();
+//                bundle.putString("context",context);
+//                Log.e("内容",context);
+//                intent.putExtra("bundle",bundle);
+//                startActivity(intent);
+//
+//            }
+//        });
+//        //二维码的点击事件
+//        btnCode.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Log.e("信息","我是这个按钮");
+//                Intent intent = new Intent(getActivity(), CaptureActivity.class);
+//                startActivityForResult(intent, REQUEST_CODE);
+//
+//
+//            }
+//        });
         //轮播图图片获取
         getImage();
         //设置轮播图
@@ -132,9 +132,9 @@ public class FirstFragment extends Fragment {
     //设置按钮监听器
     private void initviews(View view) {
         mViewPager = view.findViewById(R.id.viewpager);
-        btnSearch = view.findViewById(R.id.btn_search);
-        btnCode = view.findViewById(R.id.btn_code);
-        edtSearch = view.findViewById(R.id.edt_search);
+//        btnSearch = view.findViewById(R.id.btn_search);
+//        btnCode = view.findViewById(R.id.btn_code);
+//        edtSearch = view.findViewById(R.id.edt_search);
     }
 
     //UI界面的更新

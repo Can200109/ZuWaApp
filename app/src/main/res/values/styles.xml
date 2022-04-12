@@ -22,6 +22,11 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+
+    <style name="footButton" parent="Theme.AppCompat.Light">
+        <item name="colorPrimary">@color/shenLanHua</item>
+        <item name="android:textColorSecondary">@android:color/black</item>
+    </style>
 </resources>
 
 

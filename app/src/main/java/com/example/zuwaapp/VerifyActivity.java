@@ -2,7 +2,10 @@ package com.example.zuwaapp;
 
 import static com.example.zuwaapp.Constant.LOGIN;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -12,17 +15,22 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.zuwaapp.ZWpush.ExampleUtil;
 import com.example.zuwaapp.activity.TransferActivity;
 import com.example.zuwaapp.method.Method;
 import com.mob.MobSDK;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+
+import cn.jpush.android.api.JPushInterface;
 import cn.smssdk.EventHandler;
 import cn.smssdk.SMSSDK;
 
@@ -33,6 +41,9 @@ import cn.smssdk.SMSSDK;
  */
 
 public class VerifyActivity extends AppCompatActivity implements View.OnClickListener{
+
+    public static boolean isForeground = false;
+
     String APPKEY = "34a6147e5c1c0";
     String APPSECRET = "6fdb820ce7e33133130e2c013e5c4470";
 
@@ -85,6 +96,11 @@ public class VerifyActivity extends AppCompatActivity implements View.OnClickLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_verify);
+
+
+        //初始化推送控件（登录框）
+        JPushInterface.init(getApplicationContext());//极光接口初始化，否则用不了
+        registerMessageReceiver();
 
         MobSDK.submitPolicyGrantResult(true, null);
         initView();
@@ -297,4 +313,54 @@ public class VerifyActivity extends AppCompatActivity implements View.OnClickLis
         super.onDestroy();
     }
 //    19918848155
+
+    //下面是推送相关内容
+    @Override
+    protected void onResume() {
+        isForeground = true;
+        super.onResume();
+    }
+
+
+    @Override
+    protected void onPause() {
+        isForeground = false;
+        super.onPause();
+    }
+
+    private MessageReceiver mMessageReceiver;
+    public static final String MESSAGE_RECEIVED_ACTION = "com.example.jpushdemo.MESSAGE_RECEIVED_ACTION";
+    public static final String KEY_TITLE = "title";
+    public static final String KEY_MESSAGE = "message";
+    public static final String KEY_EXTRAS = "extras";
+
+    public void registerMessageReceiver() {
+        mMessageReceiver = new MessageReceiver();
+        IntentFilter filter = new IntentFilter();
+        filter.setPriority(IntentFilter.SYSTEM_HIGH_PRIORITY);
+        filter.addAction(MESSAGE_RECEIVED_ACTION);
+        LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver, filter);
+    }
+
+    public class MessageReceiver extends BroadcastReceiver {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            try {
+                if (MESSAGE_RECEIVED_ACTION.equals(intent.getAction())) {
+                    String messge = intent.getStringExtra(KEY_MESSAGE);
+                    String extras = intent.getStringExtra(KEY_EXTRAS);
+                    StringBuilder showMsg = new StringBuilder();
+                    showMsg.append(KEY_MESSAGE + " : " + messge + "\n");
+                    if (!ExampleUtil.isEmpty(extras)) {
+                        showMsg.append(KEY_EXTRAS + " : " + extras + "\n");
+                    }
+                    Toast.makeText(context, showMsg.toString(), Toast.LENGTH_SHORT).show();
+                }
+            } catch (Exception e){
+            }
+        }
+    }
+
+
 }

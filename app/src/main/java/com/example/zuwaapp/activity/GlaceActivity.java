@@ -118,9 +118,9 @@ public class GlaceActivity extends AppCompatActivity {
                     if (findUserByPhoneNumberResult.getCode()==200){
                         User user = findUserByPhoneNumberResult.getData();
                         tvUser.setText(findUserByPhoneNumberResult.getData().getUserName());
-                        List<String> userPhoto = gson.fromJson(user.getUserPhoto(),new TypeToken<List<String>>(){}.getType());
+                        String userPhoto = gson.fromJson(user.getUserPhoto(),new TypeToken<String>(){}.getType());
                         if (userPhoto!=null){
-                            String url = Constant.USER_PHOTO+user.getPhoneNumber()+"/"+userPhoto.get(0);
+                            String url = Constant.USER_PHOTO+user.getPhoneNumber()+"/"+userPhoto;
                             Log.e("tupianjiazai : ", url);
                             Glide.with(getApplicationContext())
                                     .load(url)
@@ -208,7 +208,7 @@ public class GlaceActivity extends AppCompatActivity {
         count = findViewById(R.id.tv_count);
         ID = bundle.getString("id");
 //        new Method().findCollectToSetColor("12345678910",ID,handler);
-        new Method().findCollectToSetColor(Constant.PHONENUMBER,ID,handler);
+       // new Method().findCollectToSetColor(Constant.PHONENUMBER,ID,handler);
 
         (new Method()).findUserByPhoneNumber(bundle.getString("phone"),handler);
         Log.e("id",bundle.getString("id"));

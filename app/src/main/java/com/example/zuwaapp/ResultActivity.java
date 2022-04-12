@@ -2,74 +2,84 @@ package com.example.zuwaapp;
 
 
 import android.os.Bundle;
+import android.view.Window;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.viewpager2.widget.ViewPager2;
 
+import com.example.zuwaapp.adapter.MyFragmentAdapter;
 import com.example.zuwaapp.bottomFragments.FirstFragment;
 import com.example.zuwaapp.bottomFragments.FiveFragment;
 import com.example.zuwaapp.bottomFragments.FourthFragment;
 import com.example.zuwaapp.bottomFragments.SecondFragment;
 import com.example.zuwaapp.bottomFragments.ThirdFragment;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ResultActivity extends AppCompatActivity {
-    private RadioGroup radioGroup;
-
+//    private RadioGroup radioGroup;
+    private BottomNavigationView bottomNavigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
 
 
+        bottomNavigationView = findViewById(R.id.nav);
+        bottomNavigationView.setOnNavigationItemSelectedListener( item ->{
+            FragmentManager fragmentManager = getSupportFragmentManager();
 
-        changeFragment(new FirstFragment().getShouYeFragment());
-        radioGroup = findViewById(R.id.rg_main);
-        //底部菜单
-        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                for(int i=0;i<radioGroup.getChildCount();i++){
-                    RadioButton rb = (RadioButton) group.getChildAt(i);
-                    if(rb.isChecked()){
-                        setIndexSelectedTwo(i);
-                        break;
-                    }
-
-                }
+            switch (item.getItemId()){
+                case R.id.nav_menu0:
+                    fragmentManager.beginTransaction()
+                            .replace(R.id.fragmentContainerView,FirstFragment.class,null)
+                            .setReorderingAllowed(true)
+                            .commit();
+//                Log.d(TAG,"");
+                    return true;
+                case R.id.nav_menu1:
+                    fragmentManager.beginTransaction()
+                            .replace(R.id.fragmentContainerView,SecondFragment.class,null)
+                            .setReorderingAllowed(true)
+                            .commit();
+//                Log.d(TAG,"");
+                    return true;
+                case R.id.nav_menu2:
+                    fragmentManager.beginTransaction()
+                            .replace(R.id.fragmentContainerView,ThirdFragment.class,null)
+                            .setReorderingAllowed(true)
+                            .commit();
+//                Log.d(TAG,"");
+                    return true;
+                case R.id.nav_menu3:
+                    fragmentManager.beginTransaction()
+                            .replace(R.id.fragmentContainerView,FourthFragment.class,null)
+                            .setReorderingAllowed(true)
+                            .commit();
+//                Log.d(TAG,"");
+                    return true;
+                case R.id.nav_menu4:
+                    fragmentManager.beginTransaction()
+                            .replace(R.id.fragmentContainerView,FiveFragment.class,null)
+                            .setReorderingAllowed(true)
+                            .commit();
+//                Log.d(TAG,"");
+                    return true;
+                default:
+                    return false;
             }
-        });
-
-    }
-    private void changeFragment(Fragment fragment){
-        //开启事务
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.fragment,fragment);
-        transaction.commit();
+        } );
 
     }
 
-    private void setIndexSelectedTwo(int index) {
-        switch (index){
-            case 0:
-                changeFragment(new FirstFragment().getShouYeFragment());
-                break;
-            case 1:
-                changeFragment(new SecondFragment().getShouCangFragment());
-                break;
-            case 2:
-                changeFragment(new ThirdFragment().getPlusFragment());
-                break;
-            case 3:
-                changeFragment(new FourthFragment().getMseeageFragemnt());
-                break;
-            case 4:
-                changeFragment(new FiveFragment().getWoDeFragment());
-                break;
-        }
-    }
 }
