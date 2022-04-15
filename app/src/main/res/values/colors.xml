@@ -28,5 +28,6 @@
     <color name="huise">#C0C0C0</color>
 
     <color name="bluegreen">#00CDCD</color>
+    <color name="colorBackground">#f1f0f6</color>
 
 </resources>

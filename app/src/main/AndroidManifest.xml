@@ -125,6 +125,7 @@
         <activity android:name=".activity.SecondActivity" />
         <activity android:name=".activity.ThirdActivity" />
         <activity android:name=".activity.FiveActivity" />
+        <activity android:name=".activity.SearchPage"></activity>
 
 
         <service

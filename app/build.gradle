@@ -75,6 +75,9 @@ dependencies {
     implementation 'cn.yipianfengye.android:zxing-library:2.2'
     implementation 'com.github.bumptech.glide:glide:4.10.0'
     implementation 'androidx.fragment:fragment:1.2.5'
+
+    //搜索历史
+    implementation 'com.carson_ho:SearchLayout:1.0.1'
     //注解处理器
     annotationProcessor 'com.github.bumptech.glide:compiler:4.10.0'
     implementation 'com.google.code.gson:gson:2.8.5'

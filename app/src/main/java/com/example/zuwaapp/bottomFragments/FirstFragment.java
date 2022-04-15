@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -19,6 +20,7 @@ import android.widget.TextView;
 import com.example.zuwaapp.R;
 import com.example.zuwaapp.activity.ResultActivity;
 import com.example.zuwaapp.activity.SearchActivity;
+import com.example.zuwaapp.activity.SearchPage;
 import com.example.zuwaapp.fragment.FragmentFive;
 import com.example.zuwaapp.fragment.FragmentFour;
 import com.example.zuwaapp.fragment.FragmentOne;
@@ -49,7 +51,7 @@ import java.util.concurrent.TimeUnit;
 
 public class FirstFragment extends Fragment {
     private final int REQUEST_CODE=1;
-    private ImageButton btnSearch,btnCode;
+    private TextView btnSearch,btnCode;
     private EditText edtSearch;
 
 
@@ -86,56 +88,43 @@ public class FirstFragment extends Fragment {
 
         initviews(view);
         ZXingLibrary.initDisplayOpinion(this.getContext());
-//        //搜索框的点击事件
-//        btnSearch.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                String context = edtSearch.getText().toString();
-//                Intent intent = new Intent(getActivity(), SearchActivity.class);
-//                Bundle bundle = new Bundle();
-//                bundle.putString("context",context);
-//                Log.e("内容",context);
-//                intent.putExtra("bundle",bundle);
-//                startActivity(intent);
-//
-//            }
-//        });
-//        //二维码的点击事件
-//        btnCode.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Log.e("信息","我是这个按钮");
-//                Intent intent = new Intent(getActivity(), CaptureActivity.class);
-//                startActivityForResult(intent, REQUEST_CODE);
-//
-//
-//            }
-//        });
+        //搜索框的点击事件
+        btnSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), SearchPage.class);
+                startActivity(intent);
+
+            }
+        });
+        //二维码的点击事件
+        btnCode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.e("信息","我是这个按钮");
+                Intent intent = new Intent(getActivity(), CaptureActivity.class);
+                startActivityForResult(intent, REQUEST_CODE);
+
+
+            }
+        });
         //轮播图图片获取
         getImage();
         //设置轮播图
         setView(view);
-        //一个长导航栏
-        TabLayout tabLayout = (TabLayout) view.findViewById(R.id.tab_layout);
-        ViewPager viewPager = (ViewPager) view.findViewById(R.id.pager);
-
-        viewPager.setAdapter(new SectionPagerAdapter(getChildFragmentManager()));
-        tabLayout.setupWithViewPager(viewPager);
 
         return view;
     }
+
+
+
+
     //轮播图图片获取
     private void getImage() {
 
     }
 
-    //设置按钮监听器
-    private void initviews(View view) {
-        mViewPager = view.findViewById(R.id.viewpager);
-//        btnSearch = view.findViewById(R.id.btn_search);
-//        btnCode = view.findViewById(R.id.btn_code);
-//        edtSearch = view.findViewById(R.id.edt_search);
-    }
+
 
     //UI界面的更新
     private void setView(View view) {
@@ -264,51 +253,13 @@ public class FirstFragment extends Fragment {
     }
 
 
-    public class SectionPagerAdapter extends FragmentPagerAdapter {
-        public SectionPagerAdapter(FragmentManager fm) {
-            super(fm);
-        }
-        @Override
-        public Fragment getItem(int position) {
-            switch (position) {
-                case 0:
-                    return new FragmentOne();
-                case 1:
-                    return new FragmentTwo();
-                case 2:
-                    return new FragmentThree();
-                case 3:
-                    return new FragmentFour();
-                case 4:
-                    return new FragmentFive();
-                case 5:
-                default:
-                    return new FragmentSix();
-            }
-        }
 
-        @Override
-        public int getCount() {
-            return 6;
-        }
 
-        @Override
-        public CharSequence getPageTitle(int position) {
-            switch (position) {
-                case 0:
-                    return "猜你喜欢";
-                case 1:
-                    return "电脑";
-                case 2:
-                    return "旅游户外";
-                case 3:
-                    return "低碳办公";
-                case 4:
-                    return "摄影航拍";
-                case 5:
-                default:
-                    return "穿戴饰品";
-            }
-        }
+    //设置按钮监听器
+    private void initviews(View view) {
+        mViewPager = view.findViewById(R.id.viewpager);
+        btnSearch = view.findViewById(R.id.btn_search);
+        btnCode = view.findViewById(R.id.btn_code);
+//        edtSearch = view.findViewById(R.id.edt_search);
     }
 }

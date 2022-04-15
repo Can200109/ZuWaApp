@@ -34,8 +34,15 @@ import com.example.zuwaapp.adapter.RentAdapter;
 import com.example.zuwaapp.entity.Collect;
 import com.example.zuwaapp.entity.Product;
 import com.example.zuwaapp.entity.Result;
+import com.example.zuwaapp.fragment.FragmentFive;
+import com.example.zuwaapp.fragment.FragmentFour;
+import com.example.zuwaapp.fragment.FragmentOne;
+import com.example.zuwaapp.fragment.FragmentSix;
+import com.example.zuwaapp.fragment.FragmentThree;
+import com.example.zuwaapp.fragment.FragmentTwo;
 import com.example.zuwaapp.method.Method;
 import com.example.zuwaapp.util.GlideLoadImage;
+import com.google.android.material.tabs.TabLayout;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -46,6 +53,9 @@ import com.yds.library.MultiImageView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -83,15 +93,6 @@ public class SecondFragment extends Fragment {
 //            }
 //        }
 //    };
-
-    private static SecondFragment scf;
-    public static SecondFragment getShouCangFragment(){
-        if(scf == null){
-            scf = new SecondFragment();
-        }
-        return scf;
-    }
-
 
     @Nullable
     @Override
@@ -135,9 +136,65 @@ public class SecondFragment extends Fragment {
 //               startActivity(intent);
 //           }
 //       });
+
+
+        //一个长导航栏
+        TabLayout tabLayout = (TabLayout) view.findViewById(R.id.tab_layout);
+        ViewPager viewPager = (ViewPager) view.findViewById(R.id.pager);
+
+        viewPager.setAdapter(new SectionPagerAdapter(getChildFragmentManager()));
+        tabLayout.setupWithViewPager(viewPager);
+
        return view;
     }
 
+    public class SectionPagerAdapter extends FragmentPagerAdapter {
+        public SectionPagerAdapter(FragmentManager fm) {
+            super(fm);
+        }
+        @Override
+        public Fragment getItem(int position) {
+            switch (position) {
+                case 0:
+                    return new FragmentOne();
+                case 1:
+                    return new FragmentTwo();
+                case 2:
+                    return new FragmentThree();
+                case 3:
+                    return new FragmentFour();
+                case 4:
+                    return new FragmentFive();
+                case 5:
+                default:
+                    return new FragmentSix();
+            }
+        }
+
+        @Override
+        public int getCount() {
+            return 6;
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            switch (position) {
+                case 0:
+                    return "猜你喜欢";
+                case 1:
+                    return "电脑";
+                case 2:
+                    return "旅游户外";
+                case 3:
+                    return "低碳办公";
+                case 4:
+                    return "摄影航拍";
+                case 5:
+                default:
+                    return "穿戴饰品";
+            }
+        }
+    }
 
 
 }

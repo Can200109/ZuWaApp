@@ -27,6 +27,12 @@
         <item name="colorPrimary">@color/shenLanHua</item>
         <item name="android:textColorSecondary">@android:color/black</item>
     </style>
+
+    <style name="search">
+        <item name="android:textColorHint">@android:color/white</item>
+        <item name="android:editTextColor">@android:color/holo_purple</item>
+        <item name="android:textColorSecondary">@android:color/white</item>
+    </style>
 </resources>
 
 

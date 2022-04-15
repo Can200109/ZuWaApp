@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -34,7 +35,7 @@ public class ButtonEditText extends androidx.appcompat.widget.AppCompatEditText 
 
     @SuppressLint("ResourceAsColor")
     private void init() {
-        mButton = new Button(getContext());
+        mButton = new Button(this.getContext());
         mButton.setText("搜索");
       //  mButton.setBackgroundColor(R.drawable.button);
         mButton.scrollBy(0,9);
@@ -43,6 +44,8 @@ public class ButtonEditText extends androidx.appcompat.widget.AppCompatEditText 
             @Override
             public void onClick(View v) {
                 Toast.makeText(getContext(), "Clicked me!", Toast.LENGTH_SHORT).show();
+                Log.e("点击了按钮","按钮");
+
             }
         });
     }

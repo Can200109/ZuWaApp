@@ -33,8 +33,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SearchActivity extends AppCompatActivity {
-    private EditText edtSearch;
-    private ImageButton btnSearch,searchBack;
     private RentAdapter SearchAdapter;
     private String context="";
     private List<Product> productList = new ArrayList<>();
@@ -70,18 +68,13 @@ public class SearchActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
-        edtSearch = findViewById(R.id.glace_edt_search);
-        btnSearch = findViewById(R.id.glace_btn_search);
-        searchBack = findViewById(R.id.search_back);
+
 
         //点击搜索先跳过来
         Intent intent = getIntent();
         Bundle bundle = intent.getBundleExtra("bundle");
         context = bundle.getString("context");
-        if("".equals(bundle.getString("context"))){
-            //获取焦点
-            edtSearch.requestFocus();
-        }else {
+
             //根据输入查询数据库，并显示数据
             //获取商品名字并判断
             //productList.clear();
@@ -104,42 +97,5 @@ public class SearchActivity extends AppCompatActivity {
                 }
             });
 
-        }
-
-        //点击此页面搜索按键搜索
-        btnSearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //如果没输入内容，无事件
-
-                //按照输入内容查询
-                productList.clear();
-                context = edtSearch.getText().toString();
-                (new Method()).findAllProduct(handler);
-                ListView listView = findViewById(R.id.search_result);
-                SearchAdapter = new RentAdapter(productList,R.layout.glace_result_layout,SearchActivity.this);
-                listView.setAdapter(SearchAdapter);
-                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                        Intent intent = new Intent();
-                        intent.setClass(SearchActivity.this, GlaceActivity.class);
-                        Bundle bundle = new Bundle();
-                        bundle.putString("phone",productList.get(position).getPhoneNumber());
-                        bundle.putString("id",productList.get(position).getProductId());
-                        intent.putExtra("bundle",bundle);
-                        startActivity(intent);
-                    }
-                });
-            }
-        });
-
-        //点击返回键返回
-        searchBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
     }
 }
