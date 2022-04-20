@@ -31,6 +31,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import static com.example.zuwaapp.Constant.FIND_ALL;
+import static com.example.zuwaapp.Constant.FIND_PRODUCT_BY_PRODUCTTYPE;
 
 public class FragmentOne extends Fragment {
     private ImageView imageView;
@@ -44,15 +45,15 @@ public class FragmentOne extends Fragment {
         @Override
         public void handleMessage(@NonNull Message msg) {
             switch (msg.what) {
-                case FIND_ALL:
+                case FIND_PRODUCT_BY_PRODUCTTYPE:
                     Result<List<Product>> findResult = gson.fromJson(msg.obj.toString(), new TypeToken<Result<List<Product>>>(){}.getType());
                     if (findResult.getCode() == 200) {
                         List<Product> data = findResult.getData();
 //                        Toast.makeText(getContext(),"查找成功",Toast.LENGTH_LONG).show();
                         for(Product product:data){
                             productList.add(product);
+                            productAdapter.notifyDataSetChanged();
                         }
-                        productAdapter.notifyDataSetChanged();
                     } else {
                         Toast.makeText(getContext(),"查找失败",Toast.LENGTH_LONG).show();
                     }
@@ -66,7 +67,7 @@ public class FragmentOne extends Fragment {
                                  Bundle savedInstanceState) {
             productList.clear();
             View view = inflater.inflate(R.layout.fragment_one, container, false);
-            new Method().findAllProduct(handler);
+            new Method().findProductByProductType("节日礼服",handler);
             RecyclerView Rview = view.findViewById(R.id.list1);
             StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
             Rview.setLayoutManager(layoutManager);

@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="spingarr">
-        <item>电脑</item>
+        <item>节日礼服</item>
+        <item>电脑设备</item>
+        <item>唯美相机</item>
+        <item>精品手机</item>
+        <item>体感vr</item>
+        <item>聚会用品</item>
+        <item>运动健身</item>
         <item>摄影航拍</item>
         <item>旅游户外</item>
         <item>低碳办公</item>

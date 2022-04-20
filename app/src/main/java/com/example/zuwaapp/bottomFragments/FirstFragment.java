@@ -16,18 +16,29 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.zuwaapp.R;
+import com.example.zuwaapp.activity.GlaceActivity;
 import com.example.zuwaapp.activity.ResultActivity;
 import com.example.zuwaapp.activity.SearchActivity;
 import com.example.zuwaapp.activity.SearchPage;
+import com.example.zuwaapp.adapter.ProductAdapter;
+import com.example.zuwaapp.buttonActivity.TwoRow;
+import com.example.zuwaapp.entity.Product;
+import com.example.zuwaapp.entity.Result;
 import com.example.zuwaapp.fragment.FragmentFive;
 import com.example.zuwaapp.fragment.FragmentFour;
 import com.example.zuwaapp.fragment.FragmentOne;
 import com.example.zuwaapp.fragment.FragmentSix;
 import com.example.zuwaapp.fragment.FragmentThree;
 import com.example.zuwaapp.fragment.FragmentTwo;
+import com.example.zuwaapp.method.Method;
+import com.example.zuwaapp.method.OnItemClickListener;
 import com.google.android.material.tabs.TabLayout;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 import com.uuzuche.lib_zxing.activity.CaptureActivity;
 import com.uuzuche.lib_zxing.activity.CodeUtils;
 import com.uuzuche.lib_zxing.activity.ZXingLibrary;
@@ -39,6 +50,8 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
@@ -48,11 +61,14 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
+import static com.example.zuwaapp.Constant.FIND_ALL;
+
 
 public class FirstFragment extends Fragment {
     private final int REQUEST_CODE=1;
     private TextView btnSearch,btnCode;
     private EditText edtSearch;
+    private Button btnClothes,btnComputer,btnPhone, btnPhoto,btnVr,btnDesk,btnSport,btnMore;
 
 
     private ViewPager mViewPager;
@@ -62,21 +78,37 @@ public class FirstFragment extends Fragment {
     //记录上一次位置
     private int oldPosition = 0;
     //存放图片的id
-    private int[] imageIds = new int[]{R.drawable.lunbo1,R.drawable.lunbo2,R.drawable.lunbo3};
+    private int[] imageIds = new int[]{R.drawable.l1,R.drawable.l2,R.drawable.l3};
     private ViewPagerAdapter adapter;
     //定时调度机制
     private ScheduledExecutorService scheduledExecutorService;
 
 
-
-    private static FirstFragment syf;
-
-    public static FirstFragment getShouYeFragment(){
-        if(syf == null){
-            syf = new FirstFragment();
+    private ProductAdapter productAdapter;
+    private List<Product> productList = new ArrayList<>();
+    private Gson gson = new GsonBuilder()
+            .serializeNulls()
+            .create();
+    private Handler handler  = new Handler(Looper.myLooper()) {
+        @Override
+        public void handleMessage(@NonNull Message msg) {
+            switch (msg.what) {
+                case FIND_ALL:
+                    Result<List<Product>> findResult = gson.fromJson(msg.obj.toString(), new TypeToken<Result<List<Product>>>(){}.getType());
+                    if (findResult.getCode() == 200) {
+                        List<Product> data = findResult.getData();
+//                        Toast.makeText(getContext(),"查找成功",Toast.LENGTH_LONG).show();
+                        for(Product product:data){
+                            productList.add(product);
+                        }
+                        productAdapter.notifyDataSetChanged();
+                    } else {
+                        Toast.makeText(getContext(),"查找失败",Toast.LENGTH_LONG).show();
+                    }
+                    break;
+            }
         }
-        return syf;
-    }
+    };
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -113,18 +145,128 @@ public class FirstFragment extends Fragment {
         //设置轮播图
         setView(view);
 
+
+        //下方推荐列表
+        productList.clear();
+        new Method().findAllProduct(handler);
+        RecyclerView Rview = view.findViewById(R.id.listRecommend);
+        StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        Rview.setLayoutManager(layoutManager);
+        productAdapter = new ProductAdapter(productList);
+        Rview.setAdapter(productAdapter);
+        productAdapter.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Intent intent = new Intent();
+
+                //传什么过去
+                //发布者（’用户‘电话）  图片   标题   描述    价格    押金   次数
+                intent.setClass(getActivity(), GlaceActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("phone",productList.get(position).getPhoneNumber());
+                bundle.putString("id",productList.get(position).getProductId());
+                intent.putExtra("bundle",bundle);
+                startActivity(intent);
+            }
+        });
+
+
+        //两排按钮的点击事件
+        //虽然写adapter显得高大上，可以用一个id把这几个按钮都跳过去。但是高端的操作往往采用最朴素的方式。
+        //没错，我选择辅助粘贴。代码量虽然冗余，但是快，还可以减少bug的发生率
+        btnClothes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(getActivity(), TwoRow.class);
+                Bundle bundle = new Bundle();
+                String text = btnClothes.getText().toString();
+                bundle.putString("text",text);
+                intent.putExtra("bundle",bundle);
+                startActivity(intent);
+            }
+        });
+        btnComputer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(getActivity(), TwoRow.class);
+                Bundle bundle = new Bundle();
+                String text = btnComputer.getText().toString();
+                bundle.putString("text",text);
+                intent.putExtra("bundle",bundle);
+                startActivity(intent);
+            }
+        });
+        btnPhone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(getActivity(), TwoRow.class);
+                Bundle bundle = new Bundle();
+                String text = btnPhone.getText().toString();
+                bundle.putString("text",text);
+                intent.putExtra("bundle",bundle);
+                startActivity(intent);
+            }
+        });
+        btnDesk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(getActivity(), TwoRow.class);
+                Bundle bundle = new Bundle();
+                String text = btnDesk.getText().toString();
+                bundle.putString("text",text);
+                intent.putExtra("bundle",bundle);
+                startActivity(intent);
+            }
+        });
+        btnPhoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(getActivity(), TwoRow.class);
+                Bundle bundle = new Bundle();
+                String text = btnPhoto.getText().toString();
+                bundle.putString("text",text);
+                intent.putExtra("bundle",bundle);
+                startActivity(intent);
+            }
+        });
+        btnSport.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(getActivity(), TwoRow.class);
+                Bundle bundle = new Bundle();
+                String text = btnSport.getText().toString();
+                bundle.putString("text",text);
+                intent.putExtra("bundle",bundle);
+                startActivity(intent);
+            }
+        });
+        btnVr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(getActivity(), TwoRow.class);
+                Bundle bundle = new Bundle();
+                String text = btnVr.getText().toString();
+                bundle.putString("text",text);
+                intent.putExtra("bundle",bundle);
+                startActivity(intent);
+            }
+        });
+
         return view;
     }
-
-
 
 
     //轮播图图片获取
     private void getImage() {
 
     }
-
-
 
     //UI界面的更新
     private void setView(View view) {
@@ -255,11 +397,21 @@ public class FirstFragment extends Fragment {
 
 
 
+
     //设置按钮监听器
     private void initviews(View view) {
         mViewPager = view.findViewById(R.id.viewpager);
         btnSearch = view.findViewById(R.id.btn_search);
         btnCode = view.findViewById(R.id.btn_code);
 //        edtSearch = view.findViewById(R.id.edt_search);
+        btnClothes = view.findViewById(R.id.btn_clothes);
+        btnComputer = view.findViewById(R.id.btn_computer);
+        btnPhone = view.findViewById(R.id.btn_phone);
+        btnDesk = view.findViewById(R.id.btn_desk);
+        btnPhoto = view.findViewById(R.id.btn_photo);
+        btnSport = view.findViewById(R.id.btn_sport);
+        btnVr = view.findViewById(R.id.btn_vr);
+        btnMore = view.findViewById(R.id.btn_more);
+
     }
 }
