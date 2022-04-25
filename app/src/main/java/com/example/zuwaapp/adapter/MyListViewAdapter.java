@@ -15,6 +15,11 @@ import com.example.zuwaapp.entity.Title;
 
 import java.util.List;
 
+/**
+ * 重写了listview的adapter类
+ * 网上找的，用着还可以
+ *
+ * **/
 public class MyListViewAdapter extends BaseAdapter {
 
     private List<Title> mlist;

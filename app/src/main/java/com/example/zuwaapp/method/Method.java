@@ -10,6 +10,7 @@ import android.widget.Toast;
 import com.example.zuwaapp.Constant;
 import com.example.zuwaapp.entity.Product;
 import com.example.zuwaapp.entity.Collect;
+import com.example.zuwaapp.entity.Rent;
 import com.example.zuwaapp.entity.Result;
 import com.example.zuwaapp.entity.User;
 import com.google.gson.Gson;
@@ -29,6 +30,7 @@ import okhttp3.Response;
 
 import static com.example.zuwaapp.Constant.ADD_BY_PHONENUMBER;
 import static com.example.zuwaapp.Constant.ADD_PRODUCT;
+import static com.example.zuwaapp.Constant.ADD_Rent;
 import static com.example.zuwaapp.Constant.COLLECT_URL;
 import static com.example.zuwaapp.Constant.DELETE;
 import static com.example.zuwaapp.Constant.FIND_ALL;
@@ -38,6 +40,7 @@ import static com.example.zuwaapp.Constant.FIND_USER_BY_PHONENUMBER;
 import static com.example.zuwaapp.Constant.LOGIN;
 import static com.example.zuwaapp.Constant.MODIFY;
 import static com.example.zuwaapp.Constant.PRODUCT_URL;
+import static com.example.zuwaapp.Constant.RENT_URL;
 import static com.example.zuwaapp.Constant.USER_URL;
 
 public class Method {
@@ -221,58 +224,6 @@ public class Method {
     }
 
 
-    public void addRentPhone(String phoneNumber,Product product,Handler handler){
-        product.setProductRent(1);
-        product.setRentPhoneNumber(Constant.PHONENUMBER);
-//        product.setRentPhoneNumber("12345678910");
-        FormBody formBody = new FormBody.Builder()
-                .add("productId",product.getProductId())
-                .add("productRent",product.getProductRent()+"")
-                .add("rentPhoneNumber",product.getRentPhoneNumber())
-                .add("productPhoto",product.getProductPhoto())
-                .add("phoneNumber",phoneNumber)
-                .add("productName",product.getProductName())
-                .add("productDescribe", product.getProductDescribe())
-                .add("productType", product.getProductType())
-                .add("productPrice",product.getProductPrice()+"")
-                .add("productDeposit",product.getProductDeposit()+"")
-                .add("productCount",product.getProductCount()+"")
-                .build();
-        Request request = new Request.Builder()
-                .url(PRODUCT_URL+"addProduct")
-                .post(formBody)
-                .build();
-        Call call = okHttpClient.newCall(request);
-        enqueue(call,ADD_BY_PHONENUMBER,handler);
-    }
-
-
-    public void ReturnProduct(String phoneNumber,Product product,Handler handler){
-        product.setProductRent(0);
-        product.setRentPhoneNumber(Constant.PHONENUMBER);
-//        product.setRentPhoneNumber("12345678910");
-        FormBody formBody = new FormBody.Builder()
-                .add("productId",product.getProductId())
-                .add("productRent",product.getProductRent()+"")
-                .add("rentPhoneNumber",product.getRentPhoneNumber())
-                .add("productPhoto",product.getProductPhoto())
-                .add("phoneNumber",phoneNumber)
-                .add("productName",product.getProductName())
-                .add("productDescribe", product.getProductDescribe())
-                .add("productType", product.getProductType())
-                .add("productPrice",product.getProductPrice()+"")
-                .add("productDeposit",product.getProductDeposit()+"")
-                .add("productCount",product.getProductCount()+"")
-                .build();
-        Request request = new Request.Builder()
-                .url(PRODUCT_URL+"addProduct")
-                .post(formBody)
-                .build();
-        Call call = okHttpClient.newCall(request);
-        enqueue(call,ADD_BY_PHONENUMBER,handler);
-    }
-
-
     /*
      *根据商品id查找商品信息
      *  */
@@ -314,18 +265,52 @@ public class Method {
         Call call = okHttpClient.newCall(request);
         enqueue(call,Constant.FIND_PRODUCT_BY_PRODUCTTYPE,handler);
     }
-    public void findRents(String rentPhoneNumber, int productRent,Handler handler){
+
+
+    //增加租品(将租赁人和商品信息一起存入)
+    public void addRent(@NonNull Rent rent,Handler handler){
         FormBody formBody = new FormBody.Builder()
-                .add("rentPhoneNumber",rentPhoneNumber)
-                .add("productRent",productRent+"")
+                .add("rentName",rent.getRentName())
+                .add("rentDescribe", rent.getRentDescribe())
+                .add("rentPrice", rent.getRentPrice()+"")
+                .add("rentPhoto", rent.getRentPhoto())
+                .add("rentType",rent.getRentType())
+                .add("phoneNumber",rent.getPhoneNumber())
+                .add("ownerPhoneNumber",rent.getOwnerPhoneNumber())
+                .add("productId",rent.getProductId())
                 .build();
         Request request = new Request.Builder()
-                .url(PRODUCT_URL+"findRents")
+                .url(RENT_URL+"addRent")
                 .post(formBody)
                 .build();
         Call call = okHttpClient.newCall(request);
-        enqueue(call,Constant.FIND_RENT,handler);
+        enqueue(call,ADD_Rent,handler);
     }
+
+    public void findRentByPhoneNumber(String phoneNumber,Handler handler){
+        FormBody formBody = new FormBody.Builder()
+                .add("phoneNumber",phoneNumber)
+                .build();
+        Request request = new Request.Builder()
+                .url(RENT_URL+"findRentByPhoneNumber")
+                .post(formBody)
+                .build();
+        Call call = okHttpClient.newCall(request);
+        enqueue(call,Constant.FIND_RENT_BY_PHONENUMBER,handler);
+    }
+
+    public void deleteRentByPhoneNumber(Rent rent,Handler handler){
+        FormBody formBody = new FormBody.Builder()
+                .add("phoneNumber",rent.getPhoneNumber())
+                .build();
+        Request request = new Request.Builder()
+                .url(RENT_URL+"deleteRentByPhoneNumber")
+                .post(formBody)
+                .build();
+        Call call = okHttpClient.newCall(request);
+        enqueue(call,Constant.DELETE_RENT_BY_PHONENUMBER,handler);
+    }
+
     /**
      * 注意!!!!!!!!!!!!!!!!!!!!!!
      * 此处电话号码为当前登录用户的电话号码并不是商品中的电话号

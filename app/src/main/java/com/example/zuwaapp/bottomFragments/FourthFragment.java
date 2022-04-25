@@ -1,7 +1,7 @@
 package com.example.zuwaapp.bottomFragments;
 
 import static com.example.zuwaapp.Constant.FIND_PRODUCT_BY_PRODUCTTYPE;
-import static com.example.zuwaapp.Constant.FIND_RENT;
+
 
 import android.content.Intent;
 import android.os.Bundle;

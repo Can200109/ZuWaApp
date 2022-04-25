@@ -246,7 +246,7 @@ public class GlaceActivity extends AppCompatActivity {
                     Intent intent1 = new Intent(GlaceActivity.this,RentGlaceActivity.class);
                     //此phone是物品信息
                     bundle.putString("phone",bundle.getString("phone"));
-                    bundle.putString("title",name.toString());
+                    bundle.putString("id",ID);
                     //我的信息根据电话号写
                     intent1.putExtra("bundle",bundle);
                     startActivity(intent1);

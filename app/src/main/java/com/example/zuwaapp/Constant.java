@@ -5,6 +5,7 @@ public class Constant {
     public static final String USER_URL ="http://"+IP+":8080/zuwa/user/";
     public static final String PRODUCT_URL ="http://"+IP+":8080/zuwa/product/";
     public static final String COLLECT_URL ="http://"+IP+":8080/zuwa/collect/";
+    public static final String RENT_URL = "http://"+IP+":8080/zuwa/rent/";
     public static final String PRODUCT_PHOTO = "http://"+IP+":8080/zuwa/zuwaPhoto/";
     public static final String USER_PHOTO = "http://"+IP+":8080/zuwa/zuwaPhoto/";
     public static final int REQUEST_IMAGE = 200;
@@ -15,7 +16,7 @@ public class Constant {
     public static final int FIND_ALL = 5;
     public static final int FIND_USER_BY_PHONENUMBER = 6;
     public static final int  FIND_PRODUCT_BY_PHONENUMBER = 7;
-    public static final int FIND_RENT = 8;
+    public static final int FIND_RENT_BY_PHONENUMBER = 8;
     public static final int DELETE_PRODUCT = 9;
     public static final int FIND_PRODUCT_BY_PRODUCTTYPE = 10;
     public static final int FIND_PRODUCT_BY_ID = 11;
@@ -25,9 +26,12 @@ public class Constant {
     public static final int FIND_COLLECT = 15;
     public static final int FIND_COLLECT_BY_PHONENUMBER = 16;
     public static final int SET_COLOR = 17;
+    public static final int ADD_Rent = 18;
+    public static final int DELETE_RENT_BY_PHONENUMBER = 19;
 
 
-    public static String PHONENUMBER = "15128895429";
+    public static String PHONENUMBER = "16631168888";
+//    public static String PHONENUMBER = "15128895429";
 
 
     public static void setPHONENUMBER(String PHONENUMBER) {

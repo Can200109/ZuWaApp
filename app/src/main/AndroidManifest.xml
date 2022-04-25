@@ -55,7 +55,10 @@
         android:theme="@style/Theme.Design.Light.NoActionBar"
         android:usesCleartextTraffic="true"
         tools:replace="android:label">
-        <activity android:name=".buttonActivity.VerticalSortActivity"></activity>
+        <activity android:name=".usercenterActivity.MyRelease"></activity>
+        <activity android:name=".usercenterActivity.NickEdit" />
+        <activity android:name=".usercenterActivity.UserSetting" />
+        <activity android:name=".buttonActivity.VerticalSortActivity" />
         <activity android:name=".buttonActivity.TwoRow" />
         <activity
             android:name=".activity.Success3Activity"
@@ -89,20 +92,20 @@
             android:exported="true" />
         <activity
             android:name=".activity.TransferActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".activity.GlaceActivity"
             android:exported="true" />
         <activity
             android:name=".ResultActivity"
             android:exported="true"
-            android:windowSoftInputMode="adjustPan" />
+            android:windowSoftInputMode="adjustPan">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".PreloadActivity"
             android:exported="true" />

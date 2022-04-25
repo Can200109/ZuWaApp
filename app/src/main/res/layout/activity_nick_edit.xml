@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+        <Button
+            android:id="@+id/user_nickSetting_return"
+            android:layout_marginTop="13dp"
+            android:layout_width="21dp"
+            android:layout_height="18dp"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/leftblack">
+
+        </Button>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:textSize="15dp"
+            android:text="修改昵称和密码"
+            android:textColor="#000000"
+            android:background="#F5F5F5"
+            android:gravity="center"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="35dp"
+        android:layout_marginRight="35dp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="昵称:"
+            android:textSize="20dp">
+        </TextView>
+        <EditText
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:textSize="15dp"
+            android:id="@+id/zhen_edit_user_name"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="35dp"
+        android:layout_marginRight="35dp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="密码:"
+            android:textSize="20dp">
+        </TextView>
+        <EditText
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:textSize="15dp"
+            android:inputType="textPassword"
+            android:id="@+id/zhen_edit_user_password"
+            />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/update_edit_nick"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:text="保存">
+
+    </Button>
+</LinearLayout>

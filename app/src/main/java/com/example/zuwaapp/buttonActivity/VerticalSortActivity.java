@@ -32,6 +32,7 @@ public class VerticalSortActivity extends AppCompatActivity implements AdapterVi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vertical_sort);
+        Intent intent = getIntent();
         initView();
         initData();
     }

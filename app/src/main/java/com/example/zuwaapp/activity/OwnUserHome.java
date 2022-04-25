@@ -55,9 +55,9 @@ public class OwnUserHome extends AppCompatActivity {
                         //Toast.makeText(getApplicationContext(),"查找成功",Toast.LENGTH_LONG).show();
                         User user = findUserByPhoneNumberResult.getData();
                         ownUser.setText(findUserByPhoneNumberResult.getData().getUserName());
-                        List<String> userPhoto = gson.fromJson(user.getUserPhoto(),new TypeToken<List<String>>(){}.getType());
+                        String userPhoto = user.getUserPhoto();
                         if (userPhoto!=null){
-                            String url = Constant.USER_PHOTO+user.getPhoneNumber()+"/"+userPhoto.get(0);
+                            String url = Constant.USER_PHOTO+user.getPhoneNumber()+"/"+userPhoto;
                             Log.e("tupianjiazai : ", url);
                             Glide.with(getApplicationContext())
                                     .load(url)

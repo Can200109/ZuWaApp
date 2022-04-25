@@ -112,7 +112,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="140dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
+                android:paddingTop="10dp"
+                android:background="@color/white"
                 android:orientation="vertical">
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -197,28 +199,35 @@
             </LinearLayout>
 
             <!--    猜你喜欢-->
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="*猜你喜欢"
+                android:orientation="vertical"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginBottom="5dp"
-                android:textSize="15sp">
-
-            </TextView>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:descendantFocusability="blocksDescendants">
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginTop="10dp"
-                    android:id="@+id/listRecommend"
+                android:background="@color/white">
+                <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-            </RelativeLayout>
+                    android:layout_height="wrap_content"
+                    android:text="*猜你喜欢"
+
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:textSize="15sp">
+
+                </TextView>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:descendantFocusability="blocksDescendants">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="10dp"
+                        android:id="@+id/listRecommend"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+                </RelativeLayout>
+            </LinearLayout>
         </LinearLayout>
     </com.example.zuwaapp.ngss.ScrollInterceptScrollView>
 

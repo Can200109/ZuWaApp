@@ -68,6 +68,13 @@ MobSDK {
 }
 
 dependencies {
+
+    //高斯模糊
+    compile ('jameson.io.library:library:0.0.1') {
+        exclude group: "com.android.support", module: "support-v4"
+    }
+
+    //这里好像是mob验证码依赖，小半年了，记不清了
     implementation fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.23'
     implementation 'com.ycjiang:imgepreviewlibrary:1.1.3'

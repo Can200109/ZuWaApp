@@ -25,6 +25,7 @@ import com.example.zuwaapp.activity.SearchActivity;
 import com.example.zuwaapp.activity.SearchPage;
 import com.example.zuwaapp.adapter.ProductAdapter;
 import com.example.zuwaapp.buttonActivity.TwoRow;
+import com.example.zuwaapp.buttonActivity.VerticalSortActivity;
 import com.example.zuwaapp.entity.Product;
 import com.example.zuwaapp.entity.Result;
 import com.example.zuwaapp.fragment.FragmentFive;
@@ -161,6 +162,7 @@ public class FirstFragment extends Fragment {
 
                 //传什么过去
                 //发布者（’用户‘电话）  图片   标题   描述    价格    押金   次数
+                //鉴于现在开发时间是2022年，属于二次开发，所以传id和phone就可以了，到那边再根据这个请求数据库数据
                 intent.setClass(getActivity(), GlaceActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("phone",productList.get(position).getPhoneNumber());
@@ -255,6 +257,15 @@ public class FirstFragment extends Fragment {
                 String text = btnVr.getText().toString();
                 bundle.putString("text",text);
                 intent.putExtra("bundle",bundle);
+                startActivity(intent);
+            }
+        });
+
+        btnMore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(getActivity(), VerticalSortActivity.class);
                 startActivity(intent);
             }
         });

@@ -29,6 +29,7 @@ import com.bumptech.glide.Glide;
 import com.example.zuwaapp.Constant;
 import com.example.zuwaapp.R;
 import com.example.zuwaapp.entity.Product;
+import com.example.zuwaapp.entity.Rent;
 import com.example.zuwaapp.entity.Result;
 import com.example.zuwaapp.entity.User;
 import com.example.zuwaapp.method.Method;
@@ -45,6 +46,18 @@ import com.yds.library.MultiImageView;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * 2022/4/25
+ *
+ * 这也页面后期会删除，如果没有删除，那也不要紧
+ * 但是，应该不会用这个页面了，布局什么的，太烂了
+ * 所以，结论是
+ * 要么代码一个人写，要么统一命名规范，
+ * 不然一会home，me，一会first，second，真的难受
+ * 记此，以后避坑。
+ *
+ * **/
 public class Glace2Activity extends AppCompatActivity {
     private ImageView headPhoto;
     private ArrayList<ThumbViewInfo> mThumbViewInfoList;
@@ -69,9 +82,9 @@ public class Glace2Activity extends AppCompatActivity {
                         User user0 = findUserByPhoneNumberResult.getData();
                         //Toast.makeText(getApplicationContext(),"查找成功",Toast.LENGTH_LONG).show();
                         user.setText(findUserByPhoneNumberResult.getData().getUserName());
-                        List<String> userPhoto = gson.fromJson(user0.getUserPhoto(),new TypeToken<List<String>>(){}.getType());
+                        String userPhoto = user0.getUserPhoto();
                         if (userPhoto!=null){
-                            String url = Constant.USER_PHOTO+user0.getPhoneNumber()+"/"+userPhoto.get(0);
+                            String url = Constant.USER_PHOTO+user0.getPhoneNumber()+"/"+userPhoto;
                             Log.e("tupianjiazai : ", url);
                             Glide.with(getApplicationContext())
                                     .load(url)
@@ -153,7 +166,7 @@ public class Glace2Activity extends AppCompatActivity {
 
 
 
-        (new Method()).findUserByPhoneNumber(bundle.getString("phone"),handler);
+        (new Method()).findUserByPhoneNumber(bundle.getString("ownerPhone"),handler);
         Log.e("id",bundle.getString("id"));
         (new Method()).findProductById(bundle.getString("id"),handler);
 
@@ -174,8 +187,9 @@ public class Glace2Activity extends AppCompatActivity {
         returnButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //调用方法，将collect设为0
-                (new Method()).ReturnProduct(bundle.getString("phone"),product,handler);
+
+                Rent rent = new Rent(bundle.getString("phone"));
+                new Method().deleteRentByPhoneNumber(rent,handler);
 
                 //谈到还物成功页面
                 Intent intent1 = new Intent(Glace2Activity.this,Success2Activity.class);

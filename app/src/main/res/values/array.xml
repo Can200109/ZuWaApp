@@ -14,4 +14,10 @@
         <item>穿戴饰品</item>
     </string-array>
 
+    <string-array name="sex">
+        <item>男</item>
+        <item>女</item>
+        <item>保密</item>
+    </string-array>
+
 </resources>
