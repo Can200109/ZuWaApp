@@ -25,13 +25,19 @@ import androidx.fragment.app.Fragment;
 import com.bumptech.glide.Glide;
 import com.example.zuwaapp.Constant;
 import com.example.zuwaapp.R;
-import com.example.zuwaapp.activity.FirstActivity;
-import com.example.zuwaapp.activity.SecondActivity;
 import com.example.zuwaapp.entity.Result;
 import com.example.zuwaapp.entity.User;
 import com.example.zuwaapp.method.Method;
+import com.example.zuwaapp.usercenterActivity.MyCollect;
+import com.example.zuwaapp.usercenterActivity.MyCoupon;
 import com.example.zuwaapp.usercenterActivity.MyRelease;
+import com.example.zuwaapp.usercenterActivity.MyRent;
 import com.example.zuwaapp.usercenterActivity.UserSetting;
+import com.example.zuwaapp.usercenterActivity.orderType.MyNoAssess;
+import com.example.zuwaapp.usercenterActivity.orderType.MyNoGoods;
+import com.example.zuwaapp.usercenterActivity.orderType.MyNoHarvest;
+import com.example.zuwaapp.usercenterActivity.orderType.MyNoPayment;
+import com.example.zuwaapp.usercenterActivity.orderType.MyNoReturn;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -46,7 +52,7 @@ import static com.example.zuwaapp.Constant.FIND_USER_BY_PHONENUMBER;
 public class FiveFragment extends Fragment {
     private ImageView ivUserPhoto;
     private TextView userNick, userPhoneNumber;
-    private Button userSetting, myRelease, myCollect, myBorrow, myCoupon;
+    private Button userSetting, myRelease, myCollect, myBorrow, myCoupon, myNoPayment, myNoGoods, myNoHarvest, myNoReturn, myNoAssess;
 
     private List<Uri> uriList = new ArrayList<>();
     private OkHttpClient okHttpClient = new OkHttpClient();
@@ -101,6 +107,11 @@ public class FiveFragment extends Fragment {
         myCollect = view.findViewById(R.id.my_collect);
         myBorrow = view.findViewById(R.id.my_borrow);
         myCoupon = view.findViewById(R.id.my_coupon);
+        myNoPayment = view.findViewById(R.id.my_no_payment);
+        myNoGoods = view.findViewById(R.id.my_no_goods);
+        myNoHarvest = view.findViewById(R.id.my_no_harvest);
+        myNoReturn = view.findViewById(R.id.my_no_return);
+        myNoAssess = view.findViewById(R.id.my_no_assess);
 
         //调用handler
         (new Method()).findUserByPhoneNumber(Constant.PHONENUMBER,handler);
@@ -153,6 +164,8 @@ public class FiveFragment extends Fragment {
         myCollect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), MyCollect.class);
+                startActivity(intent);
 
             }
         });
@@ -161,7 +174,7 @@ public class FiveFragment extends Fragment {
         myBorrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), SecondActivity.class);
+                Intent intent = new Intent(getActivity(), MyRent.class);
                 startActivity(intent);
             }
         });
@@ -170,9 +183,78 @@ public class FiveFragment extends Fragment {
         myCoupon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), MyCoupon.class);
+                startActivity(intent);
 
             }
         });
+
+        /**
+         * 接下俩将进行的是对订单状态的操作.简单跳过去就行，数据通过数据库按类型和手机号查询就好
+         * 2022/5/1
+         * x_heng
+         * 苦逼的代码，苦逼的我
+         * **/
+
+        //待付款
+        myNoPayment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), MyNoPayment.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("title","待付款");
+                intent.putExtra("bundle",bundle);
+                startActivity(intent);
+            }
+        });
+        //待发货
+        myNoGoods.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), MyNoGoods.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("title","待发货");
+                intent.putExtra("bundle",bundle);
+                startActivity(intent);
+            }
+        });
+        //待收货
+        myNoHarvest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), MyNoHarvest.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("title","待收货");
+                intent.putExtra("bundle",bundle);
+                startActivity(intent);
+            }
+        });
+        //待归还
+        myNoReturn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), MyNoReturn.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("title","待归还");
+                intent.putExtra("bundle",bundle);
+                startActivity(intent);
+            }
+        });
+        //待评价
+        myNoAssess.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), MyNoAssess.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("title","待评价");
+                intent.putExtra("bundle",bundle);
+                startActivity(intent);
+            }
+        });
+
+        /**
+         * 下面是一些小的按钮的点击事件
+         * **/
 
 
         return view;

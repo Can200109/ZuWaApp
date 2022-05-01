@@ -31,4 +31,9 @@
     <color name="colorBackground">#f1f0f6</color>
     <color name="grey">#EBEBEB</color>
 
+    <color name="greypro">#808080</color>
+
+    <color name="purple">#9932CD</color>
+
+
 </resources>

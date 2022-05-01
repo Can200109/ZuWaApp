@@ -101,10 +101,12 @@ public class Rent {
     public Rent() {
     }
 
-    public Rent(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public Rent(String rentId) {
+        this.rentId = rentId;
     }
 
-
-
+    public Rent(String phoneNumber, String productId) {
+        this.phoneNumber = phoneNumber;
+        this.productId = productId;
+    }
 }

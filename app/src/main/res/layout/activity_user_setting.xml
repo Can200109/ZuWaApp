@@ -110,10 +110,11 @@
             android:paddingLeft="15dp">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:textSize="15dp"
-                android:text="用户协议">
+                android:text="用户协议"
+                android:id="@+id/user_agree">
             </TextView>
 
         </LinearLayout>
@@ -130,10 +131,11 @@
             android:paddingLeft="15dp">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:textSize="15dp"
-                android:text="隐私协议">
+                android:text="隐私协议"
+                android:id="@+id/user_privacy">
             </TextView>
 
         </LinearLayout>
@@ -150,10 +152,11 @@
             android:paddingLeft="15dp">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:textSize="15dp"
-                android:text="切换账号">
+                android:text="切换账号"
+                android:id="@+id/switch_account">
             </TextView>
 
         </LinearLayout>
@@ -170,10 +173,11 @@
             android:paddingLeft="15dp">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:textSize="15dp"
-                android:text="注销账号">
+                android:text="注销账号"
+                android:id="@+id/cancel_account">
             </TextView>
 
         </LinearLayout>

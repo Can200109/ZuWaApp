@@ -45,11 +45,13 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.zuwaapp.Constant;
 import com.example.zuwaapp.R;
+import com.example.zuwaapp.alipay.PayActivity;
 import com.example.zuwaapp.entity.Collect;
 import com.example.zuwaapp.entity.Product;
 import com.example.zuwaapp.entity.Result;
 import com.example.zuwaapp.entity.User;
 import com.example.zuwaapp.method.Method;
+import com.example.zuwaapp.ngss.MultiImageView;
 import com.example.zuwaapp.util.GlideLoadImage;
 import com.example.zuwaapp.util.ImageLoader;
 import com.google.gson.Gson;
@@ -58,7 +60,6 @@ import com.google.gson.reflect.TypeToken;
 import com.previewlibrary.GPreviewBuilder;
 import com.previewlibrary.ZoomMediaLoader;
 import com.previewlibrary.enitity.ThumbViewInfo;
-import com.yds.library.MultiImageView;
 
 import java.io.File;
 import java.io.IOException;
@@ -70,7 +71,7 @@ public class GlaceActivity extends AppCompatActivity {
     private OkHttpClient okHttpClient = new OkHttpClient();
     private ImageView headPhoto;
     private ArrayList<ThumbViewInfo> mThumbViewInfoList;
-    private ImageButton shouCan,glaceBack;
+    private Button shouCan,glaceBack;
     private MultiImageView multiImageView;
     private Button shop;
     private TextView tvUser, name, describe, price, RVprice,count;
@@ -87,11 +88,11 @@ public class GlaceActivity extends AppCompatActivity {
                     Collect collect0 = data0.getData();
                     if(collect0==null){
                         Log.e( "handleMessage: ", "没有数据");
-                        shouCan.setImageResource(R.drawable.shoucang);
+                       // shouCan.setImageResource(R.drawable.shoucang);
 
                     }else {
                         Log.e("collect.getId",collect0.getCollectId());
-                        shouCan.setImageResource(R.drawable.shoucang3);
+                        //shouCan.setImageResource(R.drawable.shoucang3);
                     }
                     break;
 
@@ -103,13 +104,13 @@ public class GlaceActivity extends AppCompatActivity {
                         //增加进去这条记录，并且将图标设为黑色
 //                        (new Method()).addCollect("12345678910",ID,handler);
                         (new Method()).addCollect(Constant.PHONENUMBER,ID,handler);
-                        shouCan.setImageResource(R.drawable.shoucang3);
+                       // shouCan.setImageResource(R.drawable.shoucang3);
                     }else {
                         Log.e("collect.getId",collect.getCollectId());
                         //删除这条记录，并且将图标设为透明
 //                        (new Method()).deleteCollect("12345678910",ID,handler);
                         (new Method()).addCollect(Constant.PHONENUMBER,ID,handler);
-                        shouCan.setImageResource(R.drawable.shoucang);
+                       // shouCan.setImageResource(R.drawable.shoucang);
                     }
                     break;
                 case FIND_USER_BY_PHONENUMBER:
@@ -118,7 +119,7 @@ public class GlaceActivity extends AppCompatActivity {
                     if (findUserByPhoneNumberResult.getCode()==200){
                         User user = findUserByPhoneNumberResult.getData();
                         tvUser.setText(findUserByPhoneNumberResult.getData().getUserName());
-                        String userPhoto = gson.fromJson(user.getUserPhoto(),new TypeToken<String>(){}.getType());
+                        String userPhoto = user.getUserPhoto();
                         if (userPhoto!=null){
                             String url = Constant.USER_PHOTO+user.getPhoneNumber()+"/"+userPhoto;
                             Log.e("tupianjiazai : ", url);
@@ -184,7 +185,7 @@ public class GlaceActivity extends AppCompatActivity {
                         }else {
                             shop.setText("我想要");
                         }
-                
+
                     }
                     break;
             }
@@ -207,8 +208,6 @@ public class GlaceActivity extends AppCompatActivity {
         RVprice = findViewById(R.id.tv_RVprice);
         count = findViewById(R.id.tv_count);
         ID = bundle.getString("id");
-//        new Method().findCollectToSetColor("12345678910",ID,handler);
-       // new Method().findCollectToSetColor(Constant.PHONENUMBER,ID,handler);
 
         (new Method()).findUserByPhoneNumber(bundle.getString("phone"),handler);
         Log.e("id",bundle.getString("id"));
@@ -239,16 +238,14 @@ public class GlaceActivity extends AppCompatActivity {
 //                if("12345678911".equals(bundle.getString("phone"))){
                     Toast.makeText(GlaceActivity.this, "不能租自己发布的东西哦", Toast.LENGTH_SHORT).show();
                 }else {
-                    //弹出支付页面
-                    Log.e("支付","待实现");
-                    //首先谈到付款页，然后点击付款将collect变为1，再写一个租借人的号码，然后根据租界人的号码和1查找
                     //携带物品信息，我的信息，跳转
-                    Intent intent1 = new Intent(GlaceActivity.this,RentGlaceActivity.class);
+                    Intent intent1 = new Intent(GlaceActivity.this, PayActivity.class);
                     //此phone是物品信息
-                    bundle.putString("phone",bundle.getString("phone"));
-                    bundle.putString("id",ID);
+                    Bundle bundle1 = new Bundle();
+                    bundle1.putString("phone",bundle.getString("phone"));
+                    bundle1.putString("id",bundle.getString("id"));
                     //我的信息根据电话号写
-                    intent1.putExtra("bundle",bundle);
+                    intent1.putExtra("bundle",bundle1);
                     startActivity(intent1);
 
                 }

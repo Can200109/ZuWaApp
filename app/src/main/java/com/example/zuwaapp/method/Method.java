@@ -8,6 +8,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.example.zuwaapp.Constant;
+import com.example.zuwaapp.entity.OrderType;
 import com.example.zuwaapp.entity.Product;
 import com.example.zuwaapp.entity.Collect;
 import com.example.zuwaapp.entity.Rent;
@@ -39,6 +40,7 @@ import static com.example.zuwaapp.Constant.FIND_PRODUCT_BY_PHONENUMBER;
 import static com.example.zuwaapp.Constant.FIND_USER_BY_PHONENUMBER;
 import static com.example.zuwaapp.Constant.LOGIN;
 import static com.example.zuwaapp.Constant.MODIFY;
+import static com.example.zuwaapp.Constant.ORDERTYPE_URL;
 import static com.example.zuwaapp.Constant.PRODUCT_URL;
 import static com.example.zuwaapp.Constant.RENT_URL;
 import static com.example.zuwaapp.Constant.USER_URL;
@@ -159,6 +161,7 @@ public class Method {
                 .add("phoneNumber",user.getPhoneNumber())//电话号码暂不可以修改，编辑页面电话号码弄成TextView
                 .add("userName",user.getUserName())
                 .add("userPassword", user.getUserPassword())
+                .add("userPhoto", user.getUserPhoto())
                 .build();
         Request request = new Request.Builder()
                 .url(USER_URL + "editUser")
@@ -299,16 +302,17 @@ public class Method {
         enqueue(call,Constant.FIND_RENT_BY_PHONENUMBER,handler);
     }
 
-    public void deleteRentByPhoneNumber(Rent rent,Handler handler){
+    public void deleteRent(Rent rent,Handler handler){
         FormBody formBody = new FormBody.Builder()
-                .add("phoneNumber",rent.getPhoneNumber())
+                .add("rentId",rent.getRentId())
                 .build();
         Request request = new Request.Builder()
-                .url(RENT_URL+"deleteRentByPhoneNumber")
+                .url(RENT_URL+"deleteRent")
                 .post(formBody)
                 .build();
         Call call = okHttpClient.newCall(request);
-        enqueue(call,Constant.DELETE_RENT_BY_PHONENUMBER,handler);
+        enqueue(call,Constant.DELETE_RENT,handler);
+
     }
 
     /**
@@ -382,6 +386,37 @@ public class Method {
                 .build();
         Call call = okHttpClient.newCall(request);
         enqueue(call,Constant.SET_COLOR,handler);
+    }
+
+    /**
+     * 订单状态相关方法
+     * **/
+    public void addOrder(OrderType orderType, Handler handler){
+        FormBody formBody = new FormBody.Builder()
+                .add("rentPhone",orderType.getRentPhone())
+                .add("type",orderType.getType())
+                .add("productId",orderType.getProductId())
+                .add("productPhone",orderType.getProductPhone())
+                .build();
+        Request request = new Request.Builder()
+                .url(ORDERTYPE_URL+"addOrder")
+                .post(formBody)
+                .build();
+        Call call = okHttpClient.newCall(request);
+        enqueue(call,Constant.ADD_ORDERTYPE,handler);
+    }
+
+    public void findOrder(OrderType orderType, Handler handler){
+        FormBody formBody = new FormBody.Builder()
+                .add("rentPhone",orderType.getRentPhone())
+                .add("type",orderType.getType())
+                .build();
+        Request request = new Request.Builder()
+                .url(ORDERTYPE_URL+"findOrder")
+                .post(formBody)
+                .build();
+        Call call = okHttpClient.newCall(request);
+        enqueue(call,Constant.FIND_ORDER,handler);
     }
 
     public void enqueue(Call call,int constant,Handler handler){

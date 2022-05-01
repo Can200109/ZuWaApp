@@ -36,7 +36,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * 我的发布页面
+ * 这个页面是远古版本的，如今已被弃用
+ * 代替者为MyRealse.Class
+ *
+ * **/
 public class FirstActivity extends AppCompatActivity {
     private Button MePushBack;
     private RentAdapter MePushAdapter;

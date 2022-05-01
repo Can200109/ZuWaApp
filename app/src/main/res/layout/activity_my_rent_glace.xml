@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/grey"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+        <Button
+            android:id="@+id/my_rent_glace_back"
+            android:layout_marginTop="13dp"
+            android:layout_width="21dp"
+            android:layout_height="18dp"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/leftblack">
+        </Button>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:textSize="20dp"
+            android:text="商品详情"
+            android:textColor="#000000"
+            android:background="#F5F5F5"
+            android:gravity="center"/>
+    </RelativeLayout>
+    <LinearLayout
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <Button
+            android:paddingLeft="10dp"
+            android:layout_marginLeft="5dp"
+            android:id="@+id/btn_my_rent_glace_search"
+            android:layout_width="0dp"
+            android:layout_weight="9"
+            android:layout_height="40dp"
+            android:background="@drawable/abc"
+            android:gravity="left"
+            android:hint="请输入商品名称" />
+        <Button
+            android:layout_marginLeft="15dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@mipmap/share"
+            android:id="@+id/btn_my_rent_glace_share">
+        </Button>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_marginTop="3dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <!--    用户头像与名称-->
+
+            <LinearLayout
+                android:background="@color/white"
+                android:paddingLeft="25dp"
+                android:paddingTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_weight="8"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+                    <com.example.zuwaapp.ngss.CircleImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:id="@+id/my_rent_glace_iv_headPhoto"
+                        android:src="@drawable/headphoto">
+                    </com.example.zuwaapp.ngss.CircleImageView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="5dp"
+                        android:paddingLeft="10dp"
+                        android:textSize="15dp"
+                        android:id="@+id/my_rent_glace_tv_user">
+                    </TextView>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_weight="2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+                    <Button
+                        android:layout_width="50dp"
+                        android:layout_height="30dp"
+                        android:textSize="10dp"
+                        android:text="踩一脚"
+                        android:background="@color/red"
+                        android:id="@+id/my_rent_glace_user_home">
+                    </Button>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:paddingTop="20dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="10dp"
+                android:background="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!--                金额和押金-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/red"
+                        android:textSize="20dp"
+                        android:id="@+id/my_rent_glace_tv_price">
+                    </TextView>
+                    <TextView
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:textSize="16dp"
+                        android:id="@+id/my_rent_glace_tv_RVprice">
+                    </TextView>
+                </LinearLayout>
+                <!--                次数-->
+                <TextView
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/my_rent_glace_tv_count">
+                </TextView>
+
+
+                <!--                名称-->
+                <TextView
+                    android:layout_marginTop="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/my_rent_glace_tv_name"
+                    android:layout_marginLeft="10dp"
+                    android:textStyle="bold"
+                    android:textSize="20dp">
+                </TextView>
+                <!--                描述-->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="15dp"
+                    android:id="@+id/my_rent_glace_tv_describe">
+                </TextView>
+
+                <!--                图片-->
+                <com.example.zuwaapp.ngss.MultiImageView
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/my_rent_glace_detail_multi"
+                    android:scaleType="centerInside"
+                    app:singleImgSize="350dp"
+                    app:imgGap="5dp"
+                    app:maxSize="3"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!--    最下方一行列表-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/grey"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/my_rent_glace_ib_shoucang"
+            android:drawableTop="@drawable/shoucang"
+            android:text="收藏"
+            android:textSize="10dp"
+            android:background="@color/grey"
+            >
+        </Button>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="200dp"
+            android:id="@+id/my_rent_glace_btn_back"
+            android:text="我要还"
+            ></Button>
+
+    </LinearLayout>
+
+
+</LinearLayout>

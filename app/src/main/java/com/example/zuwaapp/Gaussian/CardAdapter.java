@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.zuwaapp.Constant;
 import com.example.zuwaapp.R;
-import com.example.zuwaapp.activity.Glace2Activity;
 import com.example.zuwaapp.activity.GlaceActivity;
 import com.example.zuwaapp.entity.Product;
 import com.google.gson.Gson;

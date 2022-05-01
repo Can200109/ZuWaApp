@@ -98,15 +98,6 @@ public class ThirdFragment extends Fragment {
 
 
 
-
-
-    public static ThirdFragment getPlusFragment(){
-        if(pf == null){
-            pf = new ThirdFragment();
-        }
-        return pf;
-    }
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

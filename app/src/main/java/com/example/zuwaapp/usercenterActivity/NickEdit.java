@@ -52,6 +52,7 @@ public class NickEdit extends AppCompatActivity {
     private User user;
     private EditText userNick,userPassword;
     private Button button,nickReturn;
+    private String userPhoto;
 
     private List<Uri> uriList = new ArrayList<>();
     private OkHttpClient okHttpClient = new OkHttpClient();
@@ -69,6 +70,7 @@ public class NickEdit extends AppCompatActivity {
                         //Toast.makeText(getApplicationContext(),"查找成功",Toast.LENGTH_LONG).show();
                         userPassword.setText(user.getUserPassword());
                         userNick.setText(user.getUserName());
+                        userPhoto = user.getUserPhoto();
                     }
                     break;
                 case MODIFY:
@@ -78,7 +80,6 @@ public class NickEdit extends AppCompatActivity {
                          * Result<>类型都是此格式取用数据
                          *
                          * */
-
                         modifyResult.getData().getPhoneNumber();
                     }
                     break;
@@ -105,11 +106,12 @@ public class NickEdit extends AppCompatActivity {
                 String nick = userNick.getText().toString();
                 String password = userPassword.getText().toString();
 
-                User user1 = new User(nick, password, Constant.PHONENUMBER,user.getUserPhoto());
+
+                Log.e("头像",userPhoto);
+                User user1 = new User(nick, password, Constant.PHONENUMBER,userPhoto);
                 (new Method()).editUser(user1,handler);
                 Toast.makeText(NickEdit.this,"修改成功",Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(NickEdit.this, UserSetting.class);
-                startActivity(intent);
+                finish();
             }
         });
 

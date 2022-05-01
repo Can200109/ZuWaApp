@@ -1,236 +1,219 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="20dp"
-    android:background="@drawable/jianbian"
-    tools:context=".MainActivity">
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:textSize="20dp"
+            android:text="发布"
+            android:textColor="#000000"
+            android:background="#F5F5F5"
+            android:gravity="center"/>
+    </RelativeLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <RelativeLayout
-            android:layout_weight="5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:id="@+id/clear_photo"
-                android:textSize="20sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_alignParentLeft="true"
-                android:textColor="@color/red"
-                android:text="清除图片"/>
-            <TextView
-                android:id="@+id/add_photo"
-                android:textSize="20sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_alignParentRight="true"
-                android:textColor="#33CC33"
-                android:text="添加图片"/>
-        </RelativeLayout>
+        android:gravity="right"
+        android:paddingRight="20dp">
+        <Button
+            android:id="@+id/button"
+            android:layout_width="70dp"
+            android:layout_height="35dp"
+            android:textSize="10dp"
+            android:layout_gravity="center_horizontal"
+            android:text="发布租品"/>
     </LinearLayout>
+
+<!--    原先的布局，略改，略改-->
     <ScrollView
-        android:layout_weight="6"
         android:layout_width="match_parent"
-        android:layout_height="350dp">
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        android:padding="10dp">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-            <com.yds.library.MultiImageView
-                android:layout_margin="10dp"
+
+            <LinearLayout
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:orientation="vertical">
+                <EditText
+                    android:id="@+id/push_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:hint="写标题，能吸引更多人看哦"
+                    android:background="@null"
+                    android:gravity="top|left"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/grey">
+            </TextView>
+
+            <ScrollView
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="150dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:hint="添加正文"
+                        android:textSize="18sp"
+                        android:id="@+id/zhengwen"
+                        android:gravity="top|left"/>
+
+                </LinearLayout>
+            </ScrollView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/grey">
+            </TextView>
+            <LinearLayout
+                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/image_multi"
-                android:scaleType="centerInside"
-                app:singleImgSize="150dp"
-                app:imgGap="3dp"
-                app:maxSize="9"/>
+                android:orientation="vertical">
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/clear_photo"
+                        android:textSize="20sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentLeft="true"
+                        android:textColor="@color/red"
+                        android:text="清除图片"/>
+                    <TextView
+                        android:id="@+id/add_photo"
+                        android:textSize="20sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:textColor="#33CC33"
+                        android:text="添加图片"/>
+                </RelativeLayout>
+            </LinearLayout>
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="250dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <com.yds.library.MultiImageView
+                        android:layout_margin="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/image_multi"
+                        android:scaleType="centerInside"
+                        app:singleImgSize="150dp"
+                        app:imgGap="3dp"
+                        app:maxSize="9"/>
+
+                </LinearLayout>
+            </ScrollView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal"
+                >
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/pindao"
+                    android:layout_marginLeft="10dp"/>
+                <TextView
+                    android:layout_gravity="center"
+                    android:layout_width="80dp"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="10dp"
+                    android:text="分类选择"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"/>
+
+                <Spinner
+                    android:layout_width="200dp"
+                    android:layout_height="35dp"
+                    android:background="@color/seaBlue"
+                    android:layout_gravity="center"
+                    android:id="@+id/fenlei"
+                    android:entries="@array/spingarr"
+                    android:layout_marginLeft="10dp"/>
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_above="@+id/push_price"
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:text="价格："
+                    android:textSize="15dp">
+
+                </TextView>
+
+                <EditText
+                    android:layout_width="75dp"
+                    android:layout_height="50dp"
+                    android:hint="￥00.00"
+                    android:id="@+id/push_price"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="30dp"
+                    android:text="押金："
+                    android:textSize="15dp">
+
+                </TextView>
+
+                <EditText
+                    android:layout_width="75dp"
+                    android:layout_height="50dp"
+                    android:hint="￥00.00"
+                    android:id="@+id/push_RVprice"
+                    />
+
+            </LinearLayout>
 
         </LinearLayout>
     </ScrollView>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_weight="4">
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_above="@+id/push_title"
-        />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="vertical">
-        <EditText
-            android:id="@+id/push_title"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:hint="添加标题更容易出租出去哦"
-            android:gravity="top|left"/>
-
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_above="@+id/zhengwen"
-        />
-   <ScrollView
-       android:layout_width="match_parent"
-       android:layout_height="50dp">
-       <LinearLayout
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:orientation="vertical">
-           <EditText
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:hint="添加正文"
-               android:id="@+id/zhengwen"
-               android:gravity="top|left"/>
-
-       </LinearLayout>
-   </ScrollView>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_above="@+id/pindao"
-        />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:orientation="horizontal"
-        >
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="35dp"
-            android:layout_gravity="center"
-            android:background="@drawable/pindao"
-            android:layout_marginLeft="10dp"/>
-        <TextView
-            android:layout_gravity="center"
-            android:layout_width="80dp"
-            android:layout_height="25dp"
-            android:layout_marginLeft="10dp"
-            android:text="分类选择"
-            android:textColor="@color/black"
-            android:textStyle="bold"/>
-
-        <Spinner
-            android:layout_width="200dp"
-            android:layout_height="35dp"
-            android:background="#33CC33"
-            android:layout_gravity="center"
-            android:id="@+id/fenlei"
-            android:entries="@array/spingarr"
-            android:layout_marginLeft="10dp"/>
-
-
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_above="@+id/push_price"
-        />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:text="价格："
-            android:textSize="15dp">
-
-        </TextView>
-
-        <EditText
-            android:layout_width="75dp"
-            android:layout_height="50dp"
-            android:hint="￥00.00"
-            android:id="@+id/push_price"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_marginLeft="30dp"
-            android:text="押金："
-            android:textSize="15dp">
-
-        </TextView>
-
-        <EditText
-            android:layout_width="75dp"
-            android:layout_height="50dp"
-            android:hint="￥00.00"
-            android:id="@+id/push_RVprice"
-            />
-
-    </LinearLayout>
-
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_above="@+id/didian"
-        />
-
-<!--    <LinearLayout-->
-<!--        android:id="@+id/didian"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="60dp"-->
-<!--        android:orientation="horizontal">-->
-<!--        <ImageView-->
-<!--            android:layout_width="40dp"-->
-<!--            android:layout_height="35dp"-->
-<!--            android:layout_gravity="center"-->
-<!--            android:background="@drawable/ditu"-->
-<!--            android:layout_marginLeft="10dp"/>-->
-<!--        <TextView-->
-<!--            android:layout_gravity="center"-->
-<!--            android:layout_width="80dp"-->
-<!--            android:layout_height="25dp"-->
-<!--            android:layout_marginLeft="10dp"-->
-<!--            android:text="添加地点"-->
-<!--            android:textColor="@color/black"-->
-<!--            android:textStyle="bold"/>-->
-<!--        <Spinner-->
-<!--            android:layout_width="240dp"-->
-<!--            android:layout_height="35dp"-->
-<!--            android:layout_gravity="center"-->
-<!--            android:layout_marginLeft="10dp"/>-->
-
-
-
-<!--    </LinearLayout>-->
-<!--    <View-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="1dp"-->
-<!--        android:layout_above="@+id/didian"-->
-<!--        />-->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <Button
-            android:id="@+id/button"
-            android:layout_width="120dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="230dp"
-            android:text="发布租品"/>
-    </LinearLayout>
-    </LinearLayout>
-
-
 </LinearLayout>
 

@@ -18,6 +18,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.zuwaapp.CitySelect.CityPickerActivity;
+import com.example.zuwaapp.CitySelect.bean.LocateState;
 import com.example.zuwaapp.R;
 import com.example.zuwaapp.activity.GlaceActivity;
 import com.example.zuwaapp.activity.ResultActivity;
@@ -66,6 +68,10 @@ import static com.example.zuwaapp.Constant.FIND_ALL;
 
 
 public class FirstFragment extends Fragment {
+    private int locateState = LocateState.LOCATING;
+    private TextView btn;
+
+
     private final int REQUEST_CODE=1;
     private TextView btnSearch,btnCode;
     private EditText edtSearch;
@@ -270,8 +276,29 @@ public class FirstFragment extends Fragment {
             }
         });
 
+
+
+        //定位功能
+
+        btn=view.findViewById(R.id.btn);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent();
+                intent.setClass(getContext(), CityPickerActivity.class);
+                startActivityForResult(intent,100);
+                // getActivity().finish();
+                //   startActivity(new Intent(getActivity(), CityPickerActivity.class));
+            }
+
+        });
+
+
+
         return view;
     }
+
 
 
     //轮播图图片获取
@@ -378,6 +405,15 @@ public class FirstFragment extends Fragment {
 
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
+        //定位城市那个返回值
+        if(requestCode == 100){
+            if(requestCode==100){
+                String result=data.getStringExtra("name");
+                btn.setText(result);
+            }
+        }
+
         switch (requestCode) {
             case REQUEST_CODE: {
                 //处理扫描结果
@@ -399,6 +435,7 @@ public class FirstFragment extends Fragment {
                     }
                 }
             }
+
             break;
 
 

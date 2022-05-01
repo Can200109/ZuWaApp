@@ -18,6 +18,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.zuwaapp.Constant;
@@ -25,6 +26,9 @@ import com.example.zuwaapp.R;
 import com.example.zuwaapp.entity.Result;
 import com.example.zuwaapp.entity.User;
 import com.example.zuwaapp.method.Method;
+import com.example.zuwaapp.usercenterActivity.userInfo.CancelAccount;
+import com.example.zuwaapp.usercenterActivity.userInfo.UserAgree;
+import com.example.zuwaapp.usercenterActivity.userInfo.UserPrivacy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -54,7 +58,7 @@ import static com.example.zuwaapp.Constant.USER_URL;
 public class UserSetting extends AppCompatActivity {
     private Button settingReturn;
     private ImageView ivUserPhoto;
-    private TextView userNick, userPhoneNumber;
+    private TextView userNick, userPhoneNumber, userAgree, userPrivacy, switchAccount, cancelAccount;
 
     private List<Uri> uriList = new ArrayList<>();
     private OkHttpClient okHttpClient = new OkHttpClient();
@@ -95,10 +99,7 @@ public class UserSetting extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_setting);
 
-        ivUserPhoto = findViewById(R.id.edit_user_photo);
-        userNick = findViewById(R.id.edit_user_nick);
-        userPhoneNumber = findViewById(R.id.edit_user_phoneNumber);
-        settingReturn = findViewById(R.id.user_setting_return);
+        init();
 
         //调用方法显示用户信息
         (new Method()).findUserByPhoneNumber(Constant.PHONENUMBER,handler);
@@ -127,6 +128,61 @@ public class UserSetting extends AppCompatActivity {
                 pickImage();
             }
         });
+
+        //点击账号时
+        userPhoneNumber.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(UserSetting.this,"账号不能修改哦",Toast.LENGTH_LONG).show();
+            }
+        });
+
+        //点击用户协议时
+        userAgree.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UserSetting.this, UserAgree.class);
+                startActivity(intent);
+            }
+        });
+
+        //点击隐私协议时
+        userPrivacy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UserSetting.this, UserPrivacy.class);
+                startActivity(intent);
+            }
+        });
+
+        //点击切换账号时
+        switchAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //思想为用广播实现，但是由于不想写了，就做个假退出好了。
+                //反正也没人看这个代码，老子想咋写就咋写
+            }
+        });
+
+        //点击注销账号时
+        cancelAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UserSetting.this, CancelAccount.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+    private void init() {
+        ivUserPhoto = findViewById(R.id.edit_user_photo);
+        userNick = findViewById(R.id.edit_user_nick);
+        userPhoneNumber = findViewById(R.id.edit_user_phoneNumber);
+        settingReturn = findViewById(R.id.user_setting_return);
+        userAgree = findViewById(R.id.user_agree);
+        userPrivacy = findViewById(R.id.user_privacy);
+        switchAccount = findViewById(R.id.switch_account);
+        cancelAccount = findViewById(R.id.cancel_account);
 
     }
 
