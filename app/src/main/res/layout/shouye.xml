@@ -1,234 +1,286 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     android:orientation="vertical">
 
 
-<!--        zheli-->
+    <!--        zheli-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="95dp"
+        android:background="@mipmap/mypurple"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-<!--            搜索栏-->
-            <LinearLayout
+            android:layout_height="40dp">
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="40dp">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:text="租蛙"
-                    android:textSize="20dp"
-                    android:textColor="#000000"
-                    android:background="#F5F5F5"
-                    android:gravity="center"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:orientation="horizontal"
-                android:background="@color/purple_200"
-                android:padding="10dp">
-                <Button
-                    android:id="@+id/btn"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:text="全国▼"
-                    android:paddingRight="-1dp"
-                    android:layout_weight="1"
-                    android:textColor="#ffffffff"
-                    android:background="@null"
-                    android:backgroundTint="@color/purple_200"
-                    />
-
-                <RelativeLayout
-                    android:layout_width="280dp"
-                    android:layout_height="40dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/btn_search"
-                        android:layout_width="280dp"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/abc"
-                        android:hint="         请输入商品名称" />
-                    <Button
-                        android:id="@+id/btn_code"
-                        android:layout_width="23dp"
-                        android:layout_height="20dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:background="@drawable/code">
-                    </Button>
-
-                    <Button
-                        android:layout_width="60dp"
-                        android:layout_height="36dp"
-                        android:layout_marginTop="2dp"
-                        android:background="@drawable/button"
-                        android:layout_marginLeft="218dp"
-                        android:text="搜索">
-                    </Button>
-
-                </RelativeLayout>
-            </LinearLayout>
+                android:layout_height="40dp"
+                android:text="租蛙"
+                android:textSize="20dp"
+                android:textColor="@color/white"
+                android:gravity="center"/>
         </LinearLayout>
-    <com.example.zuwaapp.ngss.ScrollInterceptScrollView
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:paddingTop="10dp">
+            <Button
+                android:id="@+id/btn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="全国▼"
+                android:paddingRight="-1dp"
+                android:layout_weight="1"
+                android:textColor="#ffffffff"
+                android:background="@null"
+                android:backgroundTint="@color/purple_200"
+                />
+
+            <RelativeLayout
+                android:layout_width="280dp"
+                android:layout_height="40dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/btn_search"
+                    android:layout_width="280dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/abc"
+                    android:hint="         请输入商品名称" />
+                <Button
+                    android:id="@+id/btn_code"
+                    android:layout_width="23dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/code">
+                </Button>
+
+                <Button
+                    android:layout_width="60dp"
+                    android:layout_height="36dp"
+                    android:layout_marginTop="2dp"
+                    android:background="@drawable/button"
+                    android:layout_marginLeft="218dp"
+                    android:text="搜索">
+                </Button>
+
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        >
-        <LinearLayout
+        android:id="@+id/srl">
+        <pl.droidsonroids.gif.GifImageView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/grey"
-            android:orientation="vertical">
-            <!--轮播图-->
-            <LinearLayout android:layout_height="wrap_content"
-                android:layout_width="match_parent"
-                android:orientation="vertical">
+            android:layout_height="120dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/header"/>
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="180dp">
+        <com.example.zuwaapp.ngss.ScrollInterceptScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/home_bacg"
+                android:orientation="vertical">
+                <!--轮播图-->
+                <LinearLayout android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:orientation="vertical">
                     <FrameLayout
                         android:layout_width="match_parent"
-                        android:layout_height="230dip">
+                        android:layout_height="150dip">
                         <androidx.viewpager.widget.ViewPager
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:id="@+id/viewpager"/>
                     </FrameLayout>
-                </RelativeLayout>
+                </LinearLayout>
 
-            </LinearLayout>
+                <!--  zheli      -->
 
-            <!--  zheli      -->
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="140dp"
-                android:layout_marginTop="10dp"
-                android:paddingTop="10dp"
-                android:background="@color/white"
-                android:orientation="vertical">
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="70dp">
-                    <Button
-                        android:id="@+id/btn_clothes"
-                        android:layout_width="72dp"
-                        android:layout_height="55dp"
-                        android:layout_weight="1"
-                        android:background="@null"
-                        android:text="节日礼服"
-                        android:drawableTop="@drawable/clothes"
-                        />
-                    <Button
-                        android:id="@+id/btn_computer"
-                        android:layout_width="72dp"
-                        android:layout_height="55dp"
-                        android:layout_weight="1"
-                        android:background="@null"
-                        android:text="电脑设备"
-                        android:drawableTop="@drawable/computer"
-                        />
-                    <Button
-                        android:id="@+id/btn_photo"
-                        android:layout_width="72dp"
-                        android:layout_height="55dp"
-                        android:layout_weight="1"
-                        android:background="@null"
-                        android:text="唯美相机"
-                        android:drawableTop="@drawable/photo"
-                        />
-                    <Button
-                        android:id="@+id/btn_phone"
-                        android:layout_width="72dp"
-                        android:layout_height="55dp"
-                        android:layout_weight="1"
-                        android:background="@null"
-                        android:text="精品手机"
-                        android:drawableTop="@drawable/phone"
-                        />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="70dp">
-                    <Button
-                        android:id="@+id/btn_vr"
-                        android:layout_width="72dp"
-                        android:layout_height="55dp"
-                        android:layout_weight="1"
-                        android:background="@null"
-                        android:text="体感VR"
-                        android:drawableTop="@drawable/vr"
-                        />
-                    <Button
-                        android:id="@+id/btn_desk"
-                        android:layout_width="72dp"
-                        android:layout_height="55dp"
-                        android:layout_weight="1"
-                        android:background="@null"
-                        android:text="聚会用品"
-                        android:drawableTop="@drawable/desk"
-                        />
-                    <Button
-                        android:id="@+id/btn_sport"
-                        android:layout_width="72dp"
-                        android:layout_height="55dp"
-                        android:layout_weight="1"
-                        android:background="@null"
-                        android:text="运动健身"
-                        android:drawableTop="@drawable/sport"
-                        />
-                    <Button
-                        android:id="@+id/btn_more"
-                        android:layout_width="72dp"
-                        android:layout_height="55dp"
-                        android:layout_weight="1"
-                        android:background="@null"
-                        android:text="更多分类"
-                        android:drawableTop="@drawable/more"
-                        />
-                </LinearLayout>
-            </LinearLayout>
-
-            <!--    猜你喜欢-->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="10dp"
-                android:background="@color/white">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="*猜你喜欢"
-
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginBottom="5dp"
-                    android:textSize="15sp">
-
-                </TextView>
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:descendantFocusability="blocksDescendants">
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginTop="10dp"
-                        android:id="@+id/listRecommend"
+                    android:layout_height="150dp"
+                    android:paddingTop="25dp"
+                    android:orientation="vertical">
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
-                </RelativeLayout>
+                        android:layout_height="70dp">
+                        <Button
+                            android:id="@+id/btn_clothes"
+                            android:layout_width="72dp"
+                            android:layout_height="55dp"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            android:textSize="13dp"
+                            android:text="节日礼服"
+                            android:drawableTop="@mipmap/btn_clothes"
+                            />
+                        <Button
+                            android:id="@+id/btn_ear"
+                            android:layout_width="72dp"
+                            android:layout_height="55dp"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            android:textSize="13dp"
+                            android:text="耳机乐器"
+                            android:drawableTop="@mipmap/ear"
+                            />
+                        <Button
+                            android:id="@+id/btn_computer"
+                            android:layout_width="72dp"
+                            android:layout_height="55dp"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            android:textSize="13dp"
+                            android:text="电脑设备"
+                            android:drawableTop="@drawable/computer"
+                            />
+                        <Button
+                            android:id="@+id/btn_photo"
+                            android:layout_width="72dp"
+                            android:layout_height="55dp"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            android:textSize="13dp"
+                            android:text="唯美相机"
+                            android:drawableTop="@drawable/photo"
+                            />
+                        <Button
+                            android:id="@+id/btn_phone"
+                            android:layout_width="72dp"
+                            android:layout_height="55dp"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            android:textSize="13dp"
+                            android:text="精品手机"
+                            android:drawableTop="@drawable/phone"
+                            />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp">
+                        <Button
+                            android:id="@+id/btn_vr"
+                            android:layout_width="72dp"
+                            android:layout_height="55dp"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            android:textSize="13dp"
+                            android:text="体感VR"
+                            android:drawableTop="@drawable/vr"
+                            />
+                        <Button
+                            android:id="@+id/btn_watch"
+                            android:layout_width="72dp"
+                            android:layout_height="55dp"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            android:textSize="13dp"
+                            android:text="手表饰品"
+                            android:drawableTop="@mipmap/watch"
+                            />
+                        <Button
+                            android:id="@+id/btn_desk"
+                            android:layout_width="72dp"
+                            android:layout_height="55dp"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            android:textSize="13dp"
+                            android:text="聚会用品"
+                            android:drawableTop="@drawable/desk"
+                            />
+                        <Button
+                            android:id="@+id/btn_sport"
+                            android:layout_width="72dp"
+                            android:layout_height="55dp"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            android:textSize="13dp"
+                            android:text="运动健身"
+                            android:drawableTop="@drawable/sport"
+                            />
+                        <Button
+                            android:id="@+id/btn_more"
+                            android:layout_width="72dp"
+                            android:layout_height="55dp"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            android:textSize="13dp"
+                            android:text="更多分类"
+                            android:drawableTop="@drawable/more"
+                            />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!--    猜你喜欢-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingTop="10dp">
+                   <LinearLayout
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:orientation="horizontal"
+                       android:paddingTop="25dp"
+                       android:paddingLeft="12dp"
+                       android:gravity="left">
+
+                       <ImageView
+                           android:paddingTop="3dp"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:src="@mipmap/guess"
+                           android:paddingLeft="3dp">
+                       </ImageView>
+
+                       <TextView
+                           android:paddingLeft="3dp"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:textSize="18dp"
+                           android:textColor="@color/black"
+                           android:textStyle="bold"
+                           android:text="猜你喜欢">
+                       </TextView>
+                       <ImageView
+                           android:paddingTop="3dp"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:src="@mipmap/guess"
+                           android:paddingLeft="3dp">
+                       </ImageView>
+                   </LinearLayout>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:descendantFocusability="blocksDescendants">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="10dp"
+                            android:id="@+id/listRecommend"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+                    </RelativeLayout>
+                </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
-    </com.example.zuwaapp.ngss.ScrollInterceptScrollView>
+        </com.example.zuwaapp.ngss.ScrollInterceptScrollView>
+
+
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
 </LinearLayout>

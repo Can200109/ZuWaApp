@@ -108,6 +108,14 @@ public class TwoRow extends AppCompatActivity {
             twoRowType1.setText("爆款机型");
             twoRowType2.setText("热租机型");
         }
+        else if ("耳机乐器".equals(bundle.getString("text"))){
+            twoRowType1.setText("低音降噪");
+            twoRowType2.setText("3D环绕");
+        }
+        else if ("手表饰品".equals(bundle.getString("text"))){
+            twoRowType1.setText("真卡西欧");
+            twoRowType2.setText("劳力士水鬼");
+        }
         else if ("体感VR".equals(bundle.getString("text"))){
             twoRowType1.setText("3D全景");
             twoRowType2.setText("模拟人生");

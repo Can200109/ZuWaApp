@@ -6,31 +6,37 @@
     android:orientation="vertical">
 
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="40dp">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:textSize="20dp"
-            android:text="发布"
-            android:textColor="#000000"
-            android:background="#F5F5F5"
-            android:gravity="center"/>
-    </RelativeLayout>
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="right"
-        android:paddingRight="20dp">
-        <Button
-            android:id="@+id/button"
-            android:layout_width="70dp"
-            android:layout_height="35dp"
-            android:textSize="10dp"
-            android:layout_gravity="center_horizontal"
-            android:text="发布租品"/>
+        android:layout_height="90dp"
+        android:orientation="vertical"
+        android:background="@mipmap/mypurple">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:textSize="20dp"
+                android:text="发布"
+                android:textColor="@color/white"
+                android:gravity="center"/>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:paddingRight="20dp">
+            <Button
+                android:id="@+id/button"
+                android:layout_width="70dp"
+                android:layout_height="35dp"
+                android:textSize="10dp"
+                android:background="@drawable/shape"
+                android:layout_gravity="center_horizontal"
+                android:text="发布租品"/>
+        </LinearLayout>
     </LinearLayout>
 
 <!--    原先的布局，略改，略改-->
@@ -38,6 +44,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scrollbars="none"
+        android:background="@mipmap/home_bacg"
         android:padding="10dp">
         <LinearLayout
             android:layout_width="match_parent"

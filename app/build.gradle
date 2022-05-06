@@ -6,6 +6,7 @@ apply plugin: 'com.mob.sdk'
 android {
     compileSdk 30
     buildToolsVersion "30.0.0"
+    
 
     defaultConfig {
         applicationId "com.example.zuwaapp"
@@ -14,6 +15,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
 
         //推送设置
         ndk {
@@ -133,6 +135,7 @@ dependencies {
 
 
 
+
     // compile files('libs/AMap_Location_V3.0.0_20160922.jar')
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     // implementation 'com.android.support:appcompat-v7:26.1.0'
@@ -143,5 +146,9 @@ dependencies {
     implementation 'org.jetbrains:annotations:15.0'
     //高德地图定位
     compile 'com.amap.api:location:latest.integration'
+
+    //刷新  动态gif
+    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.3'
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-12'
 
 }

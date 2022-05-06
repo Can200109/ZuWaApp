@@ -8,6 +8,7 @@ import androidx.core.app.ActivityCompat;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -26,6 +27,7 @@ import com.example.zuwaapp.R;
 import com.example.zuwaapp.entity.Result;
 import com.example.zuwaapp.entity.User;
 import com.example.zuwaapp.method.Method;
+import com.example.zuwaapp.sqlite.MyDatabaseHelper;
 import com.example.zuwaapp.usercenterActivity.userInfo.CancelAccount;
 import com.example.zuwaapp.usercenterActivity.userInfo.UserAgree;
 import com.example.zuwaapp.usercenterActivity.userInfo.UserPrivacy;
@@ -56,6 +58,10 @@ import static com.example.zuwaapp.Constant.USER_URL;
  * 这是用户设置界面，后期还要添加用户协议，注销账号等功能
  * **/
 public class UserSetting extends AppCompatActivity {
+
+    private SQLiteDatabase db;
+    private MyDatabaseHelper dbHelper;
+
     private Button settingReturn;
     private ImageView ivUserPhoto;
     private TextView userNick, userPhoneNumber, userAgree, userPrivacy, switchAccount, cancelAccount;
@@ -159,8 +165,10 @@ public class UserSetting extends AppCompatActivity {
         switchAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //思想为用广播实现，但是由于不想写了，就做个假退出好了。
-                //反正也没人看这个代码，老子想咋写就咋写
+                //删掉本地存储的账号信息
+                deleteData(Constant.PHONENUMBER);
+                //一个提示框
+                Toast.makeText(UserSetting.this,"铁子，你好不容易登上来，我能让你退出？ 你想桃子，啊哈哈哈",Toast.LENGTH_LONG).show();
             }
         });
 
@@ -260,5 +268,16 @@ public class UserSetting extends AppCompatActivity {
             }
         }
         return urlList;
+    }
+
+    public int deleteData(String a){
+
+        dbHelper = new MyDatabaseHelper(this,"user_state_table",null,1);
+        db = dbHelper.getWritableDatabase();
+
+        String[] whereValue = new String[]{a};
+        Log.e("手机号",a);
+        int n = db.delete("user_state_table","userPhone=?",whereValue);
+        return n;
     }
 }

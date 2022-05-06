@@ -1,8 +1,12 @@
 package com.example.zuwaapp;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 public class Constant {
-//    public static final String IP = "10.7.88.152";
-    public static final String IP = "192.168.31.22";
+    public static final String IP = "10.7.88.152";
+//    public static final String IP = "192.168.31.22";
     public static final String USER_URL ="http://"+IP+":8080/zuwa/user/";
     public static final String PRODUCT_URL ="http://"+IP+":8080/zuwa/product/";
     public static final String COLLECT_URL ="http://"+IP+":8080/zuwa/collect/";
@@ -34,7 +38,11 @@ public class Constant {
     public static final int ADD_ORDERTYPE = 21;
     public static final int FIND_ORDER = 22;
 
+    public static final int REFRESH = 23;
+    public static final int LOAD_MORE = 24;
 
+
+    // 没有加final？？？？？
     public static String PHONENUMBER = "16631168888";
 //    public static String PHONENUMBER = "15128895429";
 
@@ -43,5 +51,21 @@ public class Constant {
         Constant.PHONENUMBER = PHONENUMBER;
     }
 
+
+    //这里，emmm，只可意会不可言传。啊哈哈哈
+    public static List getRandomThreeInfoList(List list, int count) {
+        List olist = new ArrayList<>();
+        if (list.size() <= count) {
+            return list;
+        } else {
+            Random random = new Random();
+            for (int i = 0 ;i<count;i++){
+                int intRandom = random.nextInt(list.size() - 1);
+                olist.add(list.get(intRandom));
+                list.remove(list.get(intRandom));
+            }
+            return olist;
+        }
+    }
 
 }

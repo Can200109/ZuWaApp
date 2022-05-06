@@ -122,17 +122,22 @@ public class ThirdFragment extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String title1 = Title.getText().toString();
-                String describe1 = describe.getText().toString();
-                String price1 =  price.getText().toString();
-                Double price2 = Double.parseDouble(price1);
-                String RVprice1 = RvPrice.getText().toString();
-                Double RVprice2 = Double.parseDouble(RVprice1);
+                if(Title.getText().toString()==null||"".equals(Title.getText().toString())||describe.getText().toString() == null||"".equals(describe.getText().toString()) ||price.getText().toString() == null ||"".equals(price.getText().toString())|| RvPrice.getText().toString() ==null||"".equals(RvPrice.getText().toString())){
+                    Toast.makeText(getContext(),"*.* 请确认所有项都已经填过了 *.*",Toast.LENGTH_LONG).show();
+                }else {
+                    String title1 = Title.getText().toString();
+                    String describe1 = describe.getText().toString();
+                    String price1 =  price.getText().toString();
+                    Double price2 = Double.parseDouble(price1);
+                    String RVprice1 = RvPrice.getText().toString();
+                    Double RVprice2 = Double.parseDouble(RVprice1);
 
 
 //                Product product = new Product(title1,describe1,price2,RVprice2,type, "12345678910");
-                Product product = new Product(title1,describe1,price2,RVprice2,type, PHONENUMBER);
-                (new Method()).addProduct(product,handler);
+                    Product product = new Product(title1,describe1,price2,RVprice2,type, PHONENUMBER);
+                    (new Method()).addProduct(product,handler);
+                }
+
 
 
 

@@ -3,9 +3,11 @@ package com.example.zuwaapp;
 import static com.example.zuwaapp.Constant.LOGIN;
 
 import android.content.BroadcastReceiver;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -23,7 +25,12 @@ import android.widget.Toast;
 
 import com.example.zuwaapp.ZWpush.ExampleUtil;
 import com.example.zuwaapp.activity.TransferActivity;
+import com.example.zuwaapp.entity.Result;
 import com.example.zuwaapp.method.Method;
+import com.example.zuwaapp.sqlite.MyDatabaseHelper;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 import com.mob.MobSDK;
 
 import androidx.annotation.NonNull;
@@ -41,6 +48,10 @@ import cn.smssdk.SMSSDK;
  */
 
 public class VerifyActivity extends AppCompatActivity implements View.OnClickListener{
+
+    private SQLiteDatabase db;
+    private MyDatabaseHelper dbHelper;
+
 
     public static boolean isForeground = false;
 
@@ -64,10 +75,13 @@ public class VerifyActivity extends AppCompatActivity implements View.OnClickLis
 
     //倒计时显示   可以手动更改。
     int i = 60;
+    private Gson gson = new GsonBuilder()
+            .serializeNulls()
+            .create();
     private Handler handler0 = new Handler(Looper.myLooper()) {
         @Override
-        public void handleMessage(@NonNull Message msg) {
-            switch (msg.what) {
+        public void handleMessage(@NonNull Message msg1) {
+            switch (msg1.what) {
                 case LOGIN:
                     /*****************************************************
                      * 验证码登录时，
@@ -77,8 +91,8 @@ public class VerifyActivity extends AppCompatActivity implements View.OnClickLis
                      * 由于在普通类中不存在getApplicationContext（）所以先把方法注释掉，如有需要请自行取用。
                      * *************************************************/
 //                    Toast.makeText(getApplicationContext(), msg.obj.toString(),Toast.LENGTH_LONG).show();
-                    Log.e("消息",msg.obj.toString());
-                    if("登录成功".equals(msg.obj.toString())){
+                    Log.e("消息",msg1.obj.toString());
+                    if("登录成功".equals(msg1.obj.toString())){
                         Intent intent = new Intent(VerifyActivity.this,
                                 ResultActivity.class);
                         startActivity(intent);
@@ -88,6 +102,7 @@ public class VerifyActivity extends AppCompatActivity implements View.OnClickLis
                                 TransferActivity.class);
                         startActivity(intent);
                     }
+
                     break;
             }
         }
@@ -96,7 +111,6 @@ public class VerifyActivity extends AppCompatActivity implements View.OnClickLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_verify);
-
 
         //初始化推送控件（登录框）
         JPushInterface.init(getApplicationContext());//极光接口初始化，否则用不了
@@ -108,12 +122,6 @@ public class VerifyActivity extends AppCompatActivity implements View.OnClickLis
         requestCodeBtn.setEnabled(false);
         commitBtn.setEnabled(false);
 
-        ivBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
     }
 
     /**
@@ -124,7 +132,6 @@ public class VerifyActivity extends AppCompatActivity implements View.OnClickLis
         inputCodeEt = (EditText) findViewById(R.id.login_input_code_et);
         requestCodeBtn = (TextView) findViewById(R.id.login_request_code_btn);
         commitBtn = (TextView) findViewById(R.id.login_commit_btn);
-        ivBack = findViewById(R.id.ivBack);
         requestCodeBtn.setOnClickListener(this);
         commitBtn.setOnClickListener(this);
 
@@ -169,7 +176,7 @@ public class VerifyActivity extends AppCompatActivity implements View.OnClickLis
         EventHandler eventHandler = new EventHandler(){
             @Override
             public void afterEvent(int event, int result, Object data) {
-                Log.e("data","data"+data);
+                Log.e("验证sdk","data"+data);
                 Message msg = new Message();
                 msg.arg1 = event;
                 msg.arg2 = result;
@@ -240,10 +247,14 @@ public class VerifyActivity extends AppCompatActivity implements View.OnClickLis
                 Log.e("event", "event=" + event);
                 if (result == SMSSDK.RESULT_COMPLETE) {
                     // 短信注册成功后，返回MainActivity,然后提示
-                    if (event == SMSSDK.EVENT_SUBMIT_VERIFICATION_CODE) {// 提交验证码成功
+                    if (event == SMSSDK.EVENT_SUBMIT_VERIFICATION_CODE) {  // 提交验证码成功
                         Toast.makeText(getApplicationContext(), "提交验证码成功",
                                 Toast.LENGTH_SHORT).show();
+                        //改变final修饰的引用数据类型的值(地址不能改，但是值可以改，这里圈起来，面试会问的)
                         Constant.setPHONENUMBER(inputPhoneEt.getText().toString().trim());
+
+                        //调用后台登录方法前，先给这小子存个本地
+                        insertData(Constant.PHONENUMBER,"1");
                         (new Method()).login(Constant.PHONENUMBER,handler0);
 
 
@@ -359,6 +370,33 @@ public class VerifyActivity extends AppCompatActivity implements View.OnClickLis
                 }
             } catch (Exception e){
             }
+        }
+    }
+
+
+    /**
+     * 这里是登录时，
+     * 把账号存本地，就可以很丝滑的一直用了
+     * **/
+    private void insertData(String userPhone,String userState) {
+        //获取要插入的数据
+        //构造ContentValues对象并封装数据
+
+        dbHelper = new MyDatabaseHelper(this,"user_state_table",null,1);
+        db = dbHelper.getWritableDatabase();
+
+        ContentValues cv = new ContentValues();
+        cv.put("userPhone", userPhone);
+        cv.put("userState", userState);
+        Log.e("插入方法",userPhone +"   "+userState);
+        //执行插入
+        long dataId = db.insert("user_state_table", null, cv);
+        if(dataId > 0){
+            Toast.makeText(
+                    getApplicationContext(),
+                    "插入数据成功",
+                    Toast.LENGTH_SHORT
+            ).show();
         }
     }
 

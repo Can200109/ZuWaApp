@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@mipmap/home_bacg"
     android:orientation="vertical">
 
 
@@ -19,7 +20,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/grey"
                 android:orientation="vertical">
 
                 <!--    这个list没什么用，但是不加，瀑布流只会显示最后一个。我也没搞清楚为什么-->

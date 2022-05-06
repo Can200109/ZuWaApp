@@ -161,7 +161,6 @@ public class Method {
                 .add("phoneNumber",user.getPhoneNumber())//电话号码暂不可以修改，编辑页面电话号码弄成TextView
                 .add("userName",user.getUserName())
                 .add("userPassword", user.getUserPassword())
-                .add("userPhoto", user.getUserPhoto())
                 .build();
         Request request = new Request.Builder()
                 .url(USER_URL + "editUser")
@@ -170,7 +169,22 @@ public class Method {
         Call call = okHttpClient.newCall(request);
        enqueue(call,MODIFY,handler);
         Log.e("okhttp","异步请求已发送" );
+    }
 
+    public void editUser2(@NonNull User user, Handler handler){
+        FormBody formBody = new FormBody.Builder()
+                .add("phoneNumber",user.getPhoneNumber())//电话号码暂不可以修改，编辑页面电话号码弄成TextView
+                .add("userName",user.getUserName())
+                .add("userPassword", user.getUserPassword())
+                .add("userPhoto",user.getUserPhoto())
+                .build();
+        Request request = new Request.Builder()
+                .url(USER_URL + "editUser")
+                .post(formBody)//设置请求方式为post请求
+                .build();
+        Call call = okHttpClient.newCall(request);
+        enqueue(call,MODIFY,handler);
+        Log.e("okhttp","异步请求已发送" );
     }
     public void deleteUser(String phoneNumber,Handler handler){
         FormBody formBody = new FormBody.Builder()
@@ -351,9 +365,9 @@ public class Method {
      * 返回的是JSON格式的Collect数组
      * 根据之前的查找进行解析
      * */
-    public void findCollectByPhoneNumber(String phoneNumber,Handler handler){
+    public void findCollectByPhoneNumber(Collect collect,Handler handler){
         FormBody formBody = new FormBody.Builder()
-                .add("phoneNumber",phoneNumber)
+                .add("phoneNumber",collect.getPhoneNumber())
                 .build();
         Request request = new Request.Builder()
                 .url(COLLECT_URL+"findCollectByPhoneNumber")

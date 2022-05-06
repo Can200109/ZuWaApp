@@ -6,55 +6,59 @@
     android:background="@color/grey"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <RelativeLayout
-        android:background="@color/white"
-        android:layout_width="match_parent"
-        android:layout_height="40dp">
-        <Button
-            android:id="@+id/glace_back"
-            android:layout_marginTop="13dp"
-            android:layout_width="21dp"
-            android:layout_height="18dp"
-            android:layout_marginLeft="20dp"
-            android:background="@drawable/leftblack">
-        </Button>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:textSize="20dp"
-            android:text="商品详情"
-            android:textColor="#000000"
-            android:background="#F5F5F5"
-            android:gravity="center"/>
-    </RelativeLayout>
     <LinearLayout
-        android:background="@color/white"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="horizontal"
-        android:padding="5dp">
+        android:layout_height="90dp"
+        android:orientation="vertical"
+        android:background="@mipmap/glaceheader">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+            <Button
+                android:id="@+id/glace_back"
+                android:layout_marginTop="13dp"
+                android:layout_width="21dp"
+                android:layout_height="18dp"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/leftblack">
+            </Button>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:textSize="20dp"
+                android:text="商品详情"
+                android:textColor="#000000"
+                android:gravity="center"/>
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:padding="5dp">
 
-        <Button
-            android:paddingLeft="10dp"
-            android:layout_marginLeft="5dp"
-            android:id="@+id/btn_search0"
-            android:layout_width="0dp"
-            android:layout_weight="9"
-            android:layout_height="40dp"
-            android:background="@drawable/abc"
-            android:gravity="left"
-            android:hint="请输入商品名称" />
-        <Button
-            android:layout_marginLeft="15dp"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:background="@mipmap/share"
-            android:id="@+id/glace_share">
-        </Button>
+            <Button
+                android:paddingLeft="10dp"
+                android:layout_marginLeft="5dp"
+                android:id="@+id/btn_glace_search"
+                android:layout_width="0dp"
+                android:layout_weight="9"
+                android:layout_height="40dp"
+                android:background="@drawable/abc"
+                android:gravity="left"
+                android:hint="请输入商品名称" />
+            <Button
+                android:layout_marginLeft="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:background="@mipmap/share"
+                android:id="@+id/glace_share">
+            </Button>
+        </LinearLayout>
     </LinearLayout>
 
     <ScrollView
+        android:background="@mipmap/glace_bag"
         android:layout_marginTop="3dp"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -62,11 +66,11 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+
             android:orientation="vertical">
             <!--    用户头像与名称-->
 
             <LinearLayout
-                android:background="@color/white"
                 android:paddingLeft="25dp"
                 android:paddingTop="10dp"
                 android:layout_width="match_parent"
@@ -116,7 +120,6 @@
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:paddingBottom="10dp"
-                android:background="@color/white"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
@@ -189,29 +192,53 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
+                android:layout_marginTop="30dp"
                 android:orientation="vertical">
 <!--                猜你喜欢-->
-                <TextView
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textStyle="bold"
-                    android:text="猜你喜欢"
-                    android:textSize="20dp"
-                    android:gravity="center_horizontal">
-                </TextView>
+                    android:orientation="horizontal"
+                    android:paddingTop="25dp"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:paddingTop="3dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/guess"
+                        android:paddingLeft="3dp">
+                    </ImageView>
+
+                    <TextView
+                        android:paddingLeft="3dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="18dp"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:text="猜你喜欢">
+                    </TextView>
+                    <ImageView
+                        android:paddingTop="3dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/guess"
+                        android:paddingLeft="3dp">
+                    </ImageView>
+                </LinearLayout>
 
 <!--                推荐列表(瀑布流)-->
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:descendantFocusability="blocksDescendants">
+                    android:layout_height="wrap_content">
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:layout_marginLeft="5dp"
                         android:layout_marginTop="10dp"
                         android:id="@+id/glace_listRecommend"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
+                        android:layout_height="wrap_content" />
                 </RelativeLayout>
             </LinearLayout>
         </LinearLayout>
@@ -222,22 +249,22 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="@color/grey"
+        android:background="@mipmap/glacebooter"
         android:gravity="center"
         android:orientation="horizontal">
 
-        <Button
+        <ImageView
             android:layout_marginTop="3dp"
             android:layout_marginBottom="3dp"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:id="@+id/ib_shoucang"
-            android:drawableTop="@drawable/shoucang"
+            android:src="@drawable/shoucang"
             android:text="收藏"
             android:textSize="10dp"
-            android:background="@color/grey"
+            android:background="@null"
             >
-        </Button>
+        </ImageView>
 
         <Button
             android:layout_width="wrap_content"

@@ -5,6 +5,8 @@ import static com.example.zuwaapp.Constant.FIND_PRODUCT_BY_PHONENUMBER;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,10 +23,12 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.zuwaapp.R;
+import com.example.zuwaapp.adapter.ProductAdapter;
 import com.example.zuwaapp.adapter.RentAdapter;
 import com.example.zuwaapp.entity.Product;
 import com.example.zuwaapp.entity.Result;
 import com.example.zuwaapp.method.Method;
+import com.example.zuwaapp.method.OnItemClickListener;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -33,7 +37,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SearchActivity extends AppCompatActivity {
-    private RentAdapter SearchAdapter;
+    private ProductAdapter SearchAdapter;
     private String context="";
     private List<Product> productList = new ArrayList<>();
     private Gson gson = new GsonBuilder()
@@ -81,21 +85,27 @@ public class SearchActivity extends AppCompatActivity {
             Log.e("search","有内容哦 "+bundle.getString("context"));
             (new Method()).findAllProduct(handler);
             Log.e("search","发现之后");
-            ListView listView = findViewById(R.id.search_result);
-            SearchAdapter = new RentAdapter(productList,R.layout.glace_result_layout,SearchActivity.this);
-            listView.setAdapter(SearchAdapter);
-            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                    Intent intent = new Intent();
-                    intent.setClass(SearchActivity.this, GlaceActivity.class);
-                    Bundle bundle = new Bundle();
-                    bundle.putString("phone",productList.get(position).getPhoneNumber());
-                    bundle.putString("id",productList.get(position).getProductId());
-                    intent.putExtra("bundle",bundle);
-                    startActivity(intent);
-                }
-            });
+        RecyclerView Rview = findViewById(R.id.search_result);
+        StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        Rview.setLayoutManager(layoutManager);
+        SearchAdapter = new ProductAdapter(productList);
+        Rview.setAdapter(SearchAdapter);
+        SearchAdapter.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Intent intent = new Intent();
+
+                //传什么过去
+                //发布者（’用户‘电话）  图片   标题   描述    价格    押金   次数
+                //鉴于现在开发时间是2022年，属于二次开发，所以传id和phone就可以了，到那边再根据这个请求数据库数据
+                intent.setClass(SearchActivity.this, GlaceActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("phone",productList.get(position).getPhoneNumber());
+                bundle.putString("id",productList.get(position).getProductId());
+                intent.putExtra("bundle",bundle);
+                startActivity(intent);
+            }
+        });
 
     }
 }

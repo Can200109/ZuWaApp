@@ -5,36 +5,43 @@
     android:background="@color/grey"
 
     xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout
-        android:background="@color/white"
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp">
-        <Button
-            android:id="@+id/detail_glace_back"
-            android:layout_marginTop="13dp"
-            android:layout_width="21dp"
-            android:layout_height="18dp"
-            android:layout_marginLeft="20dp"
-            android:background="@drawable/leftblack">
-        </Button>
-        <TextView
+        android:layout_height="40dp"
+        android:background="@mipmap/glaceheader"
+        android:orientation="vertical">
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:textSize="20dp"
-            android:text="订单详情"
-            android:textColor="#000000"
-            android:background="#F5F5F5"
-            android:gravity="center"/>
-    </RelativeLayout>
+            android:layout_height="40dp">
+            <Button
+                android:id="@+id/detail_glace_back"
+                android:layout_marginTop="13dp"
+                android:layout_width="21dp"
+                android:layout_height="18dp"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/leftblack">
+            </Button>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:textSize="20dp"
+                android:text="订单详情"
+                android:textColor="@color/white"
+                android:gravity="center"/>
+        </RelativeLayout>
+    </LinearLayout>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:background="@mipmap/glace_bag"
         android:layout_weight="11">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingBottom="20dp"
+
             android:orientation="vertical">
             <!--    买家信息-->
             <LinearLayout
@@ -47,7 +54,7 @@
                 android:paddingRight="5dp"
                 android:paddingTop="15dp"
                 android:paddingBottom="15dp"
-                android:background="@color/white"
+
                 android:orientation="horizontal">
 
                 <LinearLayout
@@ -134,7 +141,6 @@
                 android:paddingRight="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
                 android:orientation="horizontal">
                 <com.example.zuwaapp.ngss.CircleImageView
                     android:layout_width="30dp"
@@ -158,7 +164,6 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:padding="10dp"
-                android:background="@color/white"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/ownRentProduct">
@@ -170,7 +175,6 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:padding="10dp"
-                android:background="@color/white"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -377,7 +381,7 @@
                 android:paddingRight="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
+
                 android:orientation="vertical">
                 <TextView
                     android:layout_width="match_parent"
@@ -421,11 +425,12 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:paddingRight="10dp"
-        android:background="@color/white"
+        android:background="@mipmap/glacebooter"
         android:gravity="right">
         <Button
             android:layout_width="wrap_content"
             android:layout_height="40dp"
+            android:layout_marginTop="10dp"
             android:text="提交订单"
             android:background="@drawable/shape"
             android:id="@+id/rent_payment">

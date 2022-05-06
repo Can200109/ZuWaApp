@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import com.example.zuwaapp.CitySelect.CityPickerActivity;
 import com.example.zuwaapp.CitySelect.bean.LocateState;
+import com.example.zuwaapp.Constant;
 import com.example.zuwaapp.R;
 import com.example.zuwaapp.activity.GlaceActivity;
 import com.example.zuwaapp.activity.ResultActivity;
@@ -42,6 +43,10 @@ import com.google.android.material.tabs.TabLayout;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.uuzuche.lib_zxing.activity.CaptureActivity;
 import com.uuzuche.lib_zxing.activity.CodeUtils;
 import com.uuzuche.lib_zxing.activity.ZXingLibrary;
@@ -60,11 +65,15 @@ import androidx.viewpager.widget.ViewPager;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 import static com.example.zuwaapp.Constant.FIND_ALL;
+import static com.example.zuwaapp.Constant.LOAD_MORE;
+import static com.example.zuwaapp.Constant.REFRESH;
+import static com.example.zuwaapp.Constant.getRandomThreeInfoList;
 
 
 public class FirstFragment extends Fragment {
@@ -75,7 +84,7 @@ public class FirstFragment extends Fragment {
     private final int REQUEST_CODE=1;
     private TextView btnSearch,btnCode;
     private EditText edtSearch;
-    private Button btnClothes,btnComputer,btnPhone, btnPhoto,btnVr,btnDesk,btnSport,btnMore;
+    private Button btnClothes,btnComputer,btnPhone, btnPhoto,btnVr,btnDesk,btnSport,btnMore,btnEar,btnWatch;
 
 
     private ViewPager mViewPager;
@@ -85,10 +94,12 @@ public class FirstFragment extends Fragment {
     //记录上一次位置
     private int oldPosition = 0;
     //存放图片的id
-    private int[] imageIds = new int[]{R.drawable.l1,R.drawable.l2,R.drawable.l3};
+    private int[] imageIds = new int[]{R.mipmap.ban1,R.mipmap.ban2,R.mipmap.ban3};
     private ViewPagerAdapter adapter;
     //定时调度机制
     private ScheduledExecutorService scheduledExecutorService;
+    //刷新
+    private SmartRefreshLayout refreshLayout;
 
 
     private ProductAdapter productAdapter;
@@ -104,8 +115,9 @@ public class FirstFragment extends Fragment {
                     Result<List<Product>> findResult = gson.fromJson(msg.obj.toString(), new TypeToken<Result<List<Product>>>(){}.getType());
                     if (findResult.getCode() == 200) {
                         List<Product> data = findResult.getData();
+                        List<Product> ramData = new Constant().getRandomThreeInfoList(data,6);
 //                        Toast.makeText(getContext(),"查找成功",Toast.LENGTH_LONG).show();
-                        for(Product product:data){
+                        for(Product product:ramData){
                             productList.add(product);
                         }
                         productAdapter.notifyDataSetChanged();
@@ -113,6 +125,16 @@ public class FirstFragment extends Fragment {
                         Toast.makeText(getContext(),"查找失败",Toast.LENGTH_LONG).show();
                     }
                     break;
+                case REFRESH:
+                    productList.clear();
+                    new Method().findAllProduct(handler);
+                    refreshLayout.finishRefresh();
+                    break;
+                case LOAD_MORE:
+                    new Method().findAllProduct(handler);
+                    refreshLayout.finishLoadMore();
+                    break;
+
             }
         }
     };
@@ -177,6 +199,9 @@ public class FirstFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+        //刷新功能
+        setListener();
 
 
         //两排按钮的点击事件
@@ -261,6 +286,33 @@ public class FirstFragment extends Fragment {
                 intent.setClass(getActivity(), TwoRow.class);
                 Bundle bundle = new Bundle();
                 String text = btnVr.getText().toString();
+                bundle.putString("text",text);
+                intent.putExtra("bundle",bundle);
+                startActivity(intent);
+            }
+        });
+
+        btnEar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(getActivity(), TwoRow.class);
+                Bundle bundle = new Bundle();
+                String text = btnEar.getText().toString();
+                bundle.putString("text",text);
+                intent.putExtra("bundle",bundle);
+                startActivity(intent);
+
+            }
+        });
+
+        btnWatch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(getActivity(), TwoRow.class);
+                Bundle bundle = new Bundle();
+                String text = btnWatch.getText().toString();
                 bundle.putString("text",text);
                 intent.putExtra("bundle",bundle);
                 startActivity(intent);
@@ -446,6 +498,58 @@ public class FirstFragment extends Fragment {
 
 
 
+    private void setListener() {
+        //监听下拉刷新
+        refreshLayout.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+                //下拉刷新时执行，请求服务端的最新数据
+                new Thread() {
+                    @Override
+                    public void run() {
+                        //线程等待模拟网络请求
+                        try {
+                            Thread.sleep(1000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        //请求成功后，修改用户界面
+                        Message message = new Message();
+                        message.what = REFRESH;
+                        handler.sendMessage(message);
+                    }
+                }.start();
+            }
+        });
+
+        //监听上拉加载更多
+        refreshLayout.setOnLoadMoreListener(new OnLoadMoreListener() {
+            @Override
+            public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
+                new Thread() {
+                    @Override
+                    public void run() {
+                        //上拉加载更多时执行
+                        try {
+                            Thread.sleep(1000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+
+                        Message message = new Message();
+                        message.what = LOAD_MORE;
+                        handler.sendMessage(message);
+                    }
+                }.start();
+            }
+        });
+    }
+
+
+
+
+
+
     //设置按钮监听器
     private void initviews(View view) {
         mViewPager = view.findViewById(R.id.viewpager);
@@ -460,6 +564,9 @@ public class FirstFragment extends Fragment {
         btnSport = view.findViewById(R.id.btn_sport);
         btnVr = view.findViewById(R.id.btn_vr);
         btnMore = view.findViewById(R.id.btn_more);
+        btnEar = view.findViewById(R.id.btn_ear);
+        btnWatch = view.findViewById(R.id.btn_watch);
+        refreshLayout = view.findViewById(R.id.srl);
 
     }
 }

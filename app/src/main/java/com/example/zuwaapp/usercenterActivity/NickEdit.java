@@ -109,7 +109,7 @@ public class NickEdit extends AppCompatActivity {
 
                 Log.e("头像",userPhoto);
                 User user1 = new User(nick, password, Constant.PHONENUMBER,userPhoto);
-                (new Method()).editUser(user1,handler);
+                (new Method()).editUser2(user1,handler);
                 Toast.makeText(NickEdit.this,"修改成功",Toast.LENGTH_LONG).show();
                 finish();
             }

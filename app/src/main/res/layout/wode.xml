@@ -10,15 +10,14 @@
 <!--    这个页面已经完全推到重做，丝滑，爽歪歪-->
     <LinearLayout
         android:layout_width="match_parent"
-        android:background="@color/white"
+        android:background="@mipmap/mypurple"
         android:layout_height="40dp">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:text="我的"
             android:textSize="20dp"
-            android:textColor="#000000"
-            android:background="@color/white"
+            android:textColor="@color/white"
             android:gravity="center"/>
     </LinearLayout>
 
@@ -31,8 +30,8 @@
             android:orientation="vertical">
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
+                android:layout_height="100dp"
+                android:background="@mipmap/user_bakg"
                 android:paddingLeft="30dp"
                 android:paddingTop="15dp"
                 android:paddingBottom="15dp"
@@ -61,12 +60,14 @@
                             android:layout_marginBottom="3dp"
                             android:textSize="17dp"
                             android:text="大柱"
+                            android:textColor="@color/white"
                             android:id="@+id/user_nick">
                         </TextView>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="id:18333173533"
+                            android:textColor="@color/white"
                             android:id="@+id/user_phoneNumber">
 
                         </TextView>
@@ -84,333 +85,338 @@
 
                 </Button>
             </LinearLayout>
-            <!--    四个按钮-->
-
-            <LinearLayout
-                android:layout_marginTop="5dp"
-                android:paddingTop="25dp"
-                android:paddingBottom="20dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:orientation="horizontal"
-                android:background="@color/white">
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="55dp"
-                    android:drawableTop="@mipmap/release"
-                    android:text="我的发布"
-                    android:textSize="10dp"
-                    android:background="@null"
-                    android:layout_weight="1"
-                    android:id="@+id/my_release"
-                    >
-                </Button>
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="55dp"
-                    android:layout_weight="1"
-                    android:drawableTop="@mipmap/collect"
-                    android:text="我的收藏"
-                    android:textSize="10dp"
-                    android:background="@null"
-                    android:id="@+id/my_collect"
-                    >
-                </Button>
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="55dp"
-                    android:layout_weight="1"
-                    android:drawableTop="@mipmap/borrow"
-                    android:text="我的租借"
-                    android:textSize="10dp"
-                    android:background="@null"
-                    android:id="@+id/my_borrow"
-                    >
-                </Button>
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="55dp"
-                    android:layout_weight="1"
-                    android:drawableTop="@mipmap/coupon"
-                    android:text="优惠券"
-                    android:textSize="10dp"
-                    android:background="@null"
-                    android:id="@+id/my_coupon"
-                    >
-                </Button>
-            </LinearLayout>
-
-            <!--    全部订单-->
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
                 android:orientation="vertical"
-                android:layout_marginTop="5dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp">
+                android:background="@mipmap/home_bacg">
+
+                <!--    四个按钮-->
+
+                <LinearLayout
+                    android:layout_marginTop="5dp"
+                    android:paddingTop="25dp"
+                    android:paddingBottom="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:orientation="horizontal">
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="55dp"
+                        android:drawableTop="@mipmap/release"
+                        android:text="我的发布"
+                        android:textSize="10dp"
+                        android:background="@null"
+                        android:layout_weight="1"
+                        android:id="@+id/my_release"
+                        >
+                    </Button>
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="55dp"
+                        android:layout_weight="1"
+                        android:drawableTop="@mipmap/collect"
+                        android:text="我的收藏"
+                        android:textSize="10dp"
+                        android:background="@null"
+                        android:id="@+id/my_collect"
+                        >
+                    </Button>
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="55dp"
+                        android:layout_weight="1"
+                        android:drawableTop="@mipmap/borrow"
+                        android:text="我的租借"
+                        android:textSize="10dp"
+                        android:background="@null"
+                        android:id="@+id/my_borrow"
+                        >
+                    </Button>
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="55dp"
+                        android:layout_weight="1"
+                        android:drawableTop="@mipmap/coupon"
+                        android:text="优惠券"
+                        android:textSize="10dp"
+                        android:background="@null"
+                        android:id="@+id/my_coupon"
+                        >
+                    </Button>
+                </LinearLayout>
+
+                <!--    全部订单-->
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingTop="15dp"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="    全部订单"
-                        android:textSize="15dp"
-                        android:textStyle="bold">
-                    </TextView>
-                    <TextView
+                    android:orientation="vertical"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp">
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/my_more"
-                        android:text="查看更多 >   "
-                        android:textSize="11dp"
-                        android:paddingTop="3dp"
-                        android:gravity="right"
-                        >
-                    </TextView>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:paddingTop="5dp"
-                    android:paddingBottom="20dp"
-                    android:orientation="horizontal">
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="55dp"
-                        android:drawableTop="@drawable/nopayment"
-                        android:text="待付款"
-                        android:textSize="10dp"
-                        android:background="@null"
-                        android:layout_weight="1"
-                        android:id="@+id/my_no_payment">
-                    </Button>
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="55dp"
-                        android:drawableTop="@drawable/nogoods"
-                        android:text="待发货"
-                        android:textSize="10dp"
-                        android:background="@null"
-                        android:layout_weight="1"
-                        android:id="@+id/my_no_goods">
-                    </Button>
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="55dp"
-                        android:drawableTop="@drawable/noharvest"
-                        android:text="待收货"
-                        android:textSize="10dp"
-                        android:background="@null"
-                        android:layout_weight="1"
-                        android:id="@+id/my_no_harvest">
-                    </Button>
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="55dp"
-                        android:drawableTop="@drawable/noreturn"
-                        android:text="待归还"
-                        android:textSize="10dp"
-                        android:background="@null"
-                        android:layout_weight="1"
-                        android:id="@+id/my_no_return">
-                    </Button>
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="55dp"
-                        android:drawableTop="@drawable/noassess"
-                        android:text="待评价"
-                        android:textSize="10dp"
-                        android:background="@null"
-                        android:layout_weight="1"
-                        android:id="@+id/my_no_assess">
-                    </Button>
-                </LinearLayout>
-            </LinearLayout>
-            <!--    这里是小广告-->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="5dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp">
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:background="@drawable/rubbishimg01">
-                </ImageView>
-            </LinearLayout>
-
-            <!--    这里是些不重要的按钮-->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@color/white"
-                android:layout_marginTop="15dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="15dp"
-                    android:paddingTop="15dp"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:layout_width="wrap_content"
+                        android:paddingTop="15dp"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="    全部订单"
+                            android:textSize="15dp"
+                            android:textStyle="bold">
+                        </TextView>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/my_more"
+                            android:text="查看更多 >   "
+                            android:textSize="11dp"
+                            android:paddingTop="3dp"
+                            android:gravity="right"
+                            >
+                        </TextView>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="    我的服务"
-                        android:textSize="15dp"
-                        android:textStyle="bold">
-                    </TextView>
+                        android:layout_marginTop="15dp"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="20dp"
+                        android:orientation="horizontal">
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="55dp"
+                            android:drawableTop="@drawable/nopayment"
+                            android:text="待付款"
+                            android:textSize="10dp"
+                            android:background="@null"
+                            android:layout_weight="1"
+                            android:id="@+id/my_no_payment">
+                        </Button>
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="55dp"
+                            android:drawableTop="@drawable/nogoods"
+                            android:text="待发货"
+                            android:textSize="10dp"
+                            android:background="@null"
+                            android:layout_weight="1"
+                            android:id="@+id/my_no_goods">
+                        </Button>
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="55dp"
+                            android:drawableTop="@drawable/noharvest"
+                            android:text="待收货"
+                            android:textSize="10dp"
+                            android:background="@null"
+                            android:layout_weight="1"
+                            android:id="@+id/my_no_harvest">
+                        </Button>
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="55dp"
+                            android:drawableTop="@drawable/noreturn"
+                            android:text="待归还"
+                            android:textSize="10dp"
+                            android:background="@null"
+                            android:layout_weight="1"
+                            android:id="@+id/my_no_return">
+                        </Button>
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="55dp"
+                            android:drawableTop="@drawable/noassess"
+                            android:text="待评价"
+                            android:textSize="10dp"
+                            android:background="@null"
+                            android:layout_weight="1"
+                            android:id="@+id/my_no_assess">
+                        </Button>
+                    </LinearLayout>
                 </LinearLayout>
+                <!--    这里是小广告-->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:orientation="horizontal">
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="55dp"
-                        android:drawableTop="@mipmap/address"
-                        android:text="地址"
-                        android:textSize="10dp"
-                        android:background="@null"
-                        android:layout_weight="1"
-                        android:id="@+id/my_address">
-                    </Button>
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="55dp"
-                        android:drawableTop="@mipmap/renewal02"
-                        android:text="续约"
-                        android:textSize="10dp"
-                        android:background="@null"
-                        android:layout_weight="1"
-                        android:id="@+id/my_renewal">
-                    </Button>
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="55dp"
-                        android:drawableTop="@mipmap/buyout"
-                        android:text="买断"
-                        android:textSize="10dp"
-                        android:background="@null"
-                        android:layout_weight="1"
-                        android:id="@+id/my_buyout">
-                    </Button>
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="55dp"
-                        android:drawableTop="@mipmap/sercoupon02"
-                        android:text="优惠"
-                        android:textSize="10dp"
-                        android:background="@null"
-                        android:layout_weight="1"
-                        android:id="@+id/my_sercoupon">
-                    </Button>
+                    android:orientation="vertical"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp">
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:background="@drawable/rubbishimg01">
+                    </ImageView>
                 </LinearLayout>
+
+                <!--    这里是些不重要的按钮-->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginTop="10dp"
-                    android:orientation="horizontal">
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="55dp"
-                        android:drawableTop="@mipmap/vip"
-                        android:text="会员"
-                        android:textSize="10dp"
-                        android:background="@null"
-                        android:layout_weight="1"
-                        android:id="@+id/my_vip">
-                    </Button>
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="55dp"
-                        android:drawableTop="@mipmap/suggest"
-                        android:text="投诉/建议"
-                        android:textSize="10dp"
-                        android:background="@null"
-                        android:layout_weight="1"
-                        android:id="@+id/my_suggest">
-                    </Button>
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="55dp"
-                        android:drawableTop="@mipmap/enterprise"
-                        android:text="企业"
-                        android:textSize="10dp"
-                        android:background="@null"
-                        android:layout_weight="1"
-                        android:id="@+id/my_enterprise">
-                    </Button>
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="55dp"
-                        android:drawableTop="@mipmap/help"
-                        android:text="帮助"
-                        android:textSize="10dp"
-                        android:background="@null"
-                        android:layout_weight="1"
-                        android:id="@+id/my_help">
-                    </Button>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginTop="10dp"
-                    android:orientation="horizontal">
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="55dp"
-                        android:drawableTop="@mipmap/express"
-                        android:text="快递"
-                        android:textSize="10dp"
-                        android:background="@null"
-                        android:layout_weight="1"
-                        android:id="@+id/my_express">
-                    </Button>
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="55dp"
-                        android:drawableTop="@mipmap/money"
-                        android:text="领钱"
-                        android:textSize="10dp"
-                        android:background="@null"
-                        android:layout_weight="1"
-                        android:id="@+id/my_money">
-                    </Button>
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="55dp"
-                        android:drawableTop="@mipmap/business"
-                        android:text="入驻"
-                        android:textSize="10dp"
-                        android:background="@null"
-                        android:layout_weight="1"
-                        android:id="@+id/my_business">
-                    </Button>
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="55dp"
-                        android:drawableTop="@mipmap/aboutour"
-                        android:text="关于我们"
-                        android:textSize="10dp"
-                        android:background="@null"
-                        android:layout_weight="1"
-                        android:id="@+id/my_aboutour">
-                    </Button>
+                    android:orientation="vertical"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="15dp"
+                        android:paddingTop="15dp"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="    我的服务"
+                            android:textSize="15dp"
+                            android:textStyle="bold">
+                        </TextView>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:orientation="horizontal">
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="55dp"
+                            android:drawableTop="@mipmap/address"
+                            android:text="地址"
+                            android:textSize="10dp"
+                            android:background="@null"
+                            android:layout_weight="1"
+                            android:id="@+id/my_address">
+                        </Button>
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="55dp"
+                            android:drawableTop="@mipmap/renewal02"
+                            android:text="续约"
+                            android:textSize="10dp"
+                            android:background="@null"
+                            android:layout_weight="1"
+                            android:id="@+id/my_renewal">
+                        </Button>
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="55dp"
+                            android:drawableTop="@mipmap/buyout"
+                            android:text="买断"
+                            android:textSize="10dp"
+                            android:background="@null"
+                            android:layout_weight="1"
+                            android:id="@+id/my_buyout">
+                        </Button>
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="55dp"
+                            android:drawableTop="@mipmap/sercoupon02"
+                            android:text="优惠"
+                            android:textSize="10dp"
+                            android:background="@null"
+                            android:layout_weight="1"
+                            android:id="@+id/my_sercoupon">
+                        </Button>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal">
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="55dp"
+                            android:drawableTop="@mipmap/vip"
+                            android:text="会员"
+                            android:textSize="10dp"
+                            android:background="@null"
+                            android:layout_weight="1"
+                            android:id="@+id/my_vip">
+                        </Button>
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="55dp"
+                            android:drawableTop="@mipmap/suggest"
+                            android:text="投诉/建议"
+                            android:textSize="10dp"
+                            android:background="@null"
+                            android:layout_weight="1"
+                            android:id="@+id/my_suggest">
+                        </Button>
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="55dp"
+                            android:drawableTop="@mipmap/enterprise"
+                            android:text="企业"
+                            android:textSize="10dp"
+                            android:background="@null"
+                            android:layout_weight="1"
+                            android:id="@+id/my_enterprise">
+                        </Button>
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="55dp"
+                            android:drawableTop="@mipmap/help"
+                            android:text="帮助"
+                            android:textSize="10dp"
+                            android:background="@null"
+                            android:layout_weight="1"
+                            android:id="@+id/my_help">
+                        </Button>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal">
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="55dp"
+                            android:drawableTop="@mipmap/express"
+                            android:text="快递"
+                            android:textSize="10dp"
+                            android:background="@null"
+                            android:layout_weight="1"
+                            android:id="@+id/my_express">
+                        </Button>
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="55dp"
+                            android:drawableTop="@mipmap/money"
+                            android:text="领钱"
+                            android:textSize="10dp"
+                            android:background="@null"
+                            android:layout_weight="1"
+                            android:id="@+id/my_money">
+                        </Button>
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="55dp"
+                            android:drawableTop="@mipmap/business"
+                            android:text="入驻"
+                            android:textSize="10dp"
+                            android:background="@null"
+                            android:layout_weight="1"
+                            android:id="@+id/my_business">
+                        </Button>
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="55dp"
+                            android:drawableTop="@mipmap/aboutour"
+                            android:text="关于我们"
+                            android:textSize="10dp"
+                            android:background="@null"
+                            android:layout_weight="1"
+                            android:id="@+id/my_aboutour">
+                        </Button>
+                    </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>

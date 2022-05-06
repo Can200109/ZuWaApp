@@ -66,7 +66,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
         holder.mImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ToastUtils.show(holder.mImageView.getContext(), "" + position);
+//                ToastUtils.show(holder.mImageView.getContext(), "" + position);
                 Intent intent = new Intent();
                 intent.setClass(view.getContext(), GlaceActivity.class);
                 Bundle bundle = new Bundle();
