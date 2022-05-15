@@ -115,6 +115,6 @@ public class VerticalSortActivity extends AppCompatActivity implements AdapterVi
         }
         mList.get(position).setSelect(true);
         apader.notifyDataSetChanged();
-        Toast.makeText(VerticalSortActivity.this, "" + position, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(VerticalSortActivity.this, "" + position, Toast.LENGTH_SHORT).show();
     }
 }

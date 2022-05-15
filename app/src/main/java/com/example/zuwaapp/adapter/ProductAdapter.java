@@ -75,8 +75,6 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     }
 
 
-
-
     static class ViewHolder extends RecyclerView.ViewHolder {
 
         ImageView productImage;

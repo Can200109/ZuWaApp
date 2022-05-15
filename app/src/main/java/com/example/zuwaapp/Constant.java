@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 public class Constant {
-    public static final String IP = "10.7.88.152";
+    public static final String IP = "1.117.67.217";
 //    public static final String IP = "192.168.31.22";
     public static final String USER_URL ="http://"+IP+":8080/zuwa/user/";
     public static final String PRODUCT_URL ="http://"+IP+":8080/zuwa/product/";

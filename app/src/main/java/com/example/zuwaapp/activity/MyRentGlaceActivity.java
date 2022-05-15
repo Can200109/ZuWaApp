@@ -159,8 +159,13 @@ public class MyRentGlaceActivity extends AppCompatActivity {
 
         //别的activity跳过来
         Intent intent = getIntent();
+
         //传过来的有 productId，ownerPhone
         Bundle bundle = intent.getBundleExtra("bundle");
+
+        if(Constant.PHONENUMBER.equals(bundle.getString("ownerPhone"))){
+            myBack.setText("收回");
+        }
 
         //初始化数据
         (new Method()).findUserByPhoneNumber(bundle.getString("ownerPhone"),handler);  //用户
@@ -230,12 +235,20 @@ public class MyRentGlaceActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //执行方法
                 Rent rent = new Rent(bundle.getString("rentId"));
+                Product product = new Product(bundle.getString("rentId"));
                 Log.e("rentId+++",bundle.getString("rentId"));
-                new Method().deleteRent(rent,handler);
 
-                Toast.makeText(getApplicationContext(),"删除成功",Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(MyRentGlaceActivity.this, Success2Activity.class);
-                startActivity(intent);
+                if(Constant.PHONENUMBER.equals(bundle.getString("ownerPhone"))){
+                    new Method().deleteProduct(product,handler);
+                    Toast.makeText(getApplicationContext(),"删除成功",Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(MyRentGlaceActivity.this, Success3Activity.class);
+                    startActivity(intent);
+                }else {
+                    new Method().deleteRent(rent,handler);
+                    Toast.makeText(getApplicationContext(),"删除成功",Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(MyRentGlaceActivity.this, Success2Activity.class);
+                    startActivity(intent);
+                }
                 finish();
             }
         });

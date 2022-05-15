@@ -20,6 +20,7 @@ import com.example.zuwaapp.Constant;
 import com.example.zuwaapp.Gaussian.CardAdapter;
 import com.example.zuwaapp.Gaussian.CardScaleHelper;
 import com.example.zuwaapp.R;
+import com.example.zuwaapp.adapter.ReleaseCardAdapter;
 import com.example.zuwaapp.entity.Product;
 import com.example.zuwaapp.entity.Result;
 import com.example.zuwaapp.method.Method;
@@ -49,7 +50,7 @@ public class MyRelease extends AppCompatActivity {
     private CardScaleHelper mCardScaleHelper = null;
     private Runnable mBlurRunnable;
     private int mLastPos = -1;
-    private CardAdapter cardAdapter = new CardAdapter(mList);
+    private ReleaseCardAdapter cardAdapter = new ReleaseCardAdapter(mList);
 
     private Gson gson = new GsonBuilder()
             .serializeNulls()

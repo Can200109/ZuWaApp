@@ -39,29 +39,13 @@
                 android:background="@drawable/purple">
             </LinearLayout>
 <!--            热租榜-->
-            <LinearLayout
+
+            <ListView
+                android:background="@mipmap/rec"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:background="@color/purple_200"
-                android:orientation="vertical">
-                <TextView
-                    android:textSize="20dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="热租推荐"
-                    android:gravity="center_horizontal"
-                    >
-                </TextView>
-                <ListView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingBottom="10dp"
-                    android:id="@+id/two_row_list">
-                </ListView>
-            </LinearLayout>
+                android:id="@+id/two_row_list">
+            </ListView>
 
 
 <!--            类型-->
@@ -72,15 +56,93 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:orientation="vertical">
-                <TextView
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="20dp"
-                    android:background="@color/purple_200"
-                    android:id="@+id/two_row_type1"
-                    android:gravity="center_horizontal"
-                    >
-                </TextView>
+                    android:orientation="horizontal"
+                    android:gravity="center_horizontal">
+                    <ImageView
+                        android:paddingTop="3dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/guess"
+                        android:paddingLeft="3dp">
+                    </ImageView>
+                    <ImageView
+                        android:paddingTop="3dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/guess"
+                        android:paddingLeft="3dp">
+                    </ImageView>
+                    <ImageView
+                        android:paddingTop="3dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/guess"
+                        android:paddingLeft="3dp">
+                    </ImageView>
+                    <ImageView
+                        android:paddingTop="3dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/guess"
+                        android:paddingLeft="3dp">
+                    </ImageView>
+                    <ImageView
+                        android:paddingTop="3dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/guess"
+                        android:paddingLeft="3dp">
+                    </ImageView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        android:id="@+id/two_row_type1"
+                        android:gravity="center_horizontal"
+                        >
+                    </TextView>
+                    <ImageView
+                        android:paddingTop="3dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/guess"
+                        android:paddingLeft="3dp">
+                    </ImageView>
+                    <ImageView
+                        android:paddingTop="3dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/guess"
+                        android:paddingLeft="3dp">
+                    </ImageView>
+                    <ImageView
+                        android:paddingTop="3dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/guess"
+                        android:paddingLeft="3dp">
+                    </ImageView>
+                    <ImageView
+                        android:paddingTop="3dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/guess"
+                        android:paddingLeft="3dp">
+                    </ImageView>
+                    <ImageView
+                        android:paddingTop="3dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/guess"
+                        android:paddingLeft="3dp">
+                    </ImageView>
+                </LinearLayout>
+
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/two_row_waterfull1"
                     android:layout_width="match_parent"
@@ -94,15 +156,93 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:orientation="vertical">
-                <TextView
-                    android:textSize="20dp"
-                    android:background="@color/purple_200"
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/two_row_type2"
-                    android:gravity="center_horizontal"
-                    >
-                </TextView>
+                    android:orientation="horizontal"
+                    android:gravity="center_horizontal">
+                    <ImageView
+                        android:paddingTop="3dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/guess"
+                        android:paddingLeft="3dp">
+                    </ImageView>
+                    <ImageView
+                        android:paddingTop="3dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/guess"
+                        android:paddingLeft="3dp">
+                    </ImageView>
+                    <ImageView
+                        android:paddingTop="3dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/guess"
+                        android:paddingLeft="3dp">
+                    </ImageView>
+                    <ImageView
+                        android:paddingTop="3dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/guess"
+                        android:paddingLeft="3dp">
+                    </ImageView>
+                    <ImageView
+                        android:paddingTop="3dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/guess"
+                        android:paddingLeft="3dp">
+                    </ImageView>
+                    <TextView
+                        android:textSize="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:id="@+id/two_row_type2"
+                        android:gravity="center_horizontal"
+                        >
+                    </TextView>
+                    <ImageView
+                        android:paddingTop="3dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/guess"
+                        android:paddingLeft="3dp">
+                    </ImageView>
+                    <ImageView
+                        android:paddingTop="3dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/guess"
+                        android:paddingLeft="3dp">
+                    </ImageView>
+                    <ImageView
+                        android:paddingTop="3dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/guess"
+                        android:paddingLeft="3dp">
+                    </ImageView>
+                    <ImageView
+                        android:paddingTop="3dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/guess"
+                        android:paddingLeft="3dp">
+                    </ImageView>
+                    <ImageView
+                        android:paddingTop="3dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/guess"
+                        android:paddingLeft="3dp">
+                    </ImageView>
+                </LinearLayout>
+
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/two_row_waterfull2"
                     android:layout_width="match_parent"

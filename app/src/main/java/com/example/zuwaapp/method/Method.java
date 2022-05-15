@@ -262,7 +262,6 @@ public class Method {
     public void deleteProduct(Product product,Handler handler){
         FormBody formBody = new FormBody.Builder()
                 .add("productId",product.getProductId())
-                .add("phoneNumber",product.getPhoneNumber())
                 .build();
         Request request = new Request.Builder()
                 .url(PRODUCT_URL+"deleteProduct")
