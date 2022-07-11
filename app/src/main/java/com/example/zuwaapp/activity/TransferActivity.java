@@ -92,7 +92,6 @@ public class TransferActivity extends AppCompatActivity {
 //        userId.setText("12345678910");
         userId.setText(Constant.PHONENUMBER);
 
-        photoButton = findViewById(R.id.user_headerPhoto);
         photoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -1,47 +1,195 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="15dp"
-    android:background="@drawable/jianbian"
     xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/own_back"
-        android:background="@drawable/smssdk_nav_back">
-    </ImageButton>
     <LinearLayout
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginRight="15dp"
+        android:background="@mipmap/own_bag"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:id="@+id/owniv_headPhoto"
-            android:background="@drawable/headphoto">
-        </ImageView>
-        <TextView
-            android:layout_width="wrap_content"
+        android:orientation="vertical">
+<!--        返回键-->
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/owntv_user">
-        </TextView>
+            android:orientation="vertical">
+            <Button
+                android:layout_marginTop="13dp"
+                android:layout_width="21dp"
+                android:layout_height="18dp"
+                android:layout_marginLeft="20dp"
+                android:id="@+id/own_back"
+                android:background="@mipmap/leftbackwhite">
+            </Button>
+
+        </LinearLayout>
+
+
+        <com.example.zuwaapp.ngss.ScrollInterceptScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <!--        用户头像-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="15dp"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+                    <com.example.zuwaapp.ngss.CircleImageView
+                        android:layout_gravity="left"
+                        android:layout_marginLeft="30dp"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:id="@+id/owniv_headPhoto"
+                        android:src="@drawable/dazhu">
+                    </com.example.zuwaapp.ngss.CircleImageView>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:orientation="horizontal"
+                        android:layout_marginLeft="-35dp">
+                        <LinearLayout
+                            android:layout_marginTop="30dp"
+                            android:layout_marginLeft="35dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:textColor="@color/white"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="大柱"
+                                android:textSize="17dp"
+                                android:textStyle="bold"
+                                android:id="@+id/owntv_user">
+                            </TextView>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="30dp"
+                            android:layout_marginTop="30dp"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:textColor="@color/white"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="发布:"
+                                android:textSize="15dp">
+                            </TextView>
+                            <TextView
+                                android:textColor="@color/white"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="15"
+                                android:id="@+id/output_num"
+                                android:textSize="18dp">
+                            </TextView>
+
+
+                            <TextView
+                                android:textColor="@color/white"
+                                android:paddingLeft="30dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="租过:"
+                                android:textSize="15dp">
+                            </TextView>
+                            <TextView
+                                android:textColor="@color/white"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="—"
+                                android:textSize="15dp">
+                            </TextView>
+
+                            <TextView
+                                android:textColor="@color/white"
+                                android:paddingLeft="30dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="看过:"
+                                android:textSize="15dp">
+                            </TextView>
+                            <TextView
+                                android:textColor="@color/white"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="—"
+                                android:textSize="15dp">
+                            </TextView>
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </LinearLayout>
+                <!--        一条线-->
+                <TextView
+                    android:layout_marginTop="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/white">
+                </TextView>
+
+                <!--        他的发布-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingLeft="10dp">
+                        <ImageView
+                            android:paddingTop="3dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/guess"
+                            android:paddingLeft="3dp">
+                        </ImageView>
+                        <TextView
+                            android:paddingLeft="3dp"
+                            android:paddingTop="3dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="14dp"
+                            android:textColor="@color/white"
+                            android:textStyle="bold"
+                            android:text="发布">
+                        </TextView>
+                        <ImageView
+                            android:paddingTop="3dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/guess"
+                            android:paddingLeft="3dp">
+                        </ImageView>
+                    </LinearLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:descendantFocusability="blocksDescendants">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="10dp"
+                            android:id="@+id/own_products_list"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+                    </RelativeLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </com.example.zuwaapp.ngss.ScrollInterceptScrollView>
+
+
     </LinearLayout>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="15dp"
-        android:gravity="center_horizontal"
-        android:text="ta的出租物品如下"
-        android:textSize="20dp">
-    </TextView>
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/own_products_list">
-    </ListView>
+
+
 </LinearLayout>

@@ -1,9 +1,5 @@
 package com.example.zuwaapp.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.os.Bundle;
-
 import com.example.zuwaapp.R;
 import com.previewlibrary.GPreviewActivity;
 

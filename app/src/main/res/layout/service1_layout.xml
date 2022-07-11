@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:backgroundTint="@color/white"
+        android:background="@drawable/textview_border"
+        android:text="  常见问题"
+        android:textColor="@color/black"
+        android:textSize="20dp">
+    </TextView>
+    <TextView
+        android:id="@+id/btn_pro2"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:gravity="center_vertical"
+        android:background="@drawable/textview_border"
+        android:text="  故障、损坏、被盗、丢失怎么办"
+        android:textColor="@color/greypro"
+        android:textSize="15dp">
+    </TextView>
+    <TextView
+        android:id="@+id/btn_pro3"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:gravity="center_vertical"
+        android:background="@drawable/textview_border"
+        android:text="  押金到期后归还吗？"
+        android:textColor="@color/greypro"
+        android:textSize="15dp"
+        >
+    </TextView>
+    <TextView
+        android:id="@+id/btn_pro4"
+        android:background="@drawable/textview_border"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:gravity="center_vertical"
+        android:text="  怎么归还？能否提前归还？"
+        android:textColor="@color/greypro"
+        android:textSize="15dp"
+        >
+    </TextView>
+    <TextView
+        android:id="@+id/btn_pro5"
+        android:background="@drawable/textview_border"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:gravity="center_vertical"
+
+        android:text="  租期是哪一天起算的？"
+        android:textColor="@color/greypro"
+        android:textSize="15dp">
+    </TextView>
+    <TextView
+        android:background="@drawable/textview_border"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:gravity="center_vertical"
+        android:text="  关于运费，物流损坏说明"
+        android:textColor="@color/greypro"
+        android:textSize="15dp">
+    </TextView>
+    <TextView
+        android:background="@drawable/textview_border"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:gravity="center_vertical"
+        android:text="  到期后可以买断吗？"
+        android:textColor="@color/greypro"
+        android:textSize="15dp">
+    </TextView>
+    <TextView
+        android:background="@drawable/textview_border"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:gravity="center_vertical"
+        android:text="  怎么续租？"
+        android:textColor="@color/greypro"
+        android:textSize="15dp">
+    </TextView>
+    <TextView
+        android:background="@drawable/textview_border"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:gravity="center_vertical"
+        android:text="  怎么查看价格？"
+        android:textColor="@color/greypro"
+        android:textSize="15dp">
+    </TextView>
+    <TextView
+        android:background="@drawable/textview_border"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:gravity="center_vertical"
+        android:text="  可以发票吗？"
+        android:textColor="@color/greypro"
+        android:textSize="15dp">
+    </TextView>
+    <TextView
+        android:background="@drawable/textview_border"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:gravity="center_vertical"
+        android:text="  什么时候发货？"
+        android:textColor="@color/greypro"
+        android:textSize="15dp">
+    </TextView>
+
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:backgroundTint="@color/white"
+        android:background="@drawable/textview_border"
+        android:text="  支付问题"
+        android:textColor="@color/black"
+        android:textSize="20dp">
+    </TextView>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:gravity="center_vertical"
+        android:background="@drawable/textview_border"
+        android:text="  取消订单后的到账问题"
+        android:textColor="@color/greypro"
+        android:textSize="15dp">
+    </TextView>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:gravity="center_vertical"
+        android:background="@drawable/textview_border"
+        android:text="  如何申请免押金额度？"
+        android:textColor="@color/greypro"
+        android:textSize="15dp"
+        >
+    </TextView>
+    <TextView
+        android:background="@drawable/textview_border"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:gravity="center_vertical"
+        android:text="  预授权押金怎么退还？"
+        android:textColor="@color/greypro"
+        android:textSize="15dp"
+        >
+    </TextView>
+    <TextView
+        android:background="@drawable/textview_border"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:gravity="center_vertical"
+
+        android:text="  租赁红包怎么使用？"
+        android:textColor="@color/greypro"
+        android:textSize="15dp">
+    </TextView>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:backgroundTint="@color/white"
+        android:background="@drawable/textview_border"
+        android:text="  设备维修"
+        android:textColor="@color/black"
+        android:textSize="20dp">
+    </TextView>
+    <TextView
+        android:background="@drawable/textview_border"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:gravity="center_vertical"
+        android:text="  设备出现故障了怎么办？"
+        android:textColor="@color/greypro"
+        android:textSize="15dp">
+    </TextView>
+    <TextView
+        android:background="@drawable/textview_border"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:gravity="center_vertical"
+        android:text="  维修费用谁承担？"
+        android:textColor="@color/greypro"
+        android:textSize="15dp">
+    </TextView>
+    <TextView
+        android:background="@drawable/textview_border"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:gravity="center_vertical"
+        android:text="  同城租用维修需要多久，维修不好怎么办？"
+        android:textColor="@color/greypro"
+        android:textSize="15dp">
+    </TextView>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:backgroundTint="@color/white"
+        android:background="@drawable/textview_border"
+        android:text="  租赁保障"
+        android:textColor="@color/black"
+        android:textSize="20dp">
+    </TextView>
+    <TextView
+        android:background="@drawable/textview_border"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:gravity="center_vertical"
+        android:text="  租赁保障有什么？"
+        android:textColor="@color/greypro"
+        android:textSize="15dp">
+    </TextView>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:text="没有解决你的问题？联系客服"
+        android:textColor="@color/greypro"
+        android:textSize="10dp">
+    </TextView>
+
+</LinearLayout>
+</ScrollView>

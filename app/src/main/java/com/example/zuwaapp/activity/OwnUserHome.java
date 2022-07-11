@@ -6,6 +6,8 @@ import static com.example.zuwaapp.Constant.FIND_USER_BY_PHONENUMBER;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,6 +17,7 @@ import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -24,11 +27,13 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.zuwaapp.Constant;
 import com.example.zuwaapp.R;
+import com.example.zuwaapp.adapter.ProductAdapter;
 import com.example.zuwaapp.adapter.RentAdapter;
 import com.example.zuwaapp.entity.Product;
 import com.example.zuwaapp.entity.Result;
 import com.example.zuwaapp.entity.User;
 import com.example.zuwaapp.method.Method;
+import com.example.zuwaapp.method.OnItemClickListener;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -38,9 +43,9 @@ import java.util.List;
 
 public class OwnUserHome extends AppCompatActivity {
     private ImageView ownHead;
-    private ImageButton ownBack;
-    private TextView ownUser;
-    private RentAdapter MePushAdapter;
+    private Button back;
+    private TextView ownUser, outputNum;
+    private ProductAdapter MePushAdapter;
     private List<Product> productList = new ArrayList<>();
     private Gson gson = new GsonBuilder()
             .serializeNulls()
@@ -55,9 +60,9 @@ public class OwnUserHome extends AppCompatActivity {
                         //Toast.makeText(getApplicationContext(),"查找成功",Toast.LENGTH_LONG).show();
                         User user = findUserByPhoneNumberResult.getData();
                         ownUser.setText(findUserByPhoneNumberResult.getData().getUserName());
-                        List<String> userPhoto = gson.fromJson(user.getUserPhoto(),new TypeToken<List<String>>(){}.getType());
+                        String userPhoto = user.getUserPhoto();
                         if (userPhoto!=null){
-                            String url = Constant.USER_PHOTO+user.getPhoneNumber()+"/"+userPhoto.get(0);
+                            String url = Constant.USER_PHOTO+user.getPhoneNumber()+"/"+userPhoto;
                             Log.e("tupianjiazai : ", url);
                             Glide.with(getApplicationContext())
                                     .load(url)
@@ -72,6 +77,7 @@ public class OwnUserHome extends AppCompatActivity {
                     Result<List<Product>> findResult = gson.fromJson(msg.obj.toString(), new TypeToken<Result<List<Product>>>(){}.getType());
                     if (findResult.getCode() == 200) {
                         List<Product> data = findResult.getData();
+                        outputNum.setText(data.size()+"");
 //                        Toast.makeText(OwnUserHome.this,"查找成功",Toast.LENGTH_LONG).show();
                         for(Product product:data){
                             productList.add(product);
@@ -89,9 +95,17 @@ public class OwnUserHome extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_own_user_home);
-        ownBack = findViewById(R.id.own_back);
         ownUser = findViewById(R.id.owntv_user);
         ownHead = findViewById(R.id.owniv_headPhoto);
+        outputNum = findViewById(R.id.output_num);
+        back = findViewById(R.id.own_back);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         Intent intent = getIntent();
         //这里获取用户名(根据电话号)
@@ -103,13 +117,19 @@ public class OwnUserHome extends AppCompatActivity {
         productList.clear();
         //(new Method()).findProductByPhoneNumber(Constant.PHONENUMBER,handler);
         (new Method()).findProductByPhoneNumber(bundle.getString("phone"),handler);
-        ListView listView = findViewById(R.id.own_products_list);
-        MePushAdapter = new RentAdapter(productList,R.layout.glace_result_layout,OwnUserHome.this);
-        listView.setAdapter(MePushAdapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        RecyclerView Rview = findViewById(R.id.own_products_list);
+        StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        Rview.setLayoutManager(layoutManager);
+        MePushAdapter = new ProductAdapter(productList);
+        Rview.setAdapter(MePushAdapter);
+        MePushAdapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+            public void onItemClick(View view, int position) {
                 Intent intent = new Intent();
+
+                //传什么过去
+                //发布者（’用户‘电话）  图片   标题   描述    价格    押金   次数
+                //鉴于现在开发时间是2022年，属于二次开发，所以传id和phone就可以了，到那边再根据这个请求数据库数据
                 intent.setClass(OwnUserHome.this, GlaceActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("phone",productList.get(position).getPhoneNumber());

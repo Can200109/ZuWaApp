@@ -16,6 +16,13 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
+    public User(String userName, String userPassword, String phoneNumber, String userPhoto) {
+        this.userName = userName;
+        this.userPassword = userPassword;
+        this.phoneNumber = phoneNumber;
+        this.userPhoto = userPhoto;
+    }
+
     public String getUserName() {
         return userName;
     }

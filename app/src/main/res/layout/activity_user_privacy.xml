@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+        <Button
+            android:id="@+id/user_setting_return"
+            android:layout_marginTop="13dp"
+            android:layout_width="21dp"
+            android:layout_height="18dp"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/leftblack">
+
+        </Button>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:textSize="20dp"
+            android:text="隐私协议"
+            android:textColor="#000000"
+            android:background="#F5F5F5"
+            android:gravity="center"/>
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="欢迎加入租蛙，开启您的信用租赁人生！"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:text="感谢您使用我们的服务。租蛙的各项服务由广州研趣信息科技有限公司提供，服务所有权和运作权属于租蛙科技有限公司(租蛙平台包括已有“租蛙”APP、公众号、小程序,以及即将产生的新式服务形态,以下统称为“租蛙平台”、“本平台”或“租蛙”"
+                android:paddingTop="10dp"
+                android:paddingLeft="10dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:text="[概要]"
+                android:paddingTop="10dp"
+                android:paddingLeft="10dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:text="欢迎您使用 租蛙(以下简称我方）内容平台服务!您在使用我方内容平台服务前，应当仔细阅读《我方内容平台服务协议》(下称“本协议”)中全部条款及《我方免责声明》、《我方知识产权声明》、《我方隐私保护声明》等我方平台规则内容,在您勾选“本人已阅读并同意《我方内容平台服务协议》按钮H点击“同意开通”后，将视为您已充分理解且同意本协议的所有条款，且具有浏览我方内容平台信息、购买及消费相关内容等使用我方内容平台服务的相应权利能力和行为能力，并可以对白己的行为承担法律责任。我方内容平台有权对本协议条款进行修改，修改后的协议一旦公布即有效替代原有协议。您可随时查询最新协议。如您不同意本服务协议及l或随时对其的修改，可以主动取消我方内容平台提供的服务，您一旦使用我方内容平台服务，即视为您已了解并完全同意不协议及其他服务条款中的各项内容，包括我方内容平台对本协议及其他服务条款随时所做的任何修改，并成为我方内容平台川户。请您务必审慎阅读、充分理解各条款内容，特别是免除或限制责任的相应条款，以及开通或使用某项服务的单独协议，并选择接受或不接受。限制、免责条款将以加粗形式提示您注意。如果您未满18周岁,请在法定监护人的陪同下阅读本协议及其他上述协议，并特别注意未成年人使用条款。"
+                android:paddingTop="10dp"
+                android:paddingLeft="10dp"
+                />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

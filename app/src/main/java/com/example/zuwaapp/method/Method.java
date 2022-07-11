@@ -8,8 +8,10 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.example.zuwaapp.Constant;
+import com.example.zuwaapp.entity.OrderType;
 import com.example.zuwaapp.entity.Product;
 import com.example.zuwaapp.entity.Collect;
+import com.example.zuwaapp.entity.Rent;
 import com.example.zuwaapp.entity.Result;
 import com.example.zuwaapp.entity.User;
 import com.google.gson.Gson;
@@ -29,6 +31,7 @@ import okhttp3.Response;
 
 import static com.example.zuwaapp.Constant.ADD_BY_PHONENUMBER;
 import static com.example.zuwaapp.Constant.ADD_PRODUCT;
+import static com.example.zuwaapp.Constant.ADD_Rent;
 import static com.example.zuwaapp.Constant.COLLECT_URL;
 import static com.example.zuwaapp.Constant.DELETE;
 import static com.example.zuwaapp.Constant.FIND_ALL;
@@ -37,7 +40,9 @@ import static com.example.zuwaapp.Constant.FIND_PRODUCT_BY_PHONENUMBER;
 import static com.example.zuwaapp.Constant.FIND_USER_BY_PHONENUMBER;
 import static com.example.zuwaapp.Constant.LOGIN;
 import static com.example.zuwaapp.Constant.MODIFY;
+import static com.example.zuwaapp.Constant.ORDERTYPE_URL;
 import static com.example.zuwaapp.Constant.PRODUCT_URL;
+import static com.example.zuwaapp.Constant.RENT_URL;
 import static com.example.zuwaapp.Constant.USER_URL;
 
 public class Method {
@@ -164,7 +169,22 @@ public class Method {
         Call call = okHttpClient.newCall(request);
        enqueue(call,MODIFY,handler);
         Log.e("okhttp","异步请求已发送" );
+    }
 
+    public void editUser2(@NonNull User user, Handler handler){
+        FormBody formBody = new FormBody.Builder()
+                .add("phoneNumber",user.getPhoneNumber())//电话号码暂不可以修改，编辑页面电话号码弄成TextView
+                .add("userName",user.getUserName())
+                .add("userPassword", user.getUserPassword())
+                .add("userPhoto",user.getUserPhoto())
+                .build();
+        Request request = new Request.Builder()
+                .url(USER_URL + "editUser")
+                .post(formBody)//设置请求方式为post请求
+                .build();
+        Call call = okHttpClient.newCall(request);
+        enqueue(call,MODIFY,handler);
+        Log.e("okhttp","异步请求已发送" );
     }
     public void deleteUser(String phoneNumber,Handler handler){
         FormBody formBody = new FormBody.Builder()
@@ -221,58 +241,6 @@ public class Method {
     }
 
 
-    public void addRentPhone(String phoneNumber,Product product,Handler handler){
-        product.setProductRent(1);
-        product.setRentPhoneNumber(Constant.PHONENUMBER);
-//        product.setRentPhoneNumber("12345678910");
-        FormBody formBody = new FormBody.Builder()
-                .add("productId",product.getProductId())
-                .add("productRent",product.getProductRent()+"")
-                .add("rentPhoneNumber",product.getRentPhoneNumber())
-                .add("productPhoto",product.getProductPhoto())
-                .add("phoneNumber",phoneNumber)
-                .add("productName",product.getProductName())
-                .add("productDescribe", product.getProductDescribe())
-                .add("productType", product.getProductType())
-                .add("productPrice",product.getProductPrice()+"")
-                .add("productDeposit",product.getProductDeposit()+"")
-                .add("productCount",product.getProductCount()+"")
-                .build();
-        Request request = new Request.Builder()
-                .url(PRODUCT_URL+"addProduct")
-                .post(formBody)
-                .build();
-        Call call = okHttpClient.newCall(request);
-        enqueue(call,ADD_BY_PHONENUMBER,handler);
-    }
-
-
-    public void ReturnProduct(String phoneNumber,Product product,Handler handler){
-        product.setProductRent(0);
-        product.setRentPhoneNumber(Constant.PHONENUMBER);
-//        product.setRentPhoneNumber("12345678910");
-        FormBody formBody = new FormBody.Builder()
-                .add("productId",product.getProductId())
-                .add("productRent",product.getProductRent()+"")
-                .add("rentPhoneNumber",product.getRentPhoneNumber())
-                .add("productPhoto",product.getProductPhoto())
-                .add("phoneNumber",phoneNumber)
-                .add("productName",product.getProductName())
-                .add("productDescribe", product.getProductDescribe())
-                .add("productType", product.getProductType())
-                .add("productPrice",product.getProductPrice()+"")
-                .add("productDeposit",product.getProductDeposit()+"")
-                .add("productCount",product.getProductCount()+"")
-                .build();
-        Request request = new Request.Builder()
-                .url(PRODUCT_URL+"addProduct")
-                .post(formBody)
-                .build();
-        Call call = okHttpClient.newCall(request);
-        enqueue(call,ADD_BY_PHONENUMBER,handler);
-    }
-
-
     /*
      *根据商品id查找商品信息
      *  */
@@ -294,7 +262,6 @@ public class Method {
     public void deleteProduct(Product product,Handler handler){
         FormBody formBody = new FormBody.Builder()
                 .add("productId",product.getProductId())
-                .add("phoneNumber",product.getPhoneNumber())
                 .build();
         Request request = new Request.Builder()
                 .url(PRODUCT_URL+"deleteProduct")
@@ -314,18 +281,53 @@ public class Method {
         Call call = okHttpClient.newCall(request);
         enqueue(call,Constant.FIND_PRODUCT_BY_PRODUCTTYPE,handler);
     }
-    public void findRents(String rentPhoneNumber, int productRent,Handler handler){
+
+
+    //增加租品(将租赁人和商品信息一起存入)
+    public void addRent(@NonNull Rent rent,Handler handler){
         FormBody formBody = new FormBody.Builder()
-                .add("rentPhoneNumber",rentPhoneNumber)
-                .add("productRent",productRent+"")
+                .add("rentName",rent.getRentName())
+                .add("rentDescribe", rent.getRentDescribe())
+                .add("rentPrice", rent.getRentPrice()+"")
+                .add("rentPhoto", rent.getRentPhoto())
+                .add("rentType",rent.getRentType())
+                .add("phoneNumber",rent.getPhoneNumber())
+                .add("ownerPhoneNumber",rent.getOwnerPhoneNumber())
+                .add("productId",rent.getProductId())
                 .build();
         Request request = new Request.Builder()
-                .url(PRODUCT_URL+"findRents")
+                .url(RENT_URL+"addRent")
                 .post(formBody)
                 .build();
         Call call = okHttpClient.newCall(request);
-        enqueue(call,Constant.FIND_RENT,handler);
+        enqueue(call,ADD_Rent,handler);
     }
+
+    public void findRentByPhoneNumber(String phoneNumber,Handler handler){
+        FormBody formBody = new FormBody.Builder()
+                .add("phoneNumber",phoneNumber)
+                .build();
+        Request request = new Request.Builder()
+                .url(RENT_URL+"findRentByPhoneNumber")
+                .post(formBody)
+                .build();
+        Call call = okHttpClient.newCall(request);
+        enqueue(call,Constant.FIND_RENT_BY_PHONENUMBER,handler);
+    }
+
+    public void deleteRent(Rent rent,Handler handler){
+        FormBody formBody = new FormBody.Builder()
+                .add("rentId",rent.getRentId())
+                .build();
+        Request request = new Request.Builder()
+                .url(RENT_URL+"deleteRent")
+                .post(formBody)
+                .build();
+        Call call = okHttpClient.newCall(request);
+        enqueue(call,Constant.DELETE_RENT,handler);
+
+    }
+
     /**
      * 注意!!!!!!!!!!!!!!!!!!!!!!
      * 此处电话号码为当前登录用户的电话号码并不是商品中的电话号
@@ -362,9 +364,9 @@ public class Method {
      * 返回的是JSON格式的Collect数组
      * 根据之前的查找进行解析
      * */
-    public void findCollectByPhoneNumber(String phoneNumber,Handler handler){
+    public void findCollectByPhoneNumber(Collect collect,Handler handler){
         FormBody formBody = new FormBody.Builder()
-                .add("phoneNumber",phoneNumber)
+                .add("phoneNumber",collect.getPhoneNumber())
                 .build();
         Request request = new Request.Builder()
                 .url(COLLECT_URL+"findCollectByPhoneNumber")
@@ -397,6 +399,37 @@ public class Method {
                 .build();
         Call call = okHttpClient.newCall(request);
         enqueue(call,Constant.SET_COLOR,handler);
+    }
+
+    /**
+     * 订单状态相关方法
+     * **/
+    public void addOrder(OrderType orderType, Handler handler){
+        FormBody formBody = new FormBody.Builder()
+                .add("rentPhone",orderType.getRentPhone())
+                .add("type",orderType.getType())
+                .add("productId",orderType.getProductId())
+                .add("productPhone",orderType.getProductPhone())
+                .build();
+        Request request = new Request.Builder()
+                .url(ORDERTYPE_URL+"addOrder")
+                .post(formBody)
+                .build();
+        Call call = okHttpClient.newCall(request);
+        enqueue(call,Constant.ADD_ORDERTYPE,handler);
+    }
+
+    public void findOrder(OrderType orderType, Handler handler){
+        FormBody formBody = new FormBody.Builder()
+                .add("rentPhone",orderType.getRentPhone())
+                .add("type",orderType.getType())
+                .build();
+        Request request = new Request.Builder()
+                .url(ORDERTYPE_URL+"findOrder")
+                .post(formBody)
+                .build();
+        Call call = okHttpClient.newCall(request);
+        enqueue(call,Constant.FIND_ORDER,handler);
     }
 
     public void enqueue(Call call,int constant,Handler handler){

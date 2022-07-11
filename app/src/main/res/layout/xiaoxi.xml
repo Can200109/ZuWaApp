@@ -1,37 +1,148 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:background="@drawable/jianbian"
-    android:padding="15dp"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@mipmap/home_bacg"
+    android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
+        android:orientation="vertical"
+        android:background="@mipmap/four_page">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="服务"
+            android:textSize="20dp"
+            android:textColor="@color/white"
+            android:gravity="center"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="165dp"
+            android:orientation="vertical"
+            android:padding="10dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+                <TextView
+                    android:layout_width="140dp"
+                    android:layout_height="50dp"
+                    android:text="  Hi ~ 您好"
+                    android:textColor="@color/white"
+                    android:textSize="30dp"/>
+                <Button
+                    android:layout_width="120dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="80dp"
+                    android:backgroundTint="@color/teal_700"
+                    android:text="⚠️投诉建议"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="120dp"
+                android:layout_height="20dp">
+                <TextView
+                    android:layout_width="120dp"
+                    android:layout_height="20dp"
+                    android:text="       请选择需要咨询的问题"
+                    android:textColor="@color/white"
+                    android:textSize="10dp"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_marginTop="-70dp"
+        android:layout_width="340dp"
+        android:layout_height="250dp"
+        android:orientation="vertical"
+        android:layout_marginLeft="10dp"
+        android:background="@mipmap/helpcenter">
+        <TextView
+            android:id="@+id/btn_pro1"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center_vertical"
+            android:text="  帮助中心                                         >"
+            android:textSize="20dp"
+            android:textColor="@color/black">
+        </TextView>
+        <TextView
+            android:id="@+id/btn_pro2"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center_vertical"
+            android:drawableLeft="@drawable/shixiang"
+            android:text="  常见问题"
+            android:textColor="@color/black"
+            android:textSize="15dp"
+            >
+        </TextView>
+        <TextView
+            android:id="@+id/btn_pro3"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center_vertical"
+            android:drawableLeft="@drawable/qiandai"
+            android:text="  支付问题"
+            android:textColor="@color/black"
+            android:textSize="15dp"
+            >
+        </TextView>
+        <TextView
+            android:id="@+id/btn_pro4"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center_vertical"
+            android:drawableLeft="@drawable/diannao"
+            android:text="  设备维修"
+            android:textColor="@color/black"
+            android:textSize="15dp"
+            >
+        </TextView>
+        <TextView
+            android:id="@+id/btn_pro5"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center_vertical"
+            android:text="  租赁保障"
+            android:textColor="@color/black"
+            android:textSize="15dp"
+            >
+        </TextView>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal">
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="30sp"
-            android:text="我的租借"
-            android:layout_marginLeft="@dimen/yms_dimens_50.0_px"/>
-        <ImageButton
-            android:id="@+id/btn_search_zujie"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:layout_marginLeft="100dp"
-            android:textSize="18dp"
-            android:textAllCaps="false"
-            android:src="@drawable/search"
-            android:background="#00000000"
+            android:id="@+id/btn_call"
+            android:layout_width="160dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:gravity="center"
+            android:background="@drawable/button1"
+            android:textColor="@color/black"
+            android:text="☎平台热线客服 >"/>
+        <TextView
+            android:layout_width="160dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="15dp"
+            android:gravity="center"
+            android:text="📄平台在线客服 >"
+            android:textColor="@color/black"
+            android:background="@drawable/button1"
             />
     </LinearLayout>
-    <ListView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/WoZuJieList"
-        android:layout_marginTop="15dp">
-    </ListView>
+        android:layout_height="50dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:text="服务时间：周一至周日 9:00~21:30"/>
+    </LinearLayout>
 </LinearLayout>

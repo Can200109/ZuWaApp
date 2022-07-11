@@ -31,4 +31,8 @@ public class Collect {
     private String collectId;//自动生成
     private String phoneNumber;//外键
     private String productId;//外键
+
+    public Collect(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
 }

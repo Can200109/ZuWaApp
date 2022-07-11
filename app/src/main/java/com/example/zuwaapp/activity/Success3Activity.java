@@ -15,7 +15,7 @@ public class Success3Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_success3);
-        button = findViewById(R.id.success3);
+        button = findViewById(R.id.success2);
 
         getIntent();
         button.setOnClickListener(new View.OnClickListener() {

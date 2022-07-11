@@ -67,12 +67,12 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         viewHolder.itemView.setTag(position);
     }
 
+
+
     @Override
     public int getItemCount() {
         return productList.size();
     }
-
-
 
 
     static class ViewHolder extends RecyclerView.ViewHolder {
@@ -89,7 +89,6 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
             productTitle = itemView.findViewById(R.id.productTitle);
             productPrice = itemView.findViewById(R.id.productPrice);
             productCount = itemView.findViewById(R.id.productCount);
-
 
         }
     }
